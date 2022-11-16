@@ -555,10 +555,6 @@ function showchitietsp(IDxe){
             <div><h2>'+formattien(cars[i].gia)+' VNĐ</h2></div>\
             <div class="SLuong">\
                 <form>\
-                    <div><select name="mau" id="mau">\
-                        <option value="trang"  >Màu Trắng</option>\
-                        <option value="den" >Màu Đen</option>\
-                    </select></div>\
                     <div style="display: flex;margin-bottom: 10px;">\
                         <div class="dau" onclick="plussp(-1)">➖</div>\
                         <input type="number" name="SL" id="SL" value="1" step="1" min="0" role="spinbutton" readonly placeholder="nhập số lượng SP">\

@@ -545,8 +545,7 @@ function showchitietsp(IDxe){
     }
     var ctsp='';
     ctsp += '<div class="okechua">\
-    <div class="waperlog" >\
-        <button class="btntat" onclick="tat()">X</button>\
+    <div class="clt"><button class="btntat" onclick="tat()">X</button>&nbsp</div>\
     <div class="chitietsp">\
         <div class="imgdemo">\
             <div class="imgdemo1" id="imgdemo1"><img src="'+cars[i].img+'"></div>\
@@ -612,7 +611,6 @@ function showchitietsp(IDxe){
                 <div>'+chitiets[i].nhienlieu+'</div>\
             </div>\
         </div>\
-    </div>\
 </div>';
     document.getElementById('popup').innerHTML = ctsp;
     
@@ -930,17 +928,17 @@ function hienthanhtoan(IDdh){
         }
     }
     var giohang=`<div class="okechua">
-        <div class="waperlog"
-            <div class="waper1"
-                <h2>Thanh toán</h2>
-                <p class="tt" >Mã đơn hàng: `+donhangs[i].IDdh+`</p>
-                <p class="tt" >Tên sản phẩm: `+cars[j].tenxe+`</p>
-                <p class="tt" >Số lượng: `+donhangs[i].soluong+`</p>
-                <p class="tt" >Khách hàng: `+users[k].hoten+`</p>
-                <p class="tt" >Tổng số tiền: `+formattien(donhangs[i].sotien)+` VNĐ</p>
-                <p class="tt">Thời gian đặt hàng: `+laytg()+`</p>
-                <button onclick="thanhtoan(`+donhangs[i].IDdh+`)" class="btn btn-save" type="button">Xác nhận hanh toán</button>
-                <button onclick="tat()" class="btn btn-close" type="button">thoats</button>
+        <div class="gio-hang-wrapper" >
+            <div class="metroinha">
+                <div><h2>Thanh toán</h2></div>
+                <div><p class="tt" >Mã đơn hàng: `+donhangs[i].IDdh+`</p></div>
+                <div><p class="tt" >Tên sản phẩm: `+cars[j].tenxe+`</p></div>
+                <div><p class="tt" >Số lượng: `+donhangs[i].soluong+`</p></div>
+                <div><p class="tt" >Khách hàng: `+users[k].hoten+`</p></div>
+                <div><p class="tt" >Tổng số tiền: `+formattien(donhangs[i].sotien)+` VNĐ</p></div>
+                <div><p class="tt">Thời gian đặt hàng: `+laytg()+`</p></div>
+                <div><button onclick="thanhtoan(`+donhangs[i].IDdh+`)" class="btn btn-save" type="button">Xác nhận hanh toán</button>
+                <button onclick="tat()" class="btn btn-close" type="button">Thoát</button></div>
             </div>
         </div>
     </div>`;

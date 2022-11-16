@@ -19,22 +19,31 @@ a {
     height: auto;
 }
 .gio-hang-wrapper {
-    margin-left: 10%;
-    margin-top: 10%;
-    width: 80%;
+    position: relative;
+    height: 80%;
+    overflow: scroll;
+    width: 100%;
     background-image: linear-gradient(to right ,#12c2e9, #c471ed, #f64f59);
 }
 .okechua .gio-hang-wrapper .btntat{
-    position: relative;
-    margin-top: 0px;
+    position: absolute;
+    top: 7px;
+    right: 20px;
     padding-left:10px ;
     padding-right: 10px;
-    margin-left: 97.3%;
+   
     font-size: 30px;
     background-color: aliceblue;
     border: hidden;
     border-radius: 10px;
 }
+
+.metroinha{
+    margin-left: 45%;
+    margin-top: 7%;
+}
+
+
 /* chinh sua cho khung dang nhap */
 .baner{
     width: 100%;
@@ -73,10 +82,10 @@ a {
 .waperlog{ 
     box-shadow:10px 10px 10px rgba(133, 131, 131, 0.493);
     /* position: sticky; */
-    margin-top: 7%;
+    /* margin-top: 7%; */
     margin-left: 20%;
     width: 60%;
-    height: 60%;
+    height: 100%;
     background-color: rgba(44, 42, 58, 0.658);
     /* margin: auto; */
     padding: 2% 5% 5%;
@@ -225,11 +234,23 @@ a {
   
 }
 /*-------------CHI TIET SAN PHAN ----------------- */
-
+.clt{
+    position: relative;
+    width: calc(90% - 5px);
+    margin-bottom: -25px;
+    margin-top: 5%;
+    /* margin-inline:inherit ; */
+}
+.clt button{
+    position: absolute;
+    right: 3px;
+}
 .chitietsp{
+    margin: auto;
+    padding-bottom: 15px;
     display: flex;
-    width: 100%;
-    height: 100%px;
+    width: 80%;
+    height: auto;
     clear: both;
     justify-content: center;
     background-color: rgba(230, 190, 150, 0.795);
@@ -289,10 +310,12 @@ a {
     font-style: italic;
 }
 .TTSP{
-    width: 100%;
-    background-color: rgba(230, 190, 150, 0.795);
+    margin: auto;
+    padding-bottom : 10px;
+    width: 80%;
+    background-color: rgba(201, 209, 130, 0.795);
     padding: 0% 1% 0 1%;
-    box-sizing: 60%;
+    /* box-sizing: 100%; */
 }
 
 .TTSP>div>div{

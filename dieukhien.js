@@ -43,7 +43,8 @@ function kiemtradadn()
              
         else{
             document.getElementById('cacbutton').innerHTML=' <input type="button" id="btdangxuat" value="Đăng xuất" onclick="dangxuat()"/>\
-            <input type="button" id="btgiohang" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />';
+            <input type="button" id="btgiohang" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
+            <input type="button" id="btgiohang" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
         }
     }
 }
@@ -140,6 +141,49 @@ function quenmatkhau(){
     </div>'
     document.getElementById('popup').innerHTML=QMK;
 }
+function hiendoimatkhau()
+{
+    var DMK = '<div class="okechua">\
+    <div class="waperlog" onclick="checkligh(\'\',0,2)">\
+    <button class="btntat" onclick="tat()">X</button>\
+        <span class="baner"><h2>ĐỔI MẬT KHẨU</h2></span>\
+        <div class="imglogwaper">\
+            <img id="imglog" src="./img/pngwing.com.png">\
+            <div id="checkbox"></div>\
+        </div>\
+        <div class="frmlog">\
+            <form class="login" onsubmit="return checkligh(\'\',1,2)" method="">\
+                \
+                <div class="main">\
+                    <input type="password"  name="password"   class="input"     id="matkhaumoi"  onclick="checkligh(\'foremail\',0,2)"  onkeydown="checkligh(\'foremail\',0,2)" placeholder="Nhập mật khẩu mới: " >\
+                </div>\
+                <div  class="BTDN">\
+                    <button onclick="Doimatkhau()">\
+                        Xác nhận\
+                    </button>\
+                </div>\
+            </form>\
+        </div>\
+    </div>'
+    document.getElementById('popup').innerHTML=DMK;
+}
+function doimatkhau()
+{
+    var matkhaumoi=document.getElementById('matkhaumoi');
+    var users =JSON.parse(localStorage.getItem('users'));
+    var DN=JSON.parse(localStorage.getItem('DN'));
+    for (var i=0; i<users.length; i++)
+    {
+        if(DN==users[i].IDuser)
+        {
+            users[i].matkhau=matkhaumoi;
+            break;
+        }
+    }
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Đổi mật khẩu thành công');
+    location.reload();
+}
 function checkligh(name,flag,flag2){
     var checkbox = document.getElementById("checkbox")
     var foremail = document.getElementById("foremail")
@@ -230,9 +274,11 @@ function dangkytk() {
     var user = { IDuser, hoten, email, sodth, matkhau };
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
+    alert('Đăng kí tài khoản thành công');
 }
 function kiemtradangnhap() {
     var tendn = document.getElementById('foremail').value;
+    var tc=0;
     var matkhau = document.getElementById('forpass').value;
     var users = JSON.parse(localStorage.getItem('users'));
     for (var i = 0; i < users.length; i++) {
@@ -241,10 +287,13 @@ function kiemtradangnhap() {
             var IDuser=users[i].IDuser;
             alert("Đăng nhập thành công");
             localStorage.setItem('DN',IDuser);
-
+            tc=1;
         }
     }
-    // alert('Bạn đã nhập sai tài khoản hay mật khẩu vui lòng đăng nhập hoặc đăng kí lại');
+    if (tc==0)
+    {
+        alert('Bạn đã nhập sai tài khoản hay mật khẩu vui lòng đăng nhập hoặc đăng kí lại');
+    }
 }
 function khoxe() {
     if(localStorage.getItem('dk')==null)

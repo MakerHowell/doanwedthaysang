@@ -87,6 +87,7 @@ a {
     z-index: 1;
     background: rgba(0, 0, 0, 0.541);
     margin: 0px;
+    overflow: scroll;
     /* background-color: rgb(255, 5, 5); */
     /* position: relative; */
 } 
@@ -272,14 +273,16 @@ a {
     width: 50%;
 }
 .imgdemo1{
+    margin-top: 2%;
     width: 100%;
     text-align: left;
     height: auto;
 }
 
 .imgdemo1>img{
-    width: 75%;
+    width: 80%;
     height: auto;
+    margin-left: 10%;
 }
 .sale{
     width: 40%;
@@ -309,20 +312,28 @@ a {
 #SL{
     line-height: 30px;
     text-align: center;
+    width: 60%;
 }
 .TSL{
     border-radius:10px ;
-    margin-left: 10%;
+    border-color: rgb(238, 43, 43);
+    box-shadow: red 1px 1px 10px;
+    margin-left: 40px ;
     /* text-align: center; */
     background: rgb(238, 43, 43);
     font-style: italic;
 }
+.TSL h3{
+    line-height: 25px;
+    margin: 10px 0px 10px 0px ;
+}
 .TTSP{
     margin: auto;
-    padding-bottom : 10px;
     width: 80%;
     background-color: rgba(201, 209, 130, 0.795);
-    padding: 0% 1% 0 1%;
+    padding: 0% 1% 10px 1%;
+    height: auto;
+
     /* overflow: scroll; */
     /* box-sizing: 100%; */
 }
@@ -689,7 +700,21 @@ label {
     .left-menu{
         width: 45%;
     }
-    
+    .chitietsp{
+        display: block;
+    }
+    .imgdemo{
+        width: 80%;
+        /* height: 250px; */
+        margin: auto;
+    }
+    .sale{
+        width: 80%;
+        margin: auto;
+    }
+    .sale div{
+        margin: auto;
+    }
 }
 @media only screen and (max-width: 600px){
 

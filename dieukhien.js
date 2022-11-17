@@ -48,7 +48,7 @@ function kiemtradadn()
     }
 }
 function dangnhap() {
-    var DN = '<div class="okechua">\
+    var DN = '<div class="okechua" onclick="checkligh(\'\',0,1)">\
         <div class="waperlog" onclick="checkligh(\'\',0,1)">\
         <button class="btntat" onclick="tat()">X</button>\
             <span class="baner"><h2>ĐĂNG NHẬP</h2></span>\
@@ -113,7 +113,7 @@ function dangky()
     document.getElementById('popup').innerHTML =DK;
 }
 function quenmatkhau(){
-    var QMK = '<div class="okechua">\
+    var QMK = '<div class="okechua" onclick="checkligh(\'\',0,1)">\
     <div class="waperlog" onclick="checkligh(\'\',0,2)">\
     <button class="btntat" onclick="tat()">X</button>\
         <span class="baner"><h2>QUÊN MẬT KHẨU</h2></span>\

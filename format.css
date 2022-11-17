@@ -181,6 +181,9 @@ a {
 }
 /* ket thuc form quen mat khau */
 #header{
+    z-index: 0.5;
+    position: fixed;
+    top: 0px;
     height: 120px;
     background-color: rgb(94, 170, 238);
     border-style: groove;
@@ -683,23 +686,32 @@ label {
     }
 } */
 
+@media only screen and (max-width: 1200px){
+    .body{
+        display: block;
+    }
+    .content{
+        width: 100%;
+        margin: 0;
+    }
+    .left-menu{
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width: 1000px){
-
-        
-        .left-menu{
+/* 
+    .left-menu{
             width: 25%;
-        }
-        .dau{
-
-        }
+    } */
+        
        
 }
 @media only screen and (max-width: 800px){
-
-        
-    .left-menu{
+    
+    /* .left-menu{
         width: 45%;
-    }
+    } */
     .chitietsp{
         display: block;
     }
@@ -719,8 +731,8 @@ label {
 @media only screen and (max-width: 600px){
 
         
-    .left-menu{
+    /* .left-menu{
         width: 60%;
-    }
+    } */
    
 }

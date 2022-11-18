@@ -144,13 +144,18 @@ function hienquenmatkhau(){
 function quenmatkhau(){
     var users = JSON.parse(localStorage.getItem('users'));
     var email=document.getElementById('foremail').value;
+    var tc=0;
     for(var i=0;i<users.length;i++)
     {
         if(users[i].email==email)
         {
             alert("Mật khẩu của bạn là: " + users[i].matkhau);
+            tc=1;
             break;
         }
+    }
+    if (tc==0){
+        alert("Bạn phải nhập đúng email");
     }
 }
 function hiendoimatkhau()
@@ -282,6 +287,11 @@ function dangkytk() {
     var email = document.getElementById('foremail').value;
     var sodth = document.getElementById('forSDT').value;
     var matkhau = document.getElementById('forpass').value;
+    var rematkhau=document.getElementById('forrepass').value;
+    if (rematkhau!=matkhau) {
+        alert('Nhập lại mật khẩu không đúng');
+        return 0;
+    }
     var IDuser= users[users.length-1].IDuser+5;
     var user = { IDuser, hoten, email, sodth, matkhau };
     users.push(user);

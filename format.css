@@ -111,7 +111,7 @@ a {
     float: left;
     height: auto;
     width: 50%;
-    background: rgba(255, 255, 255, 0);
+    /* background: rgba(255, 255, 255, 0); */
 }
 .frmlog{
     float: left;
@@ -133,6 +133,8 @@ a {
 .main{
     text-align: center;
     margin-top: 15%;
+    height: auto;
+    width: 100%;
 }
 .input{
     border-color: rgb(240, 30, 30);
@@ -181,9 +183,10 @@ a {
 }
 /* ket thuc form quen mat khau */
 #header{
-    z-index: 0.5;
-    position: fixed;
-    top: 0px;
+    /* z-index: 0.5;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px; */
     height: 120px;
     background-color: rgb(94, 170, 238);
     border-style: groove;
@@ -276,7 +279,7 @@ a {
     width: 50%;
 }
 .imgdemo1{
-    margin-top: 2%;
+    margin-top: 1%;
     width: 100%;
     text-align: left;
     height: auto;
@@ -321,7 +324,7 @@ a {
     border-radius:10px ;
     border-color: rgb(238, 43, 43);
     box-shadow: red 1px 1px 10px;
-    margin-left: 40px ;
+    margin-left: 19% ;
     /* text-align: center; */
     background: rgb(238, 43, 43);
     font-style: italic;
@@ -687,7 +690,7 @@ label {
 } */
 
 @media only screen and (max-width: 1200px){
-    .body{
+    /* .body{
         display: block;
     }
     .content{
@@ -696,22 +699,48 @@ label {
     }
     .left-menu{
         width: 100%;
-    }
+    } */
 }
 
 @media only screen and (max-width: 1000px){
-/* 
+
+    .imglogwaper{
+        width: 40%;
+    }
+    .frmlog{
+        width: 60%;
+    }
+    .frmsigup{
+        width: 60%;
+    }
+    .TSL{
+        margin-left: 12.5%;
+    }
     .left-menu{
             width: 25%;
-    } */
+    }
         
        
 }
 @media only screen and (max-width: 800px){
     
-    /* .left-menu{
+    .imglogwaper{
+        display: none;
+    }
+    .frmlog{
+        margin-left: 10%;
+        width: 80%;
+    }
+    .frmsigup{
+        margin-left: 10%;
+        width: 80%;
+    }
+    .TSL{
+        margin-left: 20%;
+    }
+    .left-menu{
         width: 45%;
-    } */
+    }
     .chitietsp{
         display: block;
     }
@@ -725,14 +754,24 @@ label {
         margin: auto;
     }
     .sale div{
-        margin: auto;
+        /* margin: auto; */
     }
 }
 @media only screen and (max-width: 600px){
-
-        
-    /* .left-menu{
+    .frmlog{
+        /* margin-left: 10%; */
+        width: 100%;
+        margin: 0px;
+    }
+    .frmsigup{
+        margin: 0px;
+        width: 100%;
+    }
+    .TSL{
+        margin-left: 15%;
+    } 
+    .left-menu{
         width: 60%;
-    } */
+    }
    
 }

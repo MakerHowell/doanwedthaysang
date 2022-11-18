@@ -70,7 +70,7 @@ function dangnhap() {
                         </button>\
                     </div>\
                     <div class="forget">\
-                        <a href ="#" onclick="quenmatkhau()"><b>Bạn quên mật khẩu?</b></a>\
+                        <a href ="#" onclick="hienquenmatkhau()"><b>Bạn quên mật khẩu?</b></a>\
                         \
                     </div>\
                 </form>\
@@ -95,9 +95,9 @@ function dangky()
                 \
                 <div class="main">\
                 <input type="text"  name="hoten" class="input"  id="hoten" placeholder="Nhập họ tên" >\
-                    <input type="email"  name="foremail"   class="input"     id="email"  onclick="checkligh(\'foremail\',0,3)"  onkeydown="checkligh(\'foremail\',0,3)"        placeholder="Nhập email( Tài Khoản)" >\
-                    <input type="number"  name="forSDT"       class="input"  id="SDT"    onclick="checkligh(\'forSDT\',0,3)"    onkeydown="checkligh(\'forSDT\',0,3)"       placeholder="Nhập SDT" >\
-                    <input type="password"  name="forpass"    class="input"  id="pass"   onclick="checkligh(\'forpass\',0,3)"   onkeydown="checkligh(\'forpass\',0,3)"     placeholder="Nhập mật khẩu" >\
+                    <input type="email"  name="foremail"   class="input"     id="foremail"  onclick="checkligh(\'foremail\',0,3)"  onkeydown="checkligh(\'foremail\',0,3)"        placeholder="Nhập email( Tài Khoản)" >\
+                    <input type="number"  name="forSDT"       class="input"  id="forSDT"    onclick="checkligh(\'forSDT\',0,3)"    onkeydown="checkligh(\'forSDT\',0,3)"       placeholder="Nhập SDT" >\
+                    <input type="password"  name="forpass"    class="input"  id="forpass"   onclick="checkligh(\'forpass\',0,3)"   onkeydown="checkligh(\'forpass\',0,3)"     placeholder="Nhập mật khẩu" >\
                     <input type="password"  name="forrepass"   class="input" id="forrepass" onclick="checkligh(\'forrepass\',0,3)" onkeydown="checkligh(\'forrepass\',0,3)"     placeholder="Nhập lại mật khẩu" >\
                 </div>\
                 <div  class="BTDN">\
@@ -113,7 +113,7 @@ function dangky()
     </div>'
     document.getElementById('popup').innerHTML =DK;
 }
-function quenmatkhau(){
+function hienquenmatkhau(){
     var QMK = '<div class="okechua" onclick="checkligh(\'\',0,1)">\
     <div class="waperlog" onclick="checkligh(\'\',0,2)">\
     <button class="btntat" onclick="tat()">X</button>\
@@ -129,7 +129,7 @@ function quenmatkhau(){
                     <input type="email"  name="foremail"   class="input"     id="foremail"  onclick="checkligh(\'foremail\',0,2)"  onkeydown="checkligh(\'foremail\',0,2)" placeholder="Nhập email" >\
                 </div>\
                 <div  class="BTDN">\
-                    <button>\
+                    <button onclick="quenmatkhau()">\
                         Lấy Mật khẩu\
                     </button>\
                 </div>\
@@ -140,6 +140,18 @@ function quenmatkhau(){
         </div>\
     </div>'
     document.getElementById('popup').innerHTML=QMK;
+}
+function quenmatkhau(){
+    var users = JSON.parse(localStorage.getItem('users'));
+    var email=document.getElementById('foremail').value;
+    for(var i=0;i<users.length;i++)
+    {
+        if(users[i].email==email)
+        {
+            alert("Mật khẩu của bạn là: " + users[i].matkhau);
+            break;
+        }
+    }
 }
 function hiendoimatkhau()
 {
@@ -190,7 +202,7 @@ function checkligh(name,flag,flag2){
     var forSDT = document.getElementById("forSDT")
     var forpass = document.getElementById("forpass")
     var forrepass = document.getElementById("forrepass")
-            if(name != foremail)
+            if(name != foremail.name)
                 if(!checkemail(flag))
                     return false
             if(flag2==3)
@@ -267,9 +279,9 @@ function checkrepass(flag){
 function dangkytk() {
     var users = JSON.parse(localStorage.getItem('users'));
     var hoten =document.getElementById('hoten').value;
-    var email = document.getElementById('email').value;
-    var sodth = document.getElementById('SDT').value;
-    var matkhau = document.getElementById('pass').value;
+    var email = document.getElementById('foremail').value;
+    var sodth = document.getElementById('forSDT').value;
+    var matkhau = document.getElementById('forpass').value;
     var IDuser= users[users.length-1].IDuser+5;
     var user = { IDuser, hoten, email, sodth, matkhau };
     users.push(user);

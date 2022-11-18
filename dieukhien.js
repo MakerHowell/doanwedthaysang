@@ -169,7 +169,7 @@ function hiendoimatkhau()
 }
 function doimatkhau()
 {
-    var matkhaumoi=document.getElementById('matkhaumoi');
+    var matkhaumoi=document.getElementById('matkhaumoi').value;
     var users =JSON.parse(localStorage.getItem('users'));
     var DN=JSON.parse(localStorage.getItem('DN'));
     for (var i=0; i<users.length; i++)
@@ -190,7 +190,7 @@ function checkligh(name,flag,flag2){
     var forSDT = document.getElementById("forSDT")
     var forpass = document.getElementById("forpass")
     var forrepass = document.getElementById("forrepass")
-            if(name != foremail.name)
+            if(name != foremail)
                 if(!checkemail(flag))
                     return false
             if(flag2==3)

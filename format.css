@@ -1,5 +1,44 @@
 /* Reponsive cho trang web */
+/* trang chu */
+.fade {
+    animation:fading 10s infinite
+}
+@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
 
+.slide>img{
+    width: 100%;
+    height: 500px;
+}
+
+.slide{
+    height: auto;
+    width: 100%;
+    margin-top: 20px;
+    display: none;
+}
+.prev,.next{
+   position: absolute; 
+   font-size: 20px;
+   top:calc(50% - 25px);
+   background: rgb(247, 247, 247);
+   opacity:0.5;
+   height: 25px;
+   width: 20px;
+   vertical-align: middle;
+   z-index: 1;
+   padding: 10px;
+}
+
+.prev:hover,.next:hover{
+   background: rgba(59, 42, 42, 0.521);
+}
+.prev{
+    left: 1%;
+
+}
+.next{
+    right: 1%;
+}
 @media screen and (max-width: 800px) {
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {

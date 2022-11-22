@@ -3,6 +3,47 @@ function tat()
 {
     document.getElementById('popup').innerHTML='';
 }
+function hientrangchu()
+{
+    var trangchu=`  <div >
+    <div style="width: 100%;height: auto  ;position: relative;;">
+        <div class="slide fade"><img src="1.jpg"></div>
+        <div class="slide fade"><img src="2.jpg"></div>
+        <div class="slide fade"><img src="3.jpg"></div>
+        <div class="slide fade"><img src="4.jpg"></div>
+        <div class="slide fade"><img src="5.jpg"></div>
+        <div class="slide fade"><img src="6.jpg"></div>
+        <div class="slide fade"><img src="7.jpg"></div>
+        <span class="prev" onclick="plusSlides(-1)">❮</span>
+        <span class="next" onclick="plusSlides(1)">❯</span>
+             </div>
+    </div>`
+    document.getElementById('popup').innerHTML=trangchu;
+}
+// Hien slideshow
+let slides = document.getElementsByClassName("slide")
+var Index = 0
+showIndes()
+function show(n){
+    
+    if (n > slides.length) {Index = 1}    
+    if (n < 1) {Index = slides.length}
+    for (i = 0; i < slides.length; i++) 
+    {
+        slides[i].style.display = "none"; 
+    }
+    slides[Index-1].style.display = "block";  //không đồng nhất hàm show vs hàm showindex đc vì nếu đồng hất không làm được hiệu úng chuyển trang
+}
+function showIndes(){
+    Index++
+    show(Index)  
+    setTimeout(showIndes, 8000); 
+}
+function plusSlides(n) {
+Index = Index+n
+show(Index);
+//Ket thuc slide show 
+}
 function laytg()
 {
     var today = new Date();

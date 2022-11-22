@@ -8,18 +8,72 @@
     <link rel="stylesheet" href="format.css">
     <script src="dieukhien.js"defer></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Reponsive cho trang web */
+/* ---- Nav bar -------- */
+        @media screen and (max-width: 800px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+
+    }
+
+  }
+
+    </style>
+
+
+
+
 </head>
 <body>
+    <img class="logo" src="./img/logo.png" width="70px" height="70px">
     <div class="header">
-        <img class="logo" src="./img/logo.png" width="70px" height="70px">
-        <div class="nav-menu">
-            <div class="nav"><a href="" onclick="trangchu()">TRANG CHỦ</a> </div>
-            <div class="nav"><a href="" onclick="hienbrand()">GIỚI THIỆU</a></div>
-            <div class="nav"><a href="" onclick="sanpham()">SẢN PHẨM</a></div>
-            <div class="nav"><a href="" onclick="lienhe()">LIÊN HỆ</a></div>
+        <div class="topnav" id="myTopnav">
+            <a href="" onclick="trangchu()"><i class="fa fa-fw fa-home"></i>TRANG CHỦ</a> 
+            <a href="" onclick="hienbrand()"><i class="fa fa-cloud"></i> GIỚI THIỆU</a>
+            <a href="" onclick="sanpham()"><i class="fa fa-car"></i> SẢN PHẨM</a>
+            <a href="" onclick="lienhe()"><i class="fa fa-envelope"></i> LIÊN HỆ</a>
+            
+            
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
         </div>
-        <div id="cacbutton" class="dangnhap">
-           
+        <div class="nav-tai-khoan">
+            <div id="cacbutton" class="dangnhap">
+            <!-- <ul class="taikhoan" href="" onclick=""><i class="fa fa-fw fa-user"></i>TÀI KHOẢN -->
+                <!-- <li class="dn" href="">Dang nhap</li>
+                <li class="dk" href="">Dang ky</li>
+                </ul> -->
+        </div>
+
+            <script>
+                function myFunction() {
+                  var x = document.getElementById("myTopnav");
+                  if (x.className === "topnav") {
+                    x.className += " responsive";
+                  } else {
+                    x.className = "topnav";
+                  }
+                }
+                </script>           
         </div>
     </div>
     <div id="popup"></div>
@@ -78,29 +132,36 @@
     <div class="footer">
         <!-- <hr  width="90%" align="center" color="black"/> -->
         <div class="lienlac">
-            <div class="tell">
+            <div class="lienlac1">
+                <div class="tell">
                 <div>Hotline (24/7)</div>
                 <p>Tell: <a href="tel:+84123456789">+84123456789</a></p>
-            </div>
-            <div class="hoptac">
+                <p>Email: <a href="mailto: chucomail@gmail.com.com">chucomail@gmail.com</a>
+
+                </div>
+                <div class="hoptac">
                 <div>Hợp tác với chúng tôi </div>
                 <p>Tell: <a href="tel:+84123456789">+84123456789</a></p>
                 <p>Email: <a href="mailto: chucomail@gmail.com.com">chucomail@gmail.com</a>
+                </div>
             </div>
-            <div class="bpkd">
+
+            <div class="lienlac2">
+                <div class="bpkd">
                 <div>Bộ phận kinh doanh</div>
                 <p>Tell: <a href="tel:+84123456789">+84123456789</a></p>
                 <p>Email: <a href="mailto: chucomail@gmail.com.com">chucomail@gmail.com</a>
-            </div>
-            <div class="cskh">
+                </div>
+                <div class="cskh">
                 <div>Chăm sóc khách hàng</div>
                 <p>Tell: <a href="tel:+84123456789">+84123456789</a></p>
                 <p>Email: <a href="mailto: chucomail@gmail.com.com">chucomail@gmail.com</a>
+                </div>
             </div>
         </div>
 
     </div>
-    <hr width="90%" align="center" color="black" />
+    <!-- <hr width="90%" align="center" color="black" /> -->
     <div class="thongtin">
         <div class="loiket">
             <h3>TEN TRANG WED</h3>

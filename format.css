@@ -1,3 +1,7 @@
+/* Reponsive cho trang web */
+
+  
+
 
 * {
     font-family: 'Times New Roman', Times, serif;
@@ -379,6 +383,59 @@ a {
 
 /*-------------CHI TIET SAN PHAN ----------------- */
 
+/*-------------------- CSS Navbar -------------------- */
+.header {
+    display: flex;
+}
+
+.topnav {
+    flex-grow: 10;
+}
+
+.nav-tai-khoan {
+    width: 15%;
+    float: right;
+    /* flex-grow: 2; */
+
+}
+
+.dangnhap {
+    color: #4CAF50;
+    background-color: rebeccapurple;
+}
+
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+
+  
+  
 /*--------- CSS LEFT MENU------------*/
 .select-css {
 	display: block;
@@ -440,6 +497,10 @@ a {
 label {
     font-weight: 700;
     font-size: 20px;
+}
+
+#timkiem {
+    width: 90%;
 }
 /* ---------------CSS LEFT MENU -------*/
 .body {
@@ -540,7 +601,34 @@ label {
 .pagination a:last-child {
     border-bottom-right-radius: 5px;
 }
+
 /* Phân thân cuoi chuong trinh */
+
+/* reponsive footer */
+@media (max-width: 800px) {
+    .lienlac {
+      flex-direction: column;
+      /* flex-wrap: wrap; */
+    flex-flow: row wrap;
+        
+    }
+    .lienlac {
+        margin-left: 5px;
+    }
+
+    .lienlac1 {
+        display: flex !important;
+        flex-direction: column;
+    }
+    
+    .lienlac2 {
+        display: block !important;
+        flex-direction: row;
+
+    }
+
+}
+
 .footer {
     width: 100%;
     margin-bottom: 50px;
@@ -556,28 +644,42 @@ label {
     margin-top: 200px;
     justify-content: space-around;
     padding: 30px 0; 
+
 }
+
+.lienlac1 {
+    display: flex;
+}
+
+.lienlac2 {
+    display: flex;
+}
+
 .tell {
-    /* margin-left: 400px; */
-    width: 10%;
+    margin-left: 70px;
+        width: auto;
     border: 2px solid black ;
+    flex: 15%;
     
 }
 .hoptac{
-    margin-left: 100px;
-    width: 10%;
+    margin-left: 70px;
+        width: auto;
+    flex: 15%;
     border: 2px solid black ;
     
 }
 .bpkd{
-    margin-left: 100px;
-    width: 10%;
+    margin-left: 70px;
+        width: auto;
+    flex: 15%;
     border: 2px solid black ;
     
 }
 .cskh{
-    margin-left: 100px;
-    width: 10%;
+    margin-left: 70px;
+    width: auto;
+    flex: 15%;
     border: 2px solid black ;
     
 }
@@ -586,25 +688,28 @@ label {
     width: 100%;
     display: flex;
 }
-.menubottom{
-    margin-left: 150px;
-    width: 25%;
-    float: left;
-    border: 1px soid black ;
-    color: #ddd;
-}
 .loiket{
-    margin-left: 150px;
-    width: 25%;  
+    margin-left: 50px;
+    /* width: 25%;   */
     border: 1px soid black ;
     color: #ddd;
+    flex: 40%
+}
+.menubottom{
+    margin-left: 50px;
+    /* width: 25%; */
+    
+    border: 1px soid black ;
+    color: #ddd;
+    flex: 30%;
 }
 .lienketicon{
     margin-top: 10px;
     margin-left: 50px;
-    width: 25%;
+    /* width: 25%; */
     border: 1px soid black ;
     /* background-color: white; */
+    flex: 30%
 }
 .lienketicon>a>img{
     background-color: white;
@@ -625,7 +730,7 @@ label {
 }
 
 
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .header-menu li {
         display: block;
         height: 30px;
@@ -633,14 +738,15 @@ label {
         padding: 0;
     }
     .letf-menu {
-        width: 30%;
+        width: 20% ;
         height: 10%;
+        display: none;
     }
     .content {
-        width: 70%;
+        width: 90%;
     }
     .right {
-        display: none;
+        display: none !important;
     }
     .wrapper {
         display: block;
@@ -649,7 +755,7 @@ label {
     margin-left: 5%;
     margin-top:20px;
     padding: 15px;
-
+        
     }
     .product-wrapper {
     display: flex;
@@ -664,12 +770,13 @@ label {
 
     .product {
         border-style: groove;
-        width: 75%;
-        height: 200px;
+        width: 80%;
+        height: 350px;
         margin: 5%;
         border-color: blueviolet;
         background-color: yellow;
         margin-left: 12%;
+
     }
 
     .content {
@@ -687,9 +794,9 @@ label {
         border-style: groove;
         margin-top: 10px;
     }
-} */
+}
 
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 2000px){
     /* .body{
         display: block;
     }
@@ -700,6 +807,13 @@ label {
     .left-menu{
         width: 100%;
     } */
+    .product {
+        height:auto;
+    }
+    img {
+        object-fit:contain;
+    }
+    
 }
 
 @media only screen and (max-width: 1000px){
@@ -718,6 +832,12 @@ label {
     }
     .left-menu{
             width: 25%;
+    }
+    .product {
+        height:auto;
+    }
+    img {
+        object-fit:contain;
     }
         
        
@@ -756,6 +876,7 @@ label {
     .sale div{
         /* margin: auto; */
     }
+    
 }
 @media only screen and (max-width: 600px){
     .frmlog{
@@ -768,10 +889,19 @@ label {
         width: 100%;
     }
     .TSL{
-        margin-left: 15%;
+        margin-left: 10%;
     } 
     .left-menu{
-        width: 60%;
+        width: 25%;
+    }
+    .content {
+        width: 100%;
+    }
+    img {
+        object-fit: contain;
+    }
+    .product {
+        height:fit-content; 
     }
    
 }

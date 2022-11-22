@@ -933,7 +933,7 @@ function hienlichsu()
                 splichsu +='<tr>\
                     <td>'+donhangs[i].IDdh+'</td>\
                     <td>\
-                        <img src="../assets/img/product/ipad4.png" class="hinhdaidien">\
+                        <img src="'+cars[k].img+'" class="hinhdaidien">\
                     </td>\
                     <td>'+cars[k].tenxe+'</td>\
                     <td class="text-right">'+donhangs[i].soluong+'</td>\
@@ -949,7 +949,7 @@ function hienlichsu()
                 splichsu +='<tr>\
                 <td>'+donhangs[i].IDdh+'</td>\
                 <td>\
-                    <img src="../assets/img/product/ipad4.png" class="hinhdaidien">\
+                    <img src="'+cars[k].img+'" class="hinhdaidien">\
                 </td>\
                 <td>'+cars[k].tenxe+'</td>\
                 <td class="text-right">'+donhangs[i].soluong+'</td>\

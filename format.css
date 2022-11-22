@@ -191,10 +191,11 @@ a {
     position: -webkit-sticky;
     position: sticky;
     top: 0px; */
-    height: 120px;
+    height: 100px;
     background-color: rgb(94, 170, 238);
     border-style: groove;
     width: 100%;
+    /* display: flex; */
 }
 .nav {
     float: left;
@@ -210,35 +211,60 @@ a {
     padding: 5px;
     cursor: pointer;
 }
-.logo{
+.logo-pro{
     float: left;
+    margin-left: 5px;
+    margin-bottom: 25px;
 }
+
+.nav-tai-khoan {
+    display: flex;
+    
+}
+
+
 .dangnhap{
-    padding-top: 5px;
-    margin-top: 30px;
-    float: right;
+    padding: 5px;
+    /* margin-top: 5px; */
+    color: #000;
+    font-weight: 700;  
+    margin-left: 20px;
+    
 }
 .dangnhap>button {
     border-radius: 10px;
     background-color: aqua;
     padding: 5px;
+    
+    
 }
 .dangnhap>button>a {
     color: red;
     font-weight: 700;
+    
+    
 }
 .dangnhap>button:hover {
     background-color: #4CAF50;
     padding: 5px;
     cursor: pointer;
 }
-.nav-menu{
-    background-color: black;
-    float: left;
-    margin-bottom: 50px;
-    width: 80%;
-    padding-bottom: 25px;
-}
+
+
+#btdangnhap {
+    background-image: linear-gradient(to right,#12c2e9, #c471ed, #f64f59);
+
+    border-radius: 10px;
+  }
+
+  #btdangky {
+    background-image: linear-gradient(to right,#12c2e9, #c471ed, #f64f59);
+
+    border-radius: 10px;
+
+  }
+
+
 .body {
     display: flex;
     justify-content: space-between;
@@ -384,30 +410,22 @@ a {
 /*-------------CHI TIET SAN PHAN ----------------- */
 
 /*-------------------- CSS Navbar -------------------- */
-.header {
-    display: flex;
+.header-wrap {
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
 }
 
 .topnav {
     flex-grow: 10;
 }
 
-.nav-tai-khoan {
-    width: 15%;
-    float: right;
-    /* flex-grow: 2; */
 
-}
-
-.dangnhap {
-    color: #4CAF50;
-    background-color: rebeccapurple;
-}
 
 
 .topnav {
     overflow: hidden;
     background-color: #333;
+    width: auto;
   }
   
   .topnav a {
@@ -537,6 +555,7 @@ label {
     border-color: blueviolet;
     background-color: yellow;
     text-align: center;
+    padding-bottom: 7px;
     
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
@@ -797,21 +816,28 @@ label {
 }
 
 @media only screen and (max-width: 2000px){
-    /* .body{
-        display: block;
-    }
-    .content{
-        width: 100%;
-        margin: 0;
-    }
-    .left-menu{
-        width: 100%;
-    } */
+
     .product {
         height:auto;
     }
     img {
         object-fit:contain;
+    }
+
+    .header-wrap {
+        display: grid;
+        grid-template-columns: 10% 70% 20%;
+    }
+    
+    .nav-tai-khoan {
+        padding-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 1400px){
+    .header-wrap {
+        display: grid;
+        grid-template-columns: 15% 65% 20%;
     }
     
 }
@@ -839,9 +865,47 @@ label {
     img {
         object-fit:contain;
     }
+
+    .header-wrap {
+        display: grid;
+        grid-template-columns: 15% 65% 20%;
+    }
         
        
 }
+
+/* ---- Nav bar -------- */
+@media screen and (max-width: 880px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+
+    }
+    .header-wrap {
+        display: grid;
+        grid-template-columns: 18% 55% 30%;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+
+    }
+
+    
+
+  }
+
 @media only screen and (max-width: 800px){
     
     .imglogwaper{
@@ -878,7 +942,7 @@ label {
     }
     
 }
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 620px){
     .frmlog{
         /* margin-left: 10%; */
         width: 100%;
@@ -903,5 +967,16 @@ label {
     .product {
         height:fit-content; 
     }
+
+    .header-wrap {
+        display: grid;
+        grid-template-columns: 30% 45% 25% !important;
+    }
+
+    .nav-tai-khoan {
+        padding: 0px !important;
+    }
+    
    
+
 }

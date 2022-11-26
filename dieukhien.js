@@ -5,8 +5,8 @@ function tat()
 }
 function hientrangchu()
 {
-    var trangchu=`<div style="width: 100%; margin: 10px 0px 50px 0px ;">
-    <div style="width: 1920px;height: 100%  ;position: relative;;">
+    var trangchu=`<div style="width: 100%;height:100% margin: 10px 0px 50px 0px ;">
+    <div style="width: 100%; height: 100%  ;position: relative;;">
         <div class="slide fade"><img src="./img/ss1.jpg"></div>
         <div class="slide fade"><img src="./img/ss2.jpg"></div>
         <div class="slide fade"><img src="./img/ss3.jpg"></div>
@@ -23,8 +23,8 @@ function hientrangchu()
 // Hien slideshow
 let slides = document.getElementsByClassName("slide")
 var Index = 0
+var time=8000;
 function show(n){
-    
     if (n > slides.length) {Index = 1}    
     if (n < 1) {Index = slides.length}
     for (i = 0; i < slides.length; i++) 
@@ -36,7 +36,7 @@ function show(n){
 function showIndes(){
     Index++
     show(Index)  
-    setTimeout(showIndes, 8000); 
+    setTimeout(showIndes, time); 
 }
 function plusSlides(n) {
 Index = Index+n
@@ -1139,7 +1139,7 @@ function tranghientai(n)
     }
     if(tranghientai== null) tranghientai = 1;
     if (tranghientai==1)
-        hientrangchu(),show(n);
+        hientrangchu(),showIndes();
     if (tranghientai==2)
     {
         // hientranggioithieu();
@@ -1153,4 +1153,4 @@ function tranghientai(n)
         // hientranglienhe();
     }
 }
-window.onload=khoxe(),tranghientai(1);
+window.onload=khoxe(),tranghientai();

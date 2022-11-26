@@ -6,15 +6,18 @@
 @keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
 
 .slide>img{
-    width: 100vw;
-    height: 700px;
+    width: 100%;
+    height: auto;
     object-fit: fill;
+    margin: 0;
+    padding: 0;
 }
-
 .slide{
     height: auto;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 0px;
+    margin: 0;
+    padding: 0;
     display: none;
 }
 .prev,.next{
@@ -29,7 +32,6 @@
    z-index: 1;
    padding: 10px;
 }
-
 .prev:hover,.next:hover{
    background: rgba(59, 42, 42, 0.521);
 }
@@ -40,6 +42,33 @@
 .next{
     right: 1%;
 }
+@media screen and (max-width: 800px) {
+    .slide>img{
+        width: 100%;
+        height: auto;
+        object-fit: fill;
+    }
+    
+    .slide{
+        height: 100% ;
+        width: 100%;
+        margin-top: 0px;
+        display: none;
+    }
+    .prev,.next{
+       position: absolute; 
+       font-size: 20px;
+       top:calc(50% - 25px);
+       background: rgb(247, 247, 247);
+       opacity:0.5;
+       height: auto;
+       width: auto;
+       vertical-align: middle;
+       z-index: 1;
+       padding: 10px;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {
@@ -771,7 +800,7 @@ label {
     /* width: 25%; */
     border: 1px soid black ;
     /* background-color: white; */
-    flex: 30%
+    flex: 30%;
 }
 .lienketicon>a>img{
     background-color: white;
@@ -790,8 +819,6 @@ label {
     background-color: #4CAF50;
     cursor: pointer;
 }
-
-
 @media only screen and (max-width: 600px) {
     .header-menu li {
         display: block;

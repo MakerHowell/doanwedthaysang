@@ -780,27 +780,28 @@ label {
     display: flex;
 }
 .loiket{
-    margin-left: 50px;
+    width: 34%;
     /* width: 25%;   */
+    margin-left: 50px;
     border: 1px soid black ;
     color: #ddd;
-    flex: 40%
+    /* flex: 40%; */
 }
 .menubottom{
     margin-left: 50px;
-    /* width: 25%; */
-    
+    width: 33%;
     border: 1px soid black ;
     color: #ddd;
-    flex: 30%;
+    /* flex: 30%; */
 }
 .lienketicon{
     margin-top: 10px;
+    width: 33%;
     margin-left: 50px;
     /* width: 25%; */
     border: 1px soid black ;
     /* background-color: white; */
-    flex: 30%;
+    /* flex: 30%; */
 }
 .lienketicon>a>img{
     background-color: white;

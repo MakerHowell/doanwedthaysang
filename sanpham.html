@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="header-wrap">
-        <div class="logo-pro"><h3>Maxwheels</h3></div>
+        <div class="logo-pro"><h3><b style="color: rgba(181, 181, 23, 0.937);">Max</b>wheels</h3></div>
         <!-- <img class="logo" src="./img/logo.png" width="70px" height="70px"> -->
         <div class="header">
             <div class="topnav" id="myTopnav">
@@ -35,16 +35,7 @@
                 </a>
             </div>
         
-                <script>
-                    function myFunction() {
-                    var x = document.getElementById("myTopnav");
-                    if (x.className === "topnav") {
-                        x.className += " responsive";
-                    } else {
-                        x.className = "topnav";
-                        }
-                    }
-                </script>           
+                
         </div>
         <div class="nav-tai-khoan">
             <div id="cacbutton" class="dangnhap">
@@ -52,9 +43,13 @@
         </div>
     </div>
 </div>
+
     <div id="popup"></div>
     <div class="body">
-        <div class="left-menu">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Filter</span>
+        <div class="left-menu" id="myLeft-menu">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            
             <div class="danhmuc">
                 <h2>LỌC SẢN PHẨM</h2>
             </div>

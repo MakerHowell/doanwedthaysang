@@ -212,8 +212,8 @@ a {
     cursor: pointer;
 }
 .logo-pro{
-    float: left;
-    margin-left: 5px;
+    /* float: left; */
+    margin-left: 10px;
     margin-bottom: 25px;
 }
 
@@ -229,6 +229,7 @@ a {
     color: #000;
     font-weight: 700;  
     margin-left: 20px;
+    margin-top: 15px;
     
 }
 .dangnhap>button {
@@ -272,13 +273,36 @@ a {
     padding: 5px;
     width: 98%;
 }
+
+@media only screen and (max-height: 450px) {
+    .left-menu {padding-top: 15px;}
+    .left-menu {font-size: 18px;}
+  }
+
+  .left-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
 .left-menu {
-    
-    background-color: rgb(31, 148, 156);
-    padding: 10px 10px;
+    /* padding: 10px 10px; */
+    padding-left: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     border-radius: 20px;
     width: 20%;
+
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: yellow;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
   
 }
 /*-------------CHI TIET SAN PHAN ----------------- */
@@ -413,7 +437,14 @@ a {
 .header-wrap {
     display: grid;
     grid-template-columns: 10% 70% 20%;
+    background-image: linear-gradient(#FFDD00,
+    #FBB034);
 }
+
+div.header-wrap {
+    position: sticky;
+}
+
 
 .topnav {
     flex-grow: 10;
@@ -423,15 +454,16 @@ a {
 
 
 .topnav {
+    margin-top: 10px;
     overflow: hidden;
-    background-color: #333;
+    /* background-color: #333; */
     width: auto;
   }
   
   .topnav a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: #0d0b0b;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -593,6 +625,7 @@ label {
 .trang{
     width: 100%;
     margin-top: 30px;   
+    margin-left: 50%;
 }
 /* Phân trang */
 .pagination {
@@ -658,12 +691,12 @@ label {
     margin: 3px;
     display: flex;
     float: left;
-    background-color: black;
-    color: aliceblue;
+    /* background-color: black; */
+    color: rgb(36, 37, 38);
     margin-top: 200px;
     justify-content: space-around;
     padding: 30px 0; 
-
+    background-image: linear-gradient(#FFDD00,#FBB034);
 }
 
 .lienlac1 {
@@ -677,7 +710,7 @@ label {
 .tell {
     margin-left: 70px;
         width: auto;
-    border: 2px solid black ;
+    /* border: 2px solid black ; */
     flex: 15%;
     
 }
@@ -685,33 +718,35 @@ label {
     margin-left: 70px;
         width: auto;
     flex: 15%;
-    border: 2px solid black ;
+    /* border: 2px solid black ; */
     
 }
 .bpkd{
     margin-left: 70px;
         width: auto;
     flex: 15%;
-    border: 2px solid black ;
+    /* border: 2px solid black ; */
     
 }
 .cskh{
     margin-left: 70px;
     width: auto;
     flex: 15%;
-    border: 2px solid black ;
+    /* border: 2px solid black ; */
     
 }
 .thongtin{
     background-color: black;
     width: 100%;
     display: flex;
+    background-image: linear-gradient(#FFDD00,#FBB034);
+
 }
 .loiket{
     margin-left: 50px;
     /* width: 25%;   */
     border: 1px soid black ;
-    color: #ddd;
+    color: rgb(20, 17, 17);
     flex: 40%
 }
 .menubottom{
@@ -719,19 +754,27 @@ label {
     /* width: 25%; */
     
     border: 1px soid black ;
-    color: #ddd;
+    color: rgb(24, 22, 22);
     flex: 30%;
 }
+
+.menubottom a{
+    color: rgb(24, 22, 22) !important;
+
+}
+
 .lienketicon{
     margin-top: 10px;
     margin-left: 50px;
     /* width: 25%; */
     border: 1px soid black ;
     /* background-color: white; */
-    flex: 30%
+    flex: 30%;
+    
 }
 .lienketicon>a>img{
-    background-color: white;
+    background-image: linear-gradient(#FFDD00,#FBB034);
+
 }
 .lienketicon>a>img:hover{
     background-color: blanchedalmond;
@@ -747,6 +790,7 @@ label {
     background-color: #4CAF50;
     cursor: pointer;
 }
+
 
 
 @media only screen and (max-width: 600px) {
@@ -779,7 +823,7 @@ label {
     .product-wrapper {
     display: flex;
     justify-content: space-between;
-    border-style: groove;
+    /* border-style: groove; */
     margin-bottom: 20px;
     border-color: blue;
     margin-top: 15px;
@@ -888,7 +932,7 @@ label {
     }
   }
   
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 880px) {
     .topnav.responsive {position: relative;}
     .topnav.responsive .icon {
       position: absolute;

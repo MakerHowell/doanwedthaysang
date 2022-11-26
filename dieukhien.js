@@ -5,25 +5,24 @@ function tat()
 }
 function hientrangchu()
 {
-    var trangchu=`  <div >
-    <div style="width: 100%;height: auto  ;position: relative;;">
-        <div class="slide fade"><img src="1.jpg"></div>
-        <div class="slide fade"><img src="2.jpg"></div>
-        <div class="slide fade"><img src="3.jpg"></div>
-        <div class="slide fade"><img src="4.jpg"></div>
-        <div class="slide fade"><img src="5.jpg"></div>
-        <div class="slide fade"><img src="6.jpg"></div>
-        <div class="slide fade"><img src="7.jpg"></div>
+    var trangchu=`<div style="width: 100%; margin: 10px 0px 50px 0px ;">
+    <div style="width: 1920px;height: 100%  ;position: relative;;">
+        <div class="slide fade"><img src="./img/ss1.jpg"></div>
+        <div class="slide fade"><img src="./img/ss2.jpg"></div>
+        <div class="slide fade"><img src="./img/ss3.jpg"></div>
+        <div class="slide fade"><img src="./img/ss4.jpg"></div>
+        <div class="slide fade"><img src="./img/ss5.jpg"></div>
+        <div class="slide fade"><img src="./img/ss6.jpg"></div>
+        <div class="slide fade"><img src="./img/ss7.jpg"></div>
         <span class="prev" onclick="plusSlides(-1)">❮</span>
         <span class="next" onclick="plusSlides(1)">❯</span>
-             </div>
-    </div>`
-    document.getElementById('popup').innerHTML=trangchu;
+    </div>
+</div>`
+    document.getElementById('phanthan').innerHTML=trangchu;
 }
 // Hien slideshow
 let slides = document.getElementsByClassName("slide")
 var Index = 0
-showIndes()
 function show(n){
     
     if (n > slides.length) {Index = 1}    
@@ -43,6 +42,55 @@ function plusSlides(n) {
 Index = Index+n
 show(Index);
 //Ket thuc slide show 
+}
+function hientrangsanpham()
+{
+    var trangsanpham =`<div class="left-menu">
+    <div class="danhmuc">
+        <h2>LỌC SẢN PHẨM</h2>
+    </div>
+    <hr  width="90%" align="center" />
+    <h3>TÌM KIẾM</h3>
+    <input type="text" onkeyup="timkiemxe()" placeholder="Nhập tên xe" id="timkiem">
+    <button onclick="timkiemxe()">LỌC</button>
+    <hr  width="90%" align="center" />
+    <div class="danhmuc2">
+        <h2>Giá</h2>
+    </div>
+    <input type="radio" id="gia" name="gia" checked="checked" onclick="hientrang(1),phantrang()">
+    <label> Tất cả</label><br>
+    <input type="radio" id="gia" name="gia" onclick="locgia(2000000000,5000000000)">
+    <label> 2tỷ VNĐ - 5tỷ VNĐ </label><br>
+    <input type="radio" id="gia" name="gia" onclick="locgia(5000000000,10000000000)">
+    <label> 5tỷ VNĐ - 10tỷ VNĐ</label><br>
+    <input type="radio" id="gia" name="gia" onclick="locgia(10000000000,1000000000000)">
+    <label> Trên 10tỷ VNĐ</label>
+    <hr width="90%" align="center" />
+    <div class="danhmuc2">
+        <h2>Thương hiệu</h2>
+    </div>
+    <select class="select-css" name="cars" onchange="loc(value)" id="thuonghieu">
+    </select>
+    <hr width="90%" align="center" />
+</div>
+<div class="content">
+    <div class="Sanpham">
+        <h1>SẢN PHẨM</h1>
+    </div>
+    <hr width="90%" align="center" />
+    <label for="cars">Sắp xếp theo:</label>
+    <select class="sapxep" name="xapxep" id="sapxep" onchange="sapxep(value)">
+        <option value="0">Mặc định</option>
+        <option value="1">Giá (Thấp->Cao)</option>
+        <option value="2">Giá (Cao->Thấp)</option>
+    </select>
+    <hr width="90%" align="center" />
+    <div class="wrapper">
+        <div id="product-wrapper" class="product-wrapper">
+        </div>
+    </div>
+</div>`
+document.getElementById('phanthan').innerHTML=trangsanpham;
 }
 function laytg()
 {
@@ -755,7 +803,7 @@ function hienbrand() {
     }    
     document.getElementById('thuonghieu').innerHTML = locbrand;
 }
-window.onload=khoxe(),kiemtradadn(),hienbrand(),phantrang();
+
 function hiengiohang()
 {
     if(localStorage.getItem('DN')==-1)
@@ -1078,4 +1126,31 @@ function myFunction() {
     } else {
       x.className = "topnav";
     }
-  }
+}
+function tranghientai(n)
+{
+    var tranghientai;
+    if (n!=null){
+        tranghientai=n;
+        localStorage.setItem("tranghientai",tranghientai);
+    }
+    else {
+        tranghientai = localStorage.getItem("tranghientai");
+    }
+    if(tranghientai== null) tranghientai = 1;
+    if (tranghientai==1)
+        hientrangchu(),show(n);
+    if (tranghientai==2)
+    {
+        // hientranggioithieu();
+    }
+    if (tranghientai==3)
+    {
+        hientrangsanpham(),kiemtradadn(),hienbrand(),phantrang(),tranghientai();
+    }
+    if(tranghientai==4)
+    {
+        // hientranglienhe();
+    }
+}
+window.onload=khoxe(),tranghientai(1);

@@ -452,6 +452,8 @@ a {
 .dangnhap{
     margin: 5px;
     float: right;
+    display: flex;
+    margin-right: 5px;
 }
 .dangnhap>button {
     border-radius: 10px;

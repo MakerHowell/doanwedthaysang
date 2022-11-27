@@ -21,7 +21,10 @@ function hientrangchu()
 <div class="waper-pr">
         <div class="pr">  <img src="./img/logo.png"></div>
         <div class="kt1" style="width:100% ;display: flex;">
-            <div class="pr" style="width: 50%;background: #000; "><video src="./img/demovideo.mp4" height="100%" width="100%" autoplay loop></video></div>
+            <div class="pr" style="width: 50%;background: #000; ">
+              <video height="100%" width="100%" controls muted autoplay loop >
+                    <source src="./img/demovideo.mp4" type="video/mp4">
+               </video></div>
             <div class="pr" style="width: 50%; background: whitesmoke;">
                 <h3>MAXWHEELS</h3>
                 <p>Những năm gần đây Ô TÔ đã và đang dần trở thành phương tiện đi lại phổ biến tại Việt Nam. Cùng với tốc độ phát triển kinh tế, mức thu nhập của người dân ngày càng tăng và nhu cầu đi lại thiết yếu thì việc sở hữu 1 chiếc xe ô tô đang dần phổ biến trong mỗi gia đình người dân Việt Nam.<br> 

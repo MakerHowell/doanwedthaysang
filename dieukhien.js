@@ -211,22 +211,22 @@ function kiemtradadn()
 {
     if(localStorage.getItem('DN')==-1)
     {
-        document.getElementById('cacbutton').innerHTML='<input type="button" id="btdangnhap" value="Đăng nhập" onclick="dangnhap()" />\
-        <input type="button" id="btdangky" value="Đăng ký" onclick="dangky()" />';
+        document.getElementById('cacbutton').innerHTML='<input type="button" id="btdangnhap" class="btn" value="Đăng nhập" onclick="dangnhap()" />\
+        <input type="button" class="btn" id="btdangky" value="Đăng ký" onclick="dangky()" />';
     }
     else
     {
         if(localStorage.getItem('DN')==0)
         {
-            document.getElementById('cacbutton').innerHTML=' <input type="button" id="btdangxuat" value="Đăng xuất" onclick="dangxuat()"/>\
-            <input type="button" id="btgiohang" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
+            document.getElementById('cacbutton').innerHTML=' <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
+            <input type="button" id="btgiohang" class="btn" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
             <a href="admin.html">Trang quản trị</a>';
         }
              
         else{
-            document.getElementById('cacbutton').innerHTML=' <input type="button" id="btdangxuat" value="Đăng xuất" onclick="dangxuat()"/>\
-            <input type="button" id="btgiohang" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
-            <input type="button" id="btgiohang" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
+            document.getElementById('cacbutton').innerHTML=' <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
+            <input type="button" id="btgiohang"class="btn"  value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
+            <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
         }
     }
 }
@@ -247,7 +247,7 @@ function dangnhap() {
                         <input type="password"  name="forpass"    class="input"  id="forpass"   onclick="checkligh(\'forpass\',0,1)"   onkeydown="checkligh(\'forpass\',0,1)"     placeholder="Nhập mật khẩu" >\
                     </div>\
                     <div  class="BTDN">\
-                        <button onclick="kiemtradangnhap()">\
+                        <button class="btn" onclick="kiemtradangnhap()">\
                             ĐĂNG NHẬP\
                         </button>\
                     </div>\
@@ -283,7 +283,7 @@ function dangky()
                     <input type="password"  name="forrepass"   class="input" id="forrepass" onclick="checkligh(\'forrepass\',0,3)" onkeydown="checkligh(\'forrepass\',0,3)"     placeholder="Nhập lại mật khẩu" >\
                 </div>\
                 <div  class="BTDN">\
-                    <button onclick="dangkytk()">\
+                    <button class="btn" onclick="dangkytk()">\
                         ĐĂNG KÝ\
                     </button>\
                 </div>\
@@ -311,7 +311,7 @@ function hienquenmatkhau(){
                     <input type="email"  name="foremail"   class="input"     id="foremail"  onclick="checkligh(\'foremail\',0,2)"  onkeydown="checkligh(\'foremail\',0,2)" placeholder="Nhập email" >\
                 </div>\
                 <div  class="BTDN">\
-                    <button onclick="quenmatkhau()">\
+                    <button class="btn" onclick="quenmatkhau()">\
                         Lấy Mật khẩu\
                     </button>\
                 </div>\
@@ -671,7 +671,7 @@ function hiensanpham(mang){
         '<img src="' + mang[i].img + '">' +
         '<p>' + mang[i].tenxe + '</p>' +
         '<p> Price: ' + formattien(mang[i].gia) +' VNĐ</p>' +
-        '<button onclick="showchitietsp('+mang[i].IDxe+')">CHI TIET</button>' +
+        '<button class="btn" onclick="showchitietsp('+mang[i].IDxe+')">CHI TIET</button>' +
         '</div>';
     }
     document.getElementById('product-wrapper').innerHTML=s;

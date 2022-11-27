@@ -18,19 +18,9 @@ p{
     
 }
 .nav-tai-khoan {
-    width: auto;
+    width: 15%;
     float: right;
     display: block;
-}
-.nav-tai-khoan>.dangnhap>p{
-    float: left;
-    margin: 20px;
-}
-.nav-tai-khoan>.dangnhap>div{
-    float: left;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 #htimkiem
 {
@@ -865,14 +855,22 @@ label {
     padding-left: 8%;
     border: 1px soid black ;
     float: left;
-    color: #ddd;
+    
+}
+
+.left-logo {
+    color: #fce00c !important;
 }
 .menubottom{
     padding-left: 10%;
     width: 30%;
     border: 1px soid black ;
-    color: #ddd;
+    color: #140c44 !important;
     float: left;
+}
+
+.nav1 >a {
+    color: #140c44 !important;
 }
 .lienketicon{
     margin-top: 10px;

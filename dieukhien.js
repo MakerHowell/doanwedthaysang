@@ -22,10 +22,11 @@ function hientrangchu()
         <div class="pr">  <img src="./img/logo.png"></div>
         <div style="width:100% ;display: flex;">
             <div class="pr" style="width: 50%;background: #000; "><video src="./img/demovideo.mp4" height="100%" width="100%" autoplay loop></video></div>
-            <div class="pr" style="width: 50%; background: rgb(252, 252, 201);float: left;">
+            <div class="pr" style="width: 50%; background: whitesmoke;float: left;">
                 <h3>MAXWHEELS</h3>
-                <p>Những năm gần đây Ô TÔ đã và đang dần trở thành phương tiện đi lại phổ biến tại Việt Nam. Cùng với tốc độ phát triển kinh tế, mức thu nhập của người dân ngày càng tăng và nhu cầu đi lại thiết yếu thì việc sở hữu 1 chiếc xe ô tô đang dần phổ biến trong mỗi gia đình người dân Việt Nam.... </p>
-                <button><h2>Xem Them</h2></button>
+                <p>Những năm gần đây Ô TÔ đã và đang dần trở thành phương tiện đi lại phổ biến tại Việt Nam. Cùng với tốc độ phát triển kinh tế, mức thu nhập của người dân ngày càng tăng và nhu cầu đi lại thiết yếu thì việc sở hữu 1 chiếc xe ô tô đang dần phổ biến trong mỗi gia đình người dân Việt Nam.<br> 
+                Chúng tôi đã và đang không ngừng cải thiện, phát triển chất lượng dịch vụ để đóng góp một phần tích cực giúp cho người dân Việt Nam dễ dàng tiếp cận và sở hữu chiếc ô tô ....</p>
+                <button><h4>XEM THÊM</h4></button>
             </div>
         </div>
     </div>
@@ -33,42 +34,42 @@ function hientrangchu()
         <div class="why"><h1>Tại sao lại chọn chúng tôi</h1></div>
         <div class="pr2">
             <div>
-                <div> <img src="1.jpg"></div>
+                <div> <img src="./img/cash-coin.svg"></div>
                  <div>
                     <h3>THANH TOÁN TỰ ĐỘNG</h3>
                     <p>Hỗ trợ thanh toán nhanh chóng bằng cả tiền mặt và thẻ ngân hàng. Hỗ trợ thủ tục trả góp nhanh gọn.</p>
                 </div>
             </div>
             <div>
-                <div> <img src="1.jpg"></div>
+                <div> <img src="./img/headset.svg"></div>
                  <div>
                     <h3>HỖ TRỢ 24/24</h3>
                     <p>Nhân viên tư vấn và trợ giúp giải quyết mọi thắc mắc của bạn.</p>
                 </div>
             </div>
             <div>
-                <div> <img src="1.jpg"></div>
+                <div> <img src="./img/gear.svg"></div>
                  <div>
                     <h3>DỊCH VỤ BẢO TRÌ</h3>
                     <p>Tiếp nhận thông tin và tiến hành các bước bảo trì nhanh chóng nhằm mang đến trải nghiệm sản phẩm tốt nhất.</p>
                 </div>
             </div>
             <div>
-                <div> <img src="1.jpg"></div>
+                <div> <img src="./img/calendar4.svg"></div>
                  <div>
-                    <h3>HƠN 1 Tháng TRONG NGHỀ</h3>
+                    <h3>HƠN 10 NĂM TRONG NGHỀ</h3>
                     <p>Bề dày kinh nghiệm và hết lòng vì khách hàng để hướng tới dịch vụ tốt nhất.</p>
                 </div>
             </div>
             <div>
-                <div> <img src="1.jpg"></div>
+                <div> <img src="./img/car-front-fill.svg"></div>
                  <div>
                     <h3>LÁI THỬ XE MIỄN PHÍ</h3>
                     <p>Hỗ trợ khách hàng được trải nghiệm và lựa chọn sản phẩm ưng ý nhất và phù hợp nhất.</p>
                 </div>
             </div>
             <div>
-                <div> <img src="1.jpg"></div>
+                <div> <img src="./img/clipboard2-check.svg"></div>
                  <div>
                     <h3>CAM KẾT</h3>
                     <p>Chúng tôi luôn luôn hướng đến lợi ích của khách hàng, với chất lượng sản phẩm, dịch vụ và giá cả tốt nhất3</p>
@@ -78,14 +79,15 @@ function hientrangchu()
     </div>
     <div class="waperco">
         <div class="gt"><h1>ĐỐI TÁC CỦA CHÚNG TÔI</h1><h3> Chúng tôi hợp tác với những đối tác hàng đầu trong lĩnh vực xe ô tô nhập khẩu ...</h3></div>
-        <hr width="50%">
+        <hr width="50%" >
         <div class="co">
-            <div><img src="1.jpg"></div>
-            <div><img src="2.jpg"></div>
-            <div><img src="3.jpg"></div>
-            <div><img src="4.jpg"></div>
-            <div><img src="5.jpg"></div>
-            <div><img src="6.jpg"></div>
+            <div><img src="./img/vinfast-new-500x500.webp"></div>
+            <div><img src="./img/co-2.png"></div>
+            <div><img src="./img/co-3.png"></div>
+            <div><img src="./img/co-10.png"></div>
+            <div><img src="./img/car_logo_PNG1655.webp"></div>
+            <div><img src="./img/co-8.png"></div>
+           
         </div>
     </div></div>`
     document.getElementById('phanthan').innerHTML=trangchu;

@@ -144,9 +144,12 @@ p{
     background: rgb(255, 255, 102);
     margin-top: 20px;
 }
+
 .pr>button{
-    height: 50px ;
+    height: auto ;
     margin-left: 40%;
+    padding: 3px 3px 3px 3px;
+    background: rgb(255, 159, 159);
 }
 .pr>h3{
     text-align: center;
@@ -156,15 +159,15 @@ p{
     color: rgb(15, 22, 59);
     margin-left: 10px;
     margin-right: 10px;
-    background-color: rgb(252, 252, 201);
-    
+    background-color: whitesmoke;
+    font-size: larger;
 }
 .pr>button>h2{
  margin: auto;
 }
 
 .why-pr{
-    background: rgb(133, 228, 245);
+    background: rgb(255, 255, 170);
 }
 
 .why{
@@ -184,7 +187,7 @@ p{
 }
 .pr2>div>div>img{
     height: 100px;
-    width: 100px;
+    width: 60px;
 }
 
 .pr2>div>div:nth-child(even){
@@ -192,9 +195,10 @@ p{
 }
 .waperco{
     width: 100%;
-    background: rgb(68, 9, 9);
+    background: whitesmoke;
     margin-top: 10px;
     height: auto;
+    padding-bottom: 10px;
 }
 .co{
     display: flex;
@@ -215,13 +219,17 @@ p{
     width: 100%;
     padding-top:10px ;
 }
+.waperco>hr{
+    border: 1px solid red;
+    border-radius: 100%;
+}
 .gt{
     text-align: center;
     padding-top: 15px;
 }
 .gt>h1,.gt>h3{
     
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 }
 
 *{
@@ -927,7 +935,9 @@ label {
 }
 
 @media only screen and (max-width: 1000px){
-
+    .kt1{
+        display: block;
+    }
     .imglogwaper{
         width: 40%;
     }

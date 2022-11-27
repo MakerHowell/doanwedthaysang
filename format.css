@@ -18,9 +18,19 @@ p{
     
 }
 .nav-tai-khoan {
-    width: 15%;
+    width: auto;
     float: right;
     display: block;
+}
+.nav-tai-khoan>.dangnhap>p{
+    float: left;
+    margin: 20px;
+}
+.nav-tai-khoan>.dangnhap>div{
+    float: left;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 #htimkiem
 {

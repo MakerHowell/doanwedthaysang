@@ -227,15 +227,23 @@ function kiemtradadn()
     }
     else
     {
+        var users = JSON.parse(localStorage.getItem('users'));
+        var i;
+        for(i=0;i<users.length;i++)
+        {
+            if(users[i].IDuser==localStorage.getItem('DN'))
+            {
+                break;
+            }
+        }
         if(localStorage.getItem('DN')==0)
         {
-            document.getElementById('cacbutton').innerHTML=' <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
+            document.getElementById('cacbutton').innerHTML='<p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
             <input type="button" id="btgiohang" class="btn" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
-            <a href="admin.html">Trang quản trị</a>';
-        }
-             
+            <div><a href="admin.html">Trang quản trị</a></div>';
+        }        
         else{
-            document.getElementById('cacbutton').innerHTML=' <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
+            document.getElementById('cacbutton').innerHTML='<p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
             <input type="button" id="btgiohang"class="btn"  value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
             <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
         }
@@ -1234,7 +1242,7 @@ function tranghientai(n)
     }
     if (tranghientai==3)
     {
-        hientrangsanpham(),kiemtradadn(),hienbrand(),phantrang();
+        hientrangsanpham(),hienbrand(),phantrang();
         localStorage.setItem("tranghientai",3);
     }
     if(tranghientai==4)
@@ -1242,4 +1250,4 @@ function tranghientai(n)
         hientranglienhe();
     }
 }
-window.onload=khoxe(),tranghientai();
+window.onload=khoxe(),tranghientai(),kiemtradadn();

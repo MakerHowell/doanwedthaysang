@@ -32,14 +32,10 @@
 }
 
 /* CSS phần body SẢN PHẨM */
-
-
 .pagination {
     display: flex;
     justify-content: center;
 }
-
-
 .badge {
     display: inline-block;
     padding: 7px;
@@ -120,22 +116,6 @@
     display: flex;
     justify-content: space-between;
 }
-
-.info {
-    margin-left: 10px;
-}
-
-.widget-small{
-    display: flex;
-    background-color: whitesmoke;
-    width: 270px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding: 10px;
-}
-
-
-
 .widget-small .icon {
     display: flex;
     min-width: 85px;
@@ -205,8 +185,4 @@ div.form-them-sp {
     color: rgb(190, 40, 40);
     font-weight: 600;
     letter-spacing: 1px;
-}
-
-.tile-title>h3 {
-    display: none;
 }

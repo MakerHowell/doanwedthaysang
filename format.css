@@ -15,6 +15,7 @@ p{
 }
 #login-btn{
     display: none;
+    
 }
 .nav-tai-khoan {
     width: 15%;
@@ -41,6 +42,21 @@ p{
     margin-left:90%;
     display: none;
 }
+.btn{
+    display: block;
+    margin-top: 1rem;
+    padding:.8rem 3rem;
+    background:#fcec64;
+    cursor: pointer;
+    font-size: 1.7rem;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+}
+.btn:hover{
+    background:#fce00c;
+}
+
 @media screen and (max-width: 800px) {
     #menu-btn{
         display: block;
@@ -326,13 +342,11 @@ a {
     cursor: pointer;
 }
 .dangnhap{
-    padding-top: 5px;
-    margin-top: 30px;
+    margin: 5px;
     float: right;
 }
 .dangnhap>button {
     border-radius: 10px;
-    background-color: aqua;
     padding: 5px;
 }
 .dangnhap>button>a {
@@ -509,11 +523,6 @@ a {
     padding-top: 1%;
     padding-left: 1%;
 }
-.dangnhap {
-    color: #4CAF50;
-    background-color: rebeccapurple;
-}
-
 .topnav a {
     float: left;
     display: block;
@@ -615,15 +624,19 @@ label {
 }
 .product {
     border-style: groove;
-    width: 300px;
-    height: 300px;
+    width: 430px;
     border-radius: 15px;
     margin: 20px;
     float: left;
     border-color: blueviolet;
-    background-color: yellow;
+    background-color: #f64f59;
     text-align: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+@media (max-width: 800px){
+    .product {
+        width: 90%;
+    }
 }
 .product img{
     width: 90%;

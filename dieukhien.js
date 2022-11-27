@@ -22,9 +22,9 @@ function hientrangchu()
         <div class="pr">  <img src="./img/logo.png"></div>
         <div style="width:100% ;display: flex;">
             <div class="pr" style="width: 50%;background: #000; "><video src="./img/demovideo.mp4" height="100%" width="100%" autoplay loop></video></div>
-            <div class="pr" style="width: 50%; background: rgb(224, 189, 189);float: left;">
-                <h3>Quỳnh đẹp trai</h3>
-                <p>hãy viết 200 dòng miêu tả về sự đẹp trai của Quỳnh đi nào các bạn nhỏa</p>
+            <div class="pr" style="width: 50%; background: rgb(252, 252, 201);float: left;">
+                <h3>MAXWHEELS</h3>
+                <p>Những năm gần đây Ô TÔ đã và đang dần trở thành phương tiện đi lại phổ biến tại Việt Nam. Cùng với tốc độ phát triển kinh tế, mức thu nhập của người dân ngày càng tăng và nhu cầu đi lại thiết yếu thì việc sở hữu 1 chiếc xe ô tô đang dần phổ biến trong mỗi gia đình người dân Việt Nam.... </p>
                 <button><h2>Xem Them</h2></button>
             </div>
         </div>

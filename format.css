@@ -141,6 +141,17 @@ p{
     height: 50px ;
     margin-left: 40%;
 }
+.pr>h3{
+    text-align: center;
+    color: rgb(0, 68, 255);
+}
+.pr>p{
+    color: rgb(15, 22, 59);
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgb(252, 252, 201);
+    
+}
 .pr>button>h2{
  margin: auto;
 }

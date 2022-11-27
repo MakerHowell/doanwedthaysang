@@ -45,7 +45,9 @@ show(Index);
 }
 function hientrangsanpham()
 {
-    var trangsanpham =`<div class="left-menu">
+    var trangsanpham =`<div id="htimkiem" class="fa fa-heart" onclick="hientimkiem()" ></div>
+    <div id="nuttat" class="fa fa-window-close" onclick="antimkiem()" ></div>
+<div class="left-menu" id="left-menu">
     <div class="danhmuc">
         <h2>LỌC SẢN PHẨM</h2>
     </div>
@@ -73,7 +75,7 @@ function hientrangsanpham()
     </select>
     <hr width="90%" align="center" />
 </div>
-<div class="content">
+<div class="content" id="content">
     <div class="Sanpham">
         <h1>SẢN PHẨM</h1>
     </div>
@@ -91,6 +93,26 @@ function hientrangsanpham()
     </div>
 </div>`
 document.getElementById('phanthan').innerHTML=trangsanpham;
+}
+function hientimkiem()
+{
+    document.getElementById('left-menu').style.display="block";
+    document.getElementById('nuttat').style.display="block";
+    document.getElementById('htimkiem').style.display="none";
+}
+function antimkiem()
+{
+    document.getElementById('left-menu').style.display="none";
+    document.getElementById('nuttat').style.display="none";
+    document.getElementById('htimkiem').style.display="block";
+}
+function hientranggioithieu(){
+    var tranggioithieu = ` `
+    document.getElementById('phanthan').innerHTML=tranggioithieu;
+}
+function hientranglienhe(){
+    var tranglienhe=``;
+    document.getElementById('phanthan').innerHTML=tranglienhe;
 }
 function laytg()
 {
@@ -508,15 +530,6 @@ function phantrang()
 {
     var cars = JSON.parse(localStorage.getItem('cars'));
     phantrang1(cars);
-    // luu(cars);
-    // var sotrang=Math.ceil(cars.length/16);
-    // var taosotrang='';
-    // taosotrang+='<a href="#">&laquo;</a>';
-    // for(var i=1; i<=sotrang; i++) {
-    //     taosotrang+='<a onclick="hientrang1('+i+')" href="#">'+i+'</a>';
-    // }
-    // taosotrang+='<a href="#">&raquo;</a>';
-    // document.getElementById('pagination').innerHTML=taosotrang;
 }
 function luu(mang)
 {
@@ -1119,14 +1132,7 @@ function hienthanhtoan(IDdh){
     </div>`;
     document.getElementById('popup').innerHTML=giohang;
 }
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
-}
+
 function tranghientai(n)
 {
     var tranghientai;
@@ -1142,11 +1148,12 @@ function tranghientai(n)
         hientrangchu(),showIndes();
     if (tranghientai==2)
     {
-        // hientranggioithieu();
+        hientranggioithieu();
     }
     if (tranghientai==3)
     {
-        hientrangsanpham(),kiemtradadn(),hienbrand(),phantrang(),tranghientai();
+        hientrangsanpham(),kiemtradadn(),hienbrand(),phantrang();
+        localStorage.setItem("tranghientai",3);
     }
     if(tranghientai==4)
     {

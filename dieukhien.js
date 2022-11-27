@@ -184,19 +184,19 @@ function antimkiem()
 }
 function hiennav(){
 var  hiennav = `<div class="topnav1" id="myTopnav1">
+    <p class="nt" onclick="tat()">X</p>
     <a href="" onclick="tranghientai(1)"><i class="fa fa-fw fa-home"></i>TRANG CHỦ</a> 
     <a href="" onclick="tranghientai(2)"><i class="fa fa-cloud"></i> GIỚI THIỆU</a>
     <a href="" onclick="tranghientai(3)"><i class="fa fa-car"></i> SẢN PHẨM</a>
     <a href="" onclick="tranghientai(4)"><i class="fa fa-envelope"></i> LIÊN HỆ</a>
-    <p>X</p>
     </div>`
     document.getElementById('popup').innerHTML=hiennav;
 }
 function hienkhunguser(){
     if(localStorage.getItem('DN')==-1)
     {
-        document.getElementById('popup').innerHTML=' <div class="khungusernho"><input type="button" id="btdangnhap" class="btn" value="Đăng nhập" onclick="dangnhap()" />\
-        <input type="button" class="btn" id="btdangky" value="Đăng ký" onclick="dangky()" /><p>X</p></div>';
+        document.getElementById('popup').innerHTML=' <div class="khungusernho"><p class="nt" onclick="tat()">X</p><input type="button" id="btdangnhap" class="btn" value="Đăng nhập" onclick="dangnhap()" />\
+        <input type="button" class="btn" id="btdangky" value="Đăng ký" onclick="dangky()" /></div>';
     }
     else
     {
@@ -211,13 +211,13 @@ function hienkhunguser(){
         }
         if(localStorage.getItem('DN')==0)
         {
-            document.getElementById('popup').innerHTML='<p>'+users[i].hoten+' <div class="khungusernho"></p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
+            document.getElementById('popup').innerHTML='<div class="khungusernho"><p class="nt" onclick="tat()">X</p><p>'+users[i].hoten+' </p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
             <input type="button" id="btgiohang" class="btn" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
             <div><a href="admin.html">Trang quản trị</a></div>\
             <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" /><p>X</p></div>';
         }        
         else{
-            document.getElementById('popup').innerHTML='<div class="khungusernho"><p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
+            document.getElementById('popup').innerHTML='<div class="khungusernho"><p class="nt" onclick="tat()">X</p><p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
             <input type="button" id="btgiohang"class="btn"  value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
             <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" /><p>X</p> </div>';
         }

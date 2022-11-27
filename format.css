@@ -45,13 +45,16 @@ p{
 #nuttat
 {
     font-size: 4rem;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    right: 2%;
+    top:11%;
     z-index: 10;
     padding: 0;
-    position: fixed;
-    margin-left:90%;
+    position: absolute;
+    margin-left:92%;
     display: none;
 }
+
 .btn{
     display: block;
     margin-top: 1rem;
@@ -69,16 +72,14 @@ p{
 /* hiện ở khung nhhowr */
 .topnav1{
     position: absolute;
-    left:0; top: 14px;
     background-color: #ddd;
+    top:0;
     width: 30%;
     height: 30%;
-    clear: left ;
     z-index: 10;
 }
-.topnav1>div{
-    position: absolute;
-    margin-left: 50px;
+.topnav1>.nt{
+    margin-left: 90%;
 }
 .topnav1>a{
     font-size: 2rem;
@@ -86,12 +87,12 @@ p{
 }
 .khungusernho{
     position: absolute;
-    left:0; top: 14px;
+    right: 0; top: 0;
     background-color: #ddd;
     width: 30%;
     height: 30%;
     float: right;
-    z-index: 10;
+    z-index: 0;
 }
 @media screen and (max-width: 800px) {
     #menu-btn{

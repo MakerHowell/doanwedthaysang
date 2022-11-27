@@ -84,6 +84,13 @@ p{
         display: block;
     }
 }
+.hdlienhe{
+    width: 100%;
+    text-align: center;
+}
+.tranglh{
+    margin-left: 30px;
+}
 @keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
 
 .slide>img{

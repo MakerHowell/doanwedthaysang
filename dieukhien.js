@@ -111,7 +111,13 @@ function hientranggioithieu(){
     document.getElementById('phanthan').innerHTML=tranggioithieu;
 }
 function hientranglienhe(){
-    var tranglienhe=``;
+    var tranglienhe=`<div class="tranglh">
+        <div class= "hdlienhe" ><h1>ĐỊA CHỈ CỬA HÀNG</h1></div>
+    <iframe class"map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6695149294324!2d106.68007
+    711744384!3d10.759933399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c81c64183%3A0xd3109d
+    7a7a8f753c!2zMjczIEFuIEQuIFbGsMahbmcsIFBoxrDhu51uZyAzLCBRdeG6rW4gNSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1s
+    vi!2s!4v1669519084710!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>`;
     document.getElementById('phanthan').innerHTML=tranglienhe;
 }
 function laytg()
@@ -1157,7 +1163,7 @@ function tranghientai(n)
     }
     if(tranghientai==4)
     {
-        // hientranglienhe();
+        hientranglienhe();
     }
 }
 window.onload=khoxe(),tranghientai();

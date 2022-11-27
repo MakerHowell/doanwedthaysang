@@ -935,8 +935,8 @@ label {
 }
 
 @media only screen and (max-width: 1000px){
-    .kt1{
-        display: block;
+    .slide>img{
+        height: 600px;
     }
     .imglogwaper{
         width: 40%;
@@ -963,7 +963,21 @@ label {
        
 }
 @media only screen and (max-width: 800px){
-    
+    .slide>img{
+        height: 500px;
+    }
+    .kt1{
+        display: block !important;
+    }
+    .pr{
+        width: 100% !important;
+    }
+    .pr2{
+        /* display: block; */
+    }
+    .pr2>div{
+        width: 50%;
+    }
     .imglogwaper{
         display: none;
     }
@@ -995,10 +1009,16 @@ label {
     }   
 }
 @media only screen and (max-width: 600px){
+    .slide>img{
+        height: 400px;
+    }
     .frmlog{
         /* margin-left: 10%; */
         width: 100%;
         margin: 0px;
+    }
+    .pr2>div{
+        width: 100%;
     }
     .frmsigup{
         margin: 0px;

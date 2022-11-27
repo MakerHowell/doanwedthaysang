@@ -5,7 +5,7 @@ function tat()
 }
 function hientrangchu()
 {
-    var trangchu=`<div style="width: 100%;height:100% margin: 10px 0px 50px 0px ;">
+    var trangchu=`<div style="width: 100%"><div style="width: 100%;height:100% margin: 10px 0px 50px 0px ;">
     <div style="width: 100%; height: 100%  ;position: relative;;">
         <div class="slide fade"><img src="./img/ss1.jpg"></div>
         <div class="slide fade"><img src="./img/ss2.jpg"></div>
@@ -17,7 +17,77 @@ function hientrangchu()
         <span class="prev" onclick="plusSlides(-1)">❮</span>
         <span class="next" onclick="plusSlides(1)">❯</span>
     </div>
-</div>`
+</div>
+<div class="waper-pr">
+        <div class="pr">  <img src="./img/logo.png"></div>
+        <div style="width:100% ;display: flex;">
+            <div class="pr" style="width: 50%;background: #000; "><video src="./img/demovideo.mp4" height="100%" width="100%" autoplay loop></video></div>
+            <div class="pr" style="width: 50%; background: rgb(224, 189, 189);float: left;">
+                <h3>Quỳnh đẹp trai</h3>
+                <p>hãy viết 200 dòng miêu tả về sự đẹp trai của Quỳnh đi nào các bạn nhỏa</p>
+                <button><h2>Xem Them</h2></button>
+            </div>
+        </div>
+    </div>
+    <div class="why-pr">
+        <div class="why"><h1>Tại sao lại chọn chúng tôi</h1></div>
+        <div class="pr2">
+            <div>
+                <div> <img src="1.jpg"></div>
+                 <div>
+                    <h3>THANH TOÁN TỰ ĐỘNG</h3>
+                    <p>Hỗ trợ thanh toán nhanh chóng bằng cả tiền mặt và thẻ ngân hàng. Hỗ trợ thủ tục trả góp nhanh gọn.</p>
+                </div>
+            </div>
+            <div>
+                <div> <img src="1.jpg"></div>
+                 <div>
+                    <h3>HỖ TRỢ 24/24</h3>
+                    <p>Nhân viên tư vấn và trợ giúp giải quyết mọi thắc mắc của bạn.</p>
+                </div>
+            </div>
+            <div>
+                <div> <img src="1.jpg"></div>
+                 <div>
+                    <h3>DỊCH VỤ BẢO TRÌ</h3>
+                    <p>Tiếp nhận thông tin và tiến hành các bước bảo trì nhanh chóng nhằm mang đến trải nghiệm sản phẩm tốt nhất.</p>
+                </div>
+            </div>
+            <div>
+                <div> <img src="1.jpg"></div>
+                 <div>
+                    <h3>HƠN 1 Tháng TRONG NGHỀ</h3>
+                    <p>Bề dày kinh nghiệm và hết lòng vì khách hàng để hướng tới dịch vụ tốt nhất.</p>
+                </div>
+            </div>
+            <div>
+                <div> <img src="1.jpg"></div>
+                 <div>
+                    <h3>LÁI THỬ XE MIỄN PHÍ</h3>
+                    <p>Hỗ trợ khách hàng được trải nghiệm và lựa chọn sản phẩm ưng ý nhất và phù hợp nhất.</p>
+                </div>
+            </div>
+            <div>
+                <div> <img src="1.jpg"></div>
+                 <div>
+                    <h3>CAM KẾT</h3>
+                    <p>Chúng tôi luôn luôn hướng đến lợi ích của khách hàng, với chất lượng sản phẩm, dịch vụ và giá cả tốt nhất3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="waperco">
+        <div class="gt"><h1>ĐỐI TÁC CỦA CHÚNG TÔI</h1><h3> Chúng tôi hợp tác với những đối tác hàng đầu trong lĩnh vực xe ô tô nhập khẩu ...</h3></div>
+        <hr width="50%">
+        <div class="co">
+            <div><img src="1.jpg"></div>
+            <div><img src="2.jpg"></div>
+            <div><img src="3.jpg"></div>
+            <div><img src="4.jpg"></div>
+            <div><img src="5.jpg"></div>
+            <div><img src="6.jpg"></div>
+        </div>
+    </div></div>`
     document.getElementById('phanthan').innerHTML=trangchu;
 }
 // Hien slideshow
@@ -36,11 +106,12 @@ function show(n){
 function showIndes(){
     Index++
     show(Index)  
-    setTimeout(showIndes, time); 
+    tiemout = setTimeout(showIndes, time); 
 }
 function plusSlides(n) {
 Index = Index+n
-show(Index);
+clearTimeout(tiemout)
+showIndes()
 //Ket thuc slide show 
 }
 function hientrangsanpham()

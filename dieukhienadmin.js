@@ -1,3 +1,4 @@
+// #######  CÁC HÀM PHỤ ĐƯỢC SỬ DỤNG TRONG CHƯƠNG TRÌNH  #### 
 function formattien(gia)
 {
     var str =String(gia);
@@ -53,6 +54,41 @@ function laytg()
     tg+= dd+'/'+mm+'/'+yyyy;
     return tg;
 }
+function luutrang(n){
+    var thientai;
+    if(n==null)
+    {
+        thientai=JSON.parse(localStorage.getItem('thientai'));
+    }
+    else (thientai=n);
+    if (thientai==null || thientai==1)
+    {
+        thientai=1;
+        hientrangsanpham();
+        hiensp();
+    }
+    if (thientai==2){
+        hientrangdonhang();
+        hiendonhang();
+    }
+    if(thientai==3){
+        hientrangthongke();
+        hienspbanchay();
+        hientongdonhang();
+        hiensanphamdahet();
+        hiendonhangdahuy();
+    }
+    if(thientai==4){
+        trangquanlyuser();
+        hienuser();
+    }
+    localStorage.setItem("thientai",thientai);
+}
+window.onload=luutrang(),time();
+
+// #####  KẾT THÚC CÁC HÀM PHỤ ĐƯỢC SỬ DỤNG TRONG CHƯƠNG TRÌNH #######
+
+//------TRANG QUẢN LÝ SẢN PHẨM----------
 function hientrangsanpham()
 {
     var trangsanpham= `<div id="themsp"></div> <p class="timkiemsanpham"><b>TÌM KIẾM SẢN PHẨM:</b></p>
@@ -98,7 +134,6 @@ function hiensp(){
     }
     document.getElementById('sanpham').innerHTML = sp;
 }
-window.onload=hiensp(),time();
 function hientrangthemsanpham(){
     var trangthemsp= '<div class="form-them-sp">\
         <div class="row1">\
@@ -188,6 +223,237 @@ function themxe(){
     location.reload();
 
 }
+function xoasanpham(IDxe)
+{
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        alert("Xóa sản phẩm thành công");
+        var cars =JSON.parse(localStorage.getItem('cars'));
+        for(var i=0;i<cars.length;i++){
+            if(cars[i].IDxe==IDxe)
+                {
+                    cars.splice(i,1);
+                }
+        }
+        localStorage.setItem('cars', JSON.stringify(cars));
+        location.reload();
+    } 
+    else {
+        alert("Xóa sản phẩm thất bại");
+        location.reload();
+    }
+    
+}
+function chinhsuasp(IDxe){
+    var cars =JSON.parse(localStorage.getItem('cars'));
+    var chitiets=JSON.parse(localStorage.getItem('chitiets'));
+    var h,k;
+    for(h=0;h<cars.length;h++)
+    {
+        if(cars[h].IDxe==IDxe)
+        {
+            break;
+        }
+    }
+    for(k=0;k<chitiets.length;k++)
+    {
+        if(chitiets[k].IDxe==IDxe)
+        {
+            break;
+        }
+    }
+    cars[h].tenxe = document.getElementById('tenxe').value;
+    cars[h].brand = document.getElementById('brand').value;
+    chitiets[k].mausac= document.getElementById('mausac').value;
+    chitiets[k].xuatxu = document.getElementById('xuatxu').value;
+    chitiets[k].trongtai= document.getElementById('trongtai').value;
+    chitiets[k].nhienlieu= document.getElementById('nhienlieu').value;
+    chitiets[k].namsanxuat= document.getElementById('namsanxuat').value;
+    chitiets[k].tinhtrang= document.getElementById('tinhtrang').value;
+    chitiets[k].sokmdadi= document.getElementById('sokmdadi').value;
+    // cars[i].img ="";
+    cars[h].soluong = document.getElementById('soluong').value;
+    cars[h].gia = document.getElementById('gia').value;
+    localStorage.setItem('cars',JSON.stringify(cars));
+    localStorage.setItem('chitiets', JSON.stringify(chitiets));
+    location.reload();
+
+}
+function trangchinhsua(IDxe)
+{
+    var cars =JSON.parse(localStorage.getItem('cars'));
+    var chitiets=JSON.parse(localStorage.getItem('chitiets'));
+    var h,k;
+    for(h=0;h<cars.length;h++)
+    {
+        if(cars[h].IDxe==IDxe)
+        {
+            break;
+        }
+    }
+    for(k=0;k<chitiets.length;k++)
+    {
+        if(chitiets[k].IDxe==IDxe)
+        {
+            break;
+        }
+
+    }
+    var trangchinhsua= '<div class="form-them-sp">\
+        <div class="row1">\
+            <h3 class="tile-title">Chỉnh sửa sản phẩm</h3>\
+        </div>\
+        <div class="chia-hang">\
+            <div class="form-group col-md-3">\
+                <label class="control-label">Tên xe</label>\
+                <input id ="tenxe" value="'+cars[h].tenxe+'" class="form-control" type="text">\
+            </div>\
+            <div class="form-group col-md-3">\
+                <label class="control-label">Nhãn hiệu </label>\
+                <input id="brand" value="'+cars[h].brand+' "class="form-control" type="text" placeholder="">\
+            </div>\
+            <div class="form-group  col-md-3">\
+                <label class="control-label">Màu sắc</label>\
+                <input id="mausac" value="'+chitiets[k].mausac+'"class="form-control" type="text">\
+            </div>\
+            <div class="form-group  col-md-3">\
+                <label class="control-label">Xuất xứ</label>\
+                <input id="xuatxu" value="'+chitiets[k].xuatxu+' "class="form-control" type="text">\
+            </div>\
+            <div class="form-group  col-md-3">\
+                <label class="control-label">Trọng tải</label>\
+                <input id="trongtai" value="'+chitiets[k].trongtai+' "class="form-control" type="text">\
+            </div>\
+            <div class="form-group  col-md-3">\
+                <label class="control-label">Nhiên liệu</label>\
+                <input value="'+chitiets[k].nhienlieu+'" id="nhienlieu"class="form-control" type="text">\
+            </div>\
+            <div class="form-group  col-md-3">\
+                <label class="control-label">Hình ảnh</label>\
+                <input id="img"class="form-control" type="file">\
+            </div>\
+        </div>\
+        <div class="chia-hang">\
+            <div class="form-group col-md-3">\
+                <label class="control-label">Năm sản xuất </label>\
+                <input value="'+chitiets[k].namsanxuat+'" id="namsanxuat"  class="form-control" type="number" placeholder="">\
+            </div>\
+            <div class="form-group  col-md-3">\
+                <label class="control-label">Tình trạng</label>\
+                <input value="'+chitiets[k].tinhtrang+'" id="tinhtrang" class="form-control" type="text">\
+            </div>\
+            <div class="form-group  col-md-3">\
+                <label class="control-label">Số km đã đi</label>\
+                <input value="'+chitiets[k].sokmdadi+'" id="sokmdadi" class="form-control" type="text">\
+            </div>\
+            <div class="form-group col-md-3">\
+                <label class="control-label">Số lượng</label>\
+                <input value="'+cars[h].soluong+'" id="soluong" class="form-control" type="number">\
+            </div>\
+            <div class="form-group  col-md-3">\
+                <label class="control-label">Giá tiền</label>\
+                <input value="'+cars[h].gia+'" id="gia" class="form-control" type="number">\
+            </div>\
+        </div>\
+        <div class="button-chinh-sua">\
+            <button class="btn btn-save" onclick="chinhsuasp('+IDxe+')" type="button">Lưu lại</button>\
+            <a class="btn btn-cancel" onclick="hientrangsanpham(),hiensp()" href="#">Hủy bỏ</a>\
+        </div>\
+    </div>';
+    document.getElementById('themsp').innerHTML=trangchinhsua;
+}
+function timkiemxe()
+{
+    var cars=JSON.parse(localStorage.getItem('cars'));
+    var tenxe = document.getElementById('myInput').value;
+    var sp='';
+    for(var i=0;i<cars.length;i++) {
+        if(cars[i].tenxe.includes(tenxe))
+        {
+            sp += '<tr>\
+            <td>'+cars[i].IDxe+'</td>\
+            <td>'+cars[i].tenxe +'</td>\
+            <td><img src="'+cars[i].img+'" alt="" width="100px;"></td>\
+            <td>'+cars[i].brand+'</td>\
+            <td>'+cars[i].soluong+'</td>\
+            <td>'+formattien(cars[i].gia) +' VNĐ</td>\
+            <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"\
+                    onclick="xoasanpham('+cars[i].IDxe+')")"><i class="fas fa-trash-alt"></i>\
+                </button>\
+                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" onclick="trangchinhsua('+cars[i].IDxe+')" id="show-emp"\
+                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>\
+            </td>\
+        </tr>';
+        }
+    }
+    document.getElementById('sanpham').innerHTML = sp;
+    
+}
+// ---- KẾT THÚC THAO TÁC VỚI TRANG QUẢN LÝ SẢN PHẨM --------
+
+// ---- THAO TÁC QUẢN LÝ USER -----------
+function trangquanlyuser()
+{
+    var trangusers=`
+    <table class="table table-hover table-bordered table-san-pham" id="sampleTable">
+    <thead>
+        <tr>
+                <th>ID Users</th>
+                <th>Tên người dùng</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Mật khẩu</th>
+                <th>Chức năng</th> 
+            </tr>
+        </thead>
+        <tbody id="nguoidung">
+        </tbody>
+    </table>
+</div>`;
+    document.getElementById('thaydoi').innerHTML=trangusers;
+}
+function hienuser(){
+    var nd='';
+    var users=JSON.parse(localStorage.getItem('users'));
+    for(var i=0;i<users.length;i++) {
+        nd += '<tr>\
+        <td>'+users[i].IDuser+'</td>\
+        <td>'+users[i].hoten +'</td>\
+        <td>'+users[i].email+'</td>\
+        <td>'+users[i].sodth+'</td>\
+        <td>'+users[i].diachi+'</td>\
+        <td>'+users[i].matkhau+'</td>\
+        <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="xoauser('+users[i].IDuser+')")">\
+            <i class="fas fa-trash-alt"></i>\
+            </button>\
+        </td>\
+    </tr>';
+    }
+    document.getElementById('nguoidung').innerHTML = nd;
+}
+function xoauser(IDuser){
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        alert("Xóa thành công");
+        var users = JSON.parse(localStorage.getItem('users'));
+        var i;
+        for(i=0;i<users.length;i++){
+            if(users[i].IDuser == IDuser)
+            {
+                users.splice(i,1);
+            }
+        }
+        localStorage.setItem('users', JSON.stringify(users));
+        location.reload();
+    } 
+    else {
+        alert("Chưa xóa");
+        location.reload();
+    }
+
+}
+// ---  KẾT THÚC TRANG QUẢN LÝ USERS -------
+
+// ---- THAO TÁC VỚI TRANG QUẢN LÝ ĐƠN HÀNG ----------
 function hientrangdonhang(){
     var trangdonhang ='<div id="trangchinhsuadh"></div>\
     <table class="table table-hover table-bordered table-don-hang" id="sampleTable">\
@@ -254,38 +520,130 @@ function hiendonhang()
 }
 function xoadonhang(IDdh)
 {
-    var cars =JSON.parse(localStorage.getItem('cars'));
-    var donhangs = document.getElementById('donhangs');
-    for (var i=0;i<donhangs.length;i++)
-    {
-        if (donhangs[i].IDdh==IDdh)
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        alert("Xóa đơn hàng thành công");
+        var cars =JSON.parse(localStorage.getItem('cars'));
+        var donhangs = document.getElementById('donhangs');
+        for (var i=0;i<donhangs.length;i++)
         {
-            for(var j=0;j<cars.length;j++)
+            if (donhangs[i].IDdh==IDdh)
             {
-                if (cars[j].IDxe=donhangs[i].IDxe)
+                for(var j=0;j<cars.length;j++)
                 {
-                    cars[j].soluong-=donhangs[i].soluong*1;
+                    if (cars[j].IDxe=donhangs[i].IDxe)
+                    {
+                        cars[j].soluong-=donhangs[i].soluong*1;
+                    }
                 }
+                donhangs.splice(i,1);
             }
-            donhangs.splice(i,1);
         }
+        localStorage.setItem('donhangs',JSON.stringify(donhangs));
+        location.reload();
+    } 
+    else {
+        alert("Xóa đơn hàng thất bại");
+        location.reload();
     }
-    localStorage.setItem('donhangs',JSON.stringify(donhangs));
-    location.reload();
+    
 }
 function xacnhandonhang(IDdh){
-    var donhangs = JSON.parse(localStorage.getItem('donhangs'));
-    for (var i=0;i<donhangs.length;i++)
-    {
-        if (donhangs[i].IDdh==IDdh)
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        alert("Xác nhận đơn hàng thành công");
+        var donhangs = JSON.parse(localStorage.getItem('donhangs'));
+        for (var i=0;i<donhangs.length;i++)
         {
-            donhangs[i].tinhtrang = 2;
-            break;
+            if (donhangs[i].IDdh==IDdh)
+            {
+                donhangs[i].tinhtrang = 2;
+                break;
+            }
         }
+        localStorage.setItem('donhangs',JSON.stringify(donhangs));
+        location.reload();
+    } 
+    else {
+        alert("Xác nhận đơn hàng thất bại");
+        location.reload();
     }
-    localStorage.setItem('donhangs',JSON.stringify(donhangs));
-    location.reload();
+   
 }
+function hientrangchinhsua(IDdh){
+    var donhangs =JSON.parse(localStorage.getItem('donhangs'));
+     var i,j,k;
+     for(i=0;i<donhangs.length;i++){
+         if(donhangs[i].IDdh==IDdh){
+             break;
+         }
+     }
+     var trangchinhsuadh= '<div class="form-them-sp">\
+         <div class="row1">\
+             <h3 class="tile-title">Chỉnh sửa đơn hàng</h3>\
+         </div>\
+         <div class="chia-hang">\
+             <div class="form-group col-md-3">\
+                 <label class="control-label">Số lượng </label>\
+                 <input id="soluong" value="'+donhangs[i].soluong+' "class="form-control" type="text" placeholder="">\
+             </div>\
+         </div>\
+         <div class="button-chinh-sua">\
+             <button class="btn btn-save" onclick="chinhsuadh('+IDdh+')" type="button">Lưu lại</button>\
+             <a class="btn btn-cancel" onclick="hientrangdonhang(),hiendonhang()" href="#">Hủy bỏ</a>\
+         </div>\
+     </div>';
+     document.getElementById('trangchinhsuadh').innerHTML=trangchinhsuadh;
+}
+ function chinhsuadh(IDdh){
+     var donhangs=JSON.parse(localStorage.getItem('donhangs'));
+     var i;
+     for(i=0;i<donhangs.length;i++){
+         if(donhangs[i].IDdh==IDdh)
+         {
+             break;
+         }
+     }
+     donhangs[i].soluong=document.getElementById('soluong').value;
+     localStorage.setItem('donhangs',JSON.stringify('donhangs'));
+     location.reload();
+}
+ function huydonhang(IDdh)
+ {
+     if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+         alert("Hủy đơn hàng thành công");
+         var  donhangs =JSON.parse(localStorage.getItem('donhangs'));
+         var cars=JSON.parse(localStorage.getItem('cars'));
+         var dhhuys=JSON.parse(localStorage.getItem('dhhuy'));
+         var dhhuy=[];
+         for(var i=0;i< donhangs.length;i++){
+             if(donhangs[i].IDdh==IDdh)
+                 {
+                     for(var j=0;j< cars.length;j++){
+                         if(cars[j].IDxe==donhangs[i].IDxe)
+                         {
+                             cars[j].soluong+=donhangs[i].soluong;
+                         }
+                     }
+                     donhangs[i].tinhtrang=3;
+                     var IDdh=donhangs[i].IDdh;
+                     var tg=laytg();
+                     var dhhuy={IDdh,tg};
+                     dhhuys.push(dhhuy);
+                 }
+         }
+         localStorage.setItem("dhhuys",JSON.stringify(dhhuys));
+         localStorage.setItem('donhangs', JSON.stringify(donhangs));
+         localStorage.setItem('cars', JSON.stringify(cars));
+         location.reload();
+     } 
+     else {
+         alert("Hủy đơn hàng thất bại");
+         location.reload();
+     }
+    
+}
+// ----- KẾT THÚC THAO TÁC QUẢN LÝ ĐƠN HÀNG ------
+
+// ---------   THAO TÁC VỚI TRANG THỐNG KÊ -----------
 function hientrangthongke()
 {
     var cars =JSON.parse(localStorage.getItem('cars'));
@@ -626,225 +984,5 @@ function hiendonhangdahuy()
     }    
     document.getElementById('donhangdahuy').innerHTML=donhanghuy;
 }
-function xoasanpham(IDxe)
-{
-    var cars =JSON.parse(localStorage.getItem('cars'));
-    for(var i=0;i<cars.length;i++){
-        if(cars[i].IDxe==IDxe)
-            {
-                cars.splice(i,1);
-            }
-    }
-    localStorage.setItem('cars', JSON.stringify(cars));
-    location.reload();
-}
-function chinhsuasp(IDxe){
-    var cars =JSON.parse(localStorage.getItem('cars'));
-    var chitiets=JSON.parse(localStorage.getItem('chitiets'));
-    var h,k;
-    for(h=0;h<cars.length;h++)
-    {
-        if(cars[h].IDxe==IDxe)
-        {
-            break;
-        }
-    }
-    for(k=0;k<chitiets.length;k++)
-    {
-        if(chitiets[k].IDxe==IDxe)
-        {
-            break;
-        }
-    }
-    cars[h].tenxe = document.getElementById('tenxe').value;
-    cars[h].brand = document.getElementById('brand').value;
-    chitiets[k].mausac= document.getElementById('mausac').value;
-    chitiets[k].xuatxu = document.getElementById('xuatxu').value;
-    chitiets[k].trongtai= document.getElementById('trongtai').value;
-    chitiets[k].nhienlieu= document.getElementById('nhienlieu').value;
-    chitiets[k].namsanxuat= document.getElementById('namsanxuat').value;
-    chitiets[k].tinhtrang= document.getElementById('tinhtrang').value;
-    chitiets[k].sokmdadi= document.getElementById('sokmdadi').value;
-    // cars[i].img ="";
-    cars[h].soluong = document.getElementById('soluong').value;
-    cars[h].gia = document.getElementById('gia').value;
-    localStorage.setItem('cars',JSON.stringify(cars));
-    localStorage.setItem('chitiets', JSON.stringify(chitiets));
-    location.reload();
+//  ---- KẾT THÚC THAO TÁC VỚI TRANG THỐNG KÊ -----
 
-}
-function trangchinhsua(IDxe)
-{
-    var cars =JSON.parse(localStorage.getItem('cars'));
-    var chitiets=JSON.parse(localStorage.getItem('chitiets'));
-    var h,k;
-    for(h=0;h<cars.length;h++)
-    {
-        if(cars[h].IDxe==IDxe)
-        {
-            break;
-        }
-    }
-    for(k=0;k<chitiets.length;k++)
-    {
-        if(chitiets[k].IDxe==IDxe)
-        {
-            break;
-        }
-
-    }
-    var trangchinhsua= '<div class="form-them-sp">\
-        <div class="row1">\
-            <h3 class="tile-title">Chỉnh sửa sản phẩm</h3>\
-        </div>\
-        <div class="chia-hang">\
-            <div class="form-group col-md-3">\
-                <label class="control-label">Tên xe</label>\
-                <input id ="tenxe" value="'+cars[h].tenxe+'" class="form-control" type="text">\
-            </div>\
-            <div class="form-group col-md-3">\
-                <label class="control-label">Nhãn hiệu </label>\
-                <input id="brand" value="'+cars[h].brand+' "class="form-control" type="text" placeholder="">\
-            </div>\
-            <div class="form-group  col-md-3">\
-                <label class="control-label">Màu sắc</label>\
-                <input id="mausac" value="'+chitiets[k].mausac+'"class="form-control" type="text">\
-            </div>\
-            <div class="form-group  col-md-3">\
-                <label class="control-label">Xuất xứ</label>\
-                <input id="xuatxu" value="'+chitiets[k].xuatxu+' "class="form-control" type="text">\
-            </div>\
-            <div class="form-group  col-md-3">\
-                <label class="control-label">Trọng tải</label>\
-                <input id="trongtai" value="'+chitiets[k].trongtai+' "class="form-control" type="text">\
-            </div>\
-            <div class="form-group  col-md-3">\
-                <label class="control-label">Nhiên liệu</label>\
-                <input value="'+chitiets[k].nhienlieu+'" id="nhienlieu"class="form-control" type="text">\
-            </div>\
-            <div class="form-group  col-md-3">\
-                <label class="control-label">Hình ảnh</label>\
-                <input id="img"class="form-control" type="file">\
-            </div>\
-        </div>\
-        <div class="chia-hang">\
-            <div class="form-group col-md-3">\
-                <label class="control-label">Năm sản xuất </label>\
-                <input value="'+chitiets[k].namsanxuat+'" id="namsanxuat"  class="form-control" type="number" placeholder="">\
-            </div>\
-            <div class="form-group  col-md-3">\
-                <label class="control-label">Tình trạng</label>\
-                <input value="'+chitiets[k].tinhtrang+'" id="tinhtrang" class="form-control" type="text">\
-            </div>\
-            <div class="form-group  col-md-3">\
-                <label class="control-label">Số km đã đi</label>\
-                <input value="'+chitiets[k].sokmdadi+'" id="sokmdadi" class="form-control" type="text">\
-            </div>\
-            <div class="form-group col-md-3">\
-                <label class="control-label">Số lượng</label>\
-                <input value="'+cars[h].soluong+'" id="soluong" class="form-control" type="number">\
-            </div>\
-            <div class="form-group  col-md-3">\
-                <label class="control-label">Giá tiền</label>\
-                <input value="'+cars[h].gia+'" id="gia" class="form-control" type="number">\
-            </div>\
-        </div>\
-        <div class="button-chinh-sua">\
-            <button class="btn btn-save" onclick="chinhsuasp('+IDxe+')" type="button">Lưu lại</button>\
-            <a class="btn btn-cancel" onclick="hientrangsanpham(),hiensp()" href="#">Hủy bỏ</a>\
-        </div>\
-    </div>';
-    document.getElementById('themsp').innerHTML=trangchinhsua;
-}
-function timkiemxe()
-{
-    var cars=JSON.parse(localStorage.getItem('cars'));
-    var tenxe = document.getElementById('timkiem').value;
-    var sp='';
-    for(var i=0;i<cars.length;i++) {
-        if(cars[i].tenxe.includes(tenxe))
-        {
-            sp += '<tr>\
-            <td>'+cars[i].IDxe+'</td>\
-            <td>'+cars[i].tenxe +'</td>\
-            <td><img src="'+cars[i].img+'" alt="" width="100px;"></td>\
-            <td>'+cars[i].brand+'</td>\
-            <td>'+cars[i].soluong+'</td>\
-            <td>'+formattien(cars[i].gia) +' VNĐ</td>\
-            <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"\
-                    onclick="xoasanpham('+cars[i].IDxe+')")"><i class="fas fa-trash-alt"></i>\
-                </button>\
-                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" onclick="trangchinhsua('+cars[i].IDxe+')" id="show-emp"\
-                    data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>\
-            </td>\
-        </tr>';
-        }
-    }
-    document.getElementById('sanpham').innerHTML = sp;
-    
-}
-function hientrangchinhsua(IDdh){
-   var donhangs =JSON.parse(localStorage.getItem('donhangs'));
-    var i,j,k;
-    for(i=0;i<donhangs.length;i++){
-        if(donhangs[i].IDdh==IDdh){
-            break;
-        }
-    }
-    var trangchinhsuadh= '<div class="form-them-sp">\
-        <div class="row1">\
-            <h3 class="tile-title">Chỉnh sửa đơn hàng</h3>\
-        </div>\
-        <div class="chia-hang">\
-            <div class="form-group col-md-3">\
-                <label class="control-label">Số lượng </label>\
-                <input id="soluong" value="'+donhangs[i].soluong+' "class="form-control" type="text" placeholder="">\
-            </div>\
-        </div>\
-        <div class="button-chinh-sua">\
-            <button class="btn btn-save" onclick="chinhsuadh('+IDdh+')" type="button">Lưu lại</button>\
-            <a class="btn btn-cancel" onclick="hientrangdonhangh(),hiendonhang()" href="#">Hủy bỏ</a>\
-        </div>\
-    </div>';
-    document.getElementById('trangchinhsuadh').innerHTML=trangchinhsuadh;
-}
-function chinhsuadh(IDdh){
-    var donhangs=JSON.parse(localStorage.getItem('donhangs'));
-    var i;
-    for(i=0;i<donhangs.length;i++){
-        if(donhangs[i].IDdh==IDdh)
-        {
-            break;
-        }
-    }
-    donhangs[i].soluong=document.getElementById('soluong').value;
-    localStorage.setItem('donhangs',JSON.stringify('donhangs'));
-    location.reload();
-}
-function huydonhang(IDdh)
-{
-    var  donhangs =JSON.parse(localStorage.getItem('donhangs'));
-    var cars=JSON.parse(localStorage.getItem('cars'));
-    var dhhuys=JSON.parse(localStorage.getItem('dhhuy'));
-    var dhhuy=[];
-    for(var i=0;i< donhangs.length;i++){
-        if(donhangs[i].IDdh==IDdh)
-            {
-                for(var j=0;j< cars.length;j++){
-                    if(cars[j].IDxe==donhangs[i].IDxe)
-                    {
-                        cars[j].soluong+=donhangs[i].soluong;
-                    }
-                }
-                donhangs[i].tinhtrang=3;
-                var IDdh=donhangs[i].IDdh;
-                var tg=laytg();
-                var dhhuy={IDdh,tg};
-                dhhuys.push(dhhuy);
-            }
-    }
-    localStorage.setItem("dhhuys",JSON.stringify(dhhuys));
-    localStorage.setItem('donhangs', JSON.stringify(donhangs));
-    localStorage.setItem('cars', JSON.stringify(cars));
-    location.reload();
-}

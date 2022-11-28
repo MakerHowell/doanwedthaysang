@@ -1,8 +1,182 @@
-
+// ######## CÁC HÀM PHỤ ĐUCỢ SỬ DỤNG #########
 function tat()
 {
     document.getElementById('popup').innerHTML='';
 }
+function tat1(){
+    document.getElementById('chohoixoa').innerHTML='';
+}
+function formattien(gia)
+{
+    var str =String(gia);
+    return str.split('').reverse().reduce((prev, next, index) => {
+        return ((index % 3) ? next : (next + ' ')) + prev 
+    })
+}
+function xacnhan()
+{
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        return 1;
+    } 
+    else {
+        return 0;
+    }
+}
+function laytg()
+{
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    var tg='';
+    tg+= dd+'/'+mm+'/'+yyyy;
+    return tg;
+}
+function kiemtradadn()
+{
+    if(localStorage.getItem('DN')==-1)
+    {
+        document.getElementById('cacbutton').innerHTML='<input type="button" id="btdangnhap" class="btn" value="Đăng nhập" onclick="dangnhap()" />\
+        <input type="button" class="btn" id="btdangky" value="Đăng ký" onclick="dangky()" />';
+    }
+    else
+    {
+        var users = JSON.parse(localStorage.getItem('users'));
+        var i;
+        for(i=0;i<users.length;i++)
+        {
+            if(users[i].IDuser==localStorage.getItem('DN'))
+            {
+                break;
+            }
+        }
+        if(localStorage.getItem('DN')==0)
+        {
+            document.getElementById('cacbutton').innerHTML='<p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
+            <input type="button" id="btgiohang" class="btn" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
+            <div><a href="admin.html">Trang quản trị</a></div>\
+            <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
+        }        
+        else{
+            document.getElementById('cacbutton').innerHTML='<p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
+            <input type="button" id="btgiohang"class="btn"  value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
+            <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
+        }
+    }
+}
+function khoxe() {
+    if(localStorage.getItem('dk')==null)
+    {
+        var cars = [
+            {IDxe:0,  tenxe: 'LaFerrari',                   brand: 'Ferrari',      img: './img/laferrari.jpg',     soluong: 2,  gia: 30000000000 },
+            {IDxe:1,  tenxe: 'Ferrari SF90 Stradale',       brand: 'Ferrari',      img: './img/ferrarisf90.jpg',   soluong: 2,  gia: 15000000000 },
+            {IDxe:2,  tenxe: 'Ferrari 812 GTS',             brand: 'Ferrari',      img: './img/ferrari812.jpg',    soluong: 2,  gia: 12000000000 },
+            {IDxe:3,  tenxe: 'Aston Martin Valkyrie 2022',  brand: 'Aston Martin', img: './img/valkyrie.jpg',      soluong: 3,  gia: 27000000000},
+            {IDxe:4,  tenxe: 'Aston Martin DBS SL',         brand: 'Aston Martin', img: './img/dbs.jpg',           soluong: 2,  gia: 23000000000 },
+            {IDxe:5,  tenxe: 'Bugatti Centodieci',          brand: 'Bugatti',      img: './img/bgt.jpg',           soluong: 1,  gia: 35000000000 },
+            {IDxe:6,  tenxe: 'Bugatti Chiron Divo',         brand: 'Bugatti',      img: './img/chiron.jpg',        soluong: 1,  gia: 48000000000 },
+            {IDxe:7,  tenxe: 'Koenigsegg Regera',           brand: 'Koenigsegg',   img: './img/regera.jpg',        soluong: 1,  gia: 32000000000 },
+            {IDxe:8,  tenxe: 'Koenigsegg Gemera',           brand: 'Koenigsegg',   img: './img/gemera.jpg',        soluong: 1,  gia: 37000000000 },
+            {IDxe:9,  tenxe: 'Koenigsegg Jesko',            brand: 'Koenigsegg',   img: './img/jesko.jpg',         soluong: 2,  gia: 27000000000 },
+            {IDxe:10,  tenxe: 'McLaren Senna',              brand: 'McLaren',      img: './img/mcsenna.jpg',       soluong: 2,  gia: 23000000000 },
+            {IDxe:11,  tenxe: 'BMW X7 xDrive40i 2020',      brand: 'BMW',          img: './img/bmwx7.jpg',         soluong: 2,  gia: 6000000000 },
+            {IDxe:12,  tenxe: 'BMW 320i Sportline',         brand: 'BMW',          img: './img/bmw320i.jpg',       soluong: 5,  gia: 1769000000  },
+            {IDxe:13,  tenxe: 'BMW 740 Pure Excellence',    brand: 'BMW',          img: './img/bmw740li.jpg',      soluong: 5,  gia: 9000000000  },
+            {IDxe:14,  tenxe: 'Audi Sport Quattro',         brand: 'AUDI',         img: './img/audisport.jpg',     soluong: 2,  gia: 10000000000  },
+            {IDxe:15,  tenxe: 'Audi A4 DTM Edition',        brand: 'AUDI',         img: './img/audia4.jpg',        soluong: 3,  gia: 17000000000  },
+            {IDxe:16,  tenxe: 'Audi R8 Exclusive ',         brand: 'AUDI',         img: './img/audir8.jpg',        soluong: 5,  gia: 20000000000 },
+            {IDxe:17,  tenxe: 'Lexus LX570 2021',           brand: 'LEXUS',        img: './img/lexuslx57.jpg',     soluong: 2,  gia: 9000000000  },
+            {IDxe:18,  tenxe: 'Lexus LX570 2019',           brand: 'LEXUS',        img: './img/lexus2019.jpg',     soluong: 5,  gia: 5000000000  },
+            {IDxe:19,  tenxe: 'Lexus PLexus LM300h',        brand: 'LEXUS',        img: './img/lexuslm300.jpg',    soluong: 4,  gia: 8000000000  },
+            {IDxe:20,  tenxe: 'Lexus RX350 2020',           brand: 'LEXUS',        img: './img/lexusrx350.jpg',    soluong: 2,  gia: 3000000000 },
+            {IDxe:21, tenxe: 'Mercedes G63 AMG',            brand: 'Mercedes',     img: './img/merg63.jpg',        soluong: 5,  gia: 5000000000  },
+            {IDxe:22, tenxe: 'Mercedes GLS450 2021',        brand: 'Mercedes',     img: './img/merglx450.jpg',     soluong: 1,  gia: 20000000000 },
+            {IDxe:23, tenxe: 'Maybach GLS 600',             brand: 'Mercedes',     img: './img/mermayback.jpg',    soluong: 5,  gia: 14000000000  },
+            {IDxe:24, tenxe: 'Porsche Cayenne Turbo',       brand: 'Porsche',      img: './img/porscheturbo.jpg',  soluong: 2,  gia: 7000000000  },
+            {IDxe:25, tenxe: 'Porsche Cayenne Coupe',       brand: 'Porsche',      img: './img/porschecouple.jpg', soluong: 2,  gia: 2000000000  },
+        ]
+        localStorage.setItem('cars', JSON.stringify(cars));
+        var users =
+            [
+                { IDuser: 000, hoten:'admin',         email: 'admin@gmail.com',       sodth: '0123456789', matkhau: '00000', diachi:'273 An Dương Vương P9 Q5' },
+                { IDuser: 111, hoten:'Nguyễn Văn A',  email: 'nguyenvana@gmail.com',  sodth: '0123456789', matkhau: '00000', diachi:'250 An Dương Vương P9 Q5' },
+                { IDuser: 222, hoten:'Lê văn B',      email: 'levanb@gmail.com',      sodth: '0123456789', matkhau: '00000', diachi:'262 An Dương Vương P9 Q5' },
+            ]
+        localStorage.setItem('users', JSON.stringify(users));
+        var donhangs=
+        [
+            { IDdh:0, IDxe:1, IDuser:'111',  soluong: 1, sotien:  1769000000 ,  tinhtrang:0},
+            { IDdh:1, IDxe:3, IDuser:'111',  soluong: 2, sotien:  20000000000 , tinhtrang:0},
+            { IDdh:2, IDxe:9, IDuser:'222',  soluong: 1, sotien:  3000000000 ,  tinhtrang:0},
+        ]
+        localStorage.setItem('donhangs', JSON.stringify(donhangs));
+        var chitiets=
+        [
+            {IDxe:0,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.2 T',namsanxuat:'2020',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:1,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.9 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:2,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.3 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:3,mausac:'Xanh dương', xuatxu:'PHÁP',trongtai:'1.4 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:4,mausac:'Đỏ', xuatxu:'MỸ',trongtai:'1.5 T',namsanxuat:'2019',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:5,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            // bữa sau sửa
+            {IDxe:6,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:7,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:8,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:9,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:10,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:11,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:12,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:13,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:14,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:15,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:16,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:17,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:18,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:19,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:21,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:22,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:23,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:24,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:25,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            
+        ]
+        localStorage.setItem('chitiets', JSON.stringify(chitiets));
+        localStorage.setItem('dk',1);
+        localStorage.setItem('DN',-1)
+        var dhhuys=[];
+        localStorage.setItem('dhhuy',JSON.stringify(dhhuys));
+    }
+}
+function tranghientai(n)
+{
+    var tranghientai;
+    if (n!=null){
+        tranghientai=n;
+        localStorage.setItem("tranghientai",tranghientai);
+    }
+    else {
+        tranghientai = localStorage.getItem("tranghientai");
+    }
+    if(tranghientai== null) tranghientai = 1;
+    if (tranghientai==1)
+        hientrangchu(),showIndes();
+    if (tranghientai==2)
+    {
+        hientranggioithieu();
+    }
+    if (tranghientai==3)
+    {
+        hientrangsanpham(),hienbrand(),phantrang();
+        localStorage.setItem("tranghientai",3);
+    }
+    if(tranghientai==4)
+    {
+        hientranglienhe();
+    }
+}
+// ######## KẾT THÚC CÁC HÀM PHỤ ĐƯỢC SỬ DỤNG #########
+
+//####### INNER CÁC TRANG CHÍNH RA ############
 function hientrangchu()
 {
     var trangchu=`<div style="width: 100%"><div style="width: 100%;height:100% margin: 10px 0px 50px 0px ;">
@@ -95,7 +269,7 @@ function hientrangchu()
     </div></div>`
     document.getElementById('phanthan').innerHTML=trangchu;
 }
-// Hien slideshow
+//--- SLIDE SHOW CỦA TRANG CHỦ  -----
 let slides = document.getElementsByClassName("slide")
 var Index = 0
 var time=8000;
@@ -118,6 +292,32 @@ Index = Index+n
 clearTimeout(tiemout)
 showIndes()
 //Ket thuc slide show 
+}
+//--------- HẾT SLIDE SHOW TRANG CHỦ  -------
+
+function hientranggioithieu(){
+    var tranggioithieu = `<div class="gioithieu">
+    <div><h2>MAX</h2><h2>WHEELS</h2></div>
+    <div><h5>BMW, Mercedes-Benn, Audi Germany, Tesla United States, Porsche, Lexus, Volvo, Lamborghini    Italy, Ferrari, Land Rover United Kingdom, Jaguar    United Kingdom, Cadillac United States, RollsRoyce United Kingdom, Maserati    Italy, Bugatti Franc</h5></div>
+    <div>
+        <p>Những năm gần đây Ô TÔ đã và đang dần trở thành phương tiện đi lại phổ biến tại Việt Nam. Cùng với tốc độ phát triển kinh tế, mức thu nhập của người dân ngày càng tăng và nhu cầu đi lại thiết yếu thì việc sở hữu 1 chiếc xe ô tô đang dần phổ biến trong mỗi gia đình người dân Việt Nam. </p>
+        <div><img src="https://th.bing.com/th/id/OIP.kbEGSWmthSQz3V9llj95lwHaEK?pid=ImgDet&rs=1" alt=""></div>
+        <p>Chúng tôi đã và đang không ngừng cải thiện, phát triển chất lượng dịch vụ để đóng góp một phần tích cực giúp cho người dân Việt Nam dễ dàng tiếp cận và sở hữu chiếc ô tô mơ ước của mình.</p>
+        <p>Thông tin giá cả và các mẫu xe ô tô mới luôn được cập nhật thường xuyên, đầy đủ và chính xác , bạn có thể dễ dàng tìm kiếm cho mình chiếc xe ô tô cũ / mới ưng ý nhất với giá cả tốt nhất.</p>
+        <p>MAXWHEELS.VN luôn sẵn lòng tiếp nhận ý kiến đóng góp từ các bạn nhằm giúp nâng cao và cải thiện chất lượng dịch vụ ngày càng tốt hơn !</p>
+    </div>
+</div> `
+    document.getElementById('phanthan').innerHTML=tranggioithieu;
+}
+function hientranglienhe(){
+    var tranglienhe=`<div class="tranglh">
+        <div class= "hdlienhe" ><h1>ĐỊA CHỈ CỬA HÀNG</h1></div>
+    <iframe class"map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6695149294324!2d106.68007
+    711744384!3d10.759933399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c81c64183%3A0xd3109d
+    7a7a8f753c!2zMjczIEFuIEQuIFbGsMahbmcsIFBoxrDhu51uZyAzLCBRdeG6rW4gNSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1s
+    vi!2s!4v1669519084710!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>`;
+    document.getElementById('phanthan').innerHTML=tranglienhe;
 }
 function hientrangsanpham()
 {
@@ -170,6 +370,9 @@ function hientrangsanpham()
 </div>`
 document.getElementById('phanthan').innerHTML=trangsanpham;
 }
+// ##########KẾT THÚC PHẦN INNER CÁC TRANG #########
+
+// -------  CÁC HÀM REVERSE  ------
 function hientimkiem()
 {
     document.getElementById('left-menu').style.display="block";
@@ -224,74 +427,13 @@ function hienkhunguser(){
     }
     
 }
+// -----  KẾT THÚC REVERSE  ---------
 
-function hientranggioithieu(){
-    var tranggioithieu = ` `
-    document.getElementById('phanthan').innerHTML=tranggioithieu;
-}
-function hientranglienhe(){
-    var tranglienhe=`<div class="tranglh">
-        <div class= "hdlienhe" ><h1>ĐỊA CHỈ CỬA HÀNG</h1></div>
-    <iframe class"map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6695149294324!2d106.68007
-    711744384!3d10.759933399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1c81c64183%3A0xd3109d
-    7a7a8f753c!2zMjczIEFuIEQuIFbGsMahbmcsIFBoxrDhu51uZyAzLCBRdeG6rW4gNSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1s
-    vi!2s!4v1669519084710!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>`;
-    document.getElementById('phanthan').innerHTML=tranglienhe;
-}
-function laytg()
-{
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1;
-    var yyyy = today.getFullYear();
-    var tg='';
-    tg+= dd+'/'+mm+'/'+yyyy;
-    return tg;
-}
-function formattien(gia)
-{
-    var str =String(gia);
-    return str.split('').reverse().reduce((prev, next, index) => {
-        return ((index % 3) ? next : (next + ' ')) + prev 
-    })
-}
+//------- CÁC KHUNG DĂNG NHẬP ĐĂNG KÍ  -----
 function dangxuat()
 {
     localStorage.setItem('DN',-1);
     location.reload();
-}
-function kiemtradadn()
-{
-    if(localStorage.getItem('DN')==-1)
-    {
-        document.getElementById('cacbutton').innerHTML='<input type="button" id="btdangnhap" class="btn" value="Đăng nhập" onclick="dangnhap()" />\
-        <input type="button" class="btn" id="btdangky" value="Đăng ký" onclick="dangky()" />';
-    }
-    else
-    {
-        var users = JSON.parse(localStorage.getItem('users'));
-        var i;
-        for(i=0;i<users.length;i++)
-        {
-            if(users[i].IDuser==localStorage.getItem('DN'))
-            {
-                break;
-            }
-        }
-        if(localStorage.getItem('DN')==0)
-        {
-            document.getElementById('cacbutton').innerHTML='<p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
-            <input type="button" id="btgiohang" class="btn" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
-            <div><a href="admin.html">Trang quản trị</a></div>\
-            <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
-        }        
-        else{
-            document.getElementById('cacbutton').innerHTML='<p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
-            <input type="button" id="btgiohang"class="btn"  value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
-            <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
-        }
-    }
 }
 function dangnhap() {
     var DN = '<div class="okechua" onclick="checkligh(\'\',0,1)">\
@@ -323,6 +465,25 @@ function dangnhap() {
         </div>\
     </div>'
     document.getElementById('popup').innerHTML = DN;
+}
+function kiemtradangnhap() {
+    var tendn = document.getElementById('foremail').value;
+    var tc=0;
+    var matkhau = document.getElementById('forpass').value;
+    var users = JSON.parse(localStorage.getItem('users'));
+    for (var i = 0; i < users.length; i++) {
+        if (tendn==users[i].email && matkhau == users[i].matkhau)
+        {
+            var IDuser=users[i].IDuser;
+            alert("Đăng nhập thành công");
+            localStorage.setItem('DN',IDuser);
+            tc=1;
+        }
+    }
+    if (tc==0)
+    {
+        alert('Bạn đã nhập sai tài khoản hay mật khẩu vui lòng đăng nhập hoặc đăng kí lại');
+    }
 }
 function dangky()
 {
@@ -357,6 +518,23 @@ function dangky()
         </div>\
     </div>'
     document.getElementById('popup').innerHTML =DK;
+}
+function dangkytk() {
+    var users = JSON.parse(localStorage.getItem('users'));
+    var hoten =document.getElementById('hoten').value;
+    var email = document.getElementById('foremail').value;
+    var sodth = document.getElementById('forSDT').value;
+    var matkhau = document.getElementById('forpass').value;
+    var rematkhau=document.getElementById('forrepass').value;
+    if (rematkhau!=matkhau) {
+        alert('Nhập lại mật khẩu không đúng');
+        return 0;
+    }
+    var IDuser= users[users.length-1].IDuser+5;
+    var user = { IDuser, hoten, email, sodth, matkhau };
+    users.push(user);
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Đăng kí tài khoản thành công');
 }
 function hienquenmatkhau(){
     var QMK = '<div class="okechua" onclick="checkligh(\'\',0,1)">\
@@ -446,6 +624,9 @@ function doimatkhau()
     alert('Đổi mật khẩu thành công');
     location.reload();
 }
+// -----  KẾT THÚC CÁC KHUNG ĐĂNG NHẬP ĐĂNG KÍ ------------
+
+// -------  CÁC HÀM CHECK DỮ LIỆU NHẬP VÀO  ------
 function checkligh(name,flag,flag2){
     var checkbox = document.getElementById("checkbox")
     var foremail = document.getElementById("foremail")
@@ -525,125 +706,22 @@ function checkrepass(flag){
     }
         return true
 }
-// het phan dang nhap dang ky
-function dangkytk() {
-    var users = JSON.parse(localStorage.getItem('users'));
-    var hoten =document.getElementById('hoten').value;
-    var email = document.getElementById('foremail').value;
-    var sodth = document.getElementById('forSDT').value;
-    var matkhau = document.getElementById('forpass').value;
-    var rematkhau=document.getElementById('forrepass').value;
-    if (rematkhau!=matkhau) {
-        alert('Nhập lại mật khẩu không đúng');
-        return 0;
-    }
-    var IDuser= users[users.length-1].IDuser+5;
-    var user = { IDuser, hoten, email, sodth, matkhau };
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
-    alert('Đăng kí tài khoản thành công');
-}
-function kiemtradangnhap() {
-    var tendn = document.getElementById('foremail').value;
-    var tc=0;
-    var matkhau = document.getElementById('forpass').value;
-    var users = JSON.parse(localStorage.getItem('users'));
-    for (var i = 0; i < users.length; i++) {
-        if (tendn==users[i].email && matkhau == users[i].matkhau)
-        {
-            var IDuser=users[i].IDuser;
-            alert("Đăng nhập thành công");
-            localStorage.setItem('DN',IDuser);
-            tc=1;
-        }
-    }
-    if (tc==0)
+// ------  HẾT HÀM CHECK DỮ LIỆU NHẬP  - -------
+
+//  --------  PHÂN TRANG CHO SẢN PHẨM  --------
+function chuyenmangthanhsp(mang)
+{
+    var s='';
+    for(var i=0; i<mang.length;i++)
     {
-        alert('Bạn đã nhập sai tài khoản hay mật khẩu vui lòng đăng nhập hoặc đăng kí lại');
+        s += '<div class="product">' +
+        '<img src="' + mang[i].img + '">' +
+        '<p>' + mang[i].tenxe + '</p>' +
+        '<p> Price: ' + formattien(mang[i].gia) +' VNĐ</p>' +
+        '<button onclick="showchitietsp('+mang[i].IDxe+')">CHI TIET</button>' +
+        '</div>';
     }
-}
-function khoxe() {
-    if(localStorage.getItem('dk')==null)
-    {
-        var cars = [
-            {IDxe:0,  tenxe: 'LaFerrari',                   brand: 'Ferrari',      img: './img/laferrari.jpg',     soluong: 2,  gia: 30000000000 },
-            {IDxe:1,  tenxe: 'Ferrari SF90 Stradale',       brand: 'Ferrari',      img: './img/ferrarisf90.jpg',   soluong: 2,  gia: 15000000000 },
-            {IDxe:2,  tenxe: 'Ferrari 812 GTS',             brand: 'Ferrari',      img: './img/ferrari812.jpg',    soluong: 2,  gia: 12000000000 },
-            {IDxe:3,  tenxe: 'Aston Martin Valkyrie 2022',  brand: 'Aston Martin', img: './img/valkyrie.jpg',      soluong: 3,  gia: 27000000000},
-            {IDxe:4,  tenxe: 'Aston Martin DBS SL',         brand: 'Aston Martin', img: './img/dbs.jpg',           soluong: 2,  gia: 23000000000 },
-            {IDxe:5,  tenxe: 'Bugatti Centodieci',          brand: 'Bugatti',      img: './img/bgt.jpg',           soluong: 1,  gia: 35000000000 },
-            {IDxe:6,  tenxe: 'Bugatti Chiron Divo',         brand: 'Bugatti',      img: './img/chiron.jpg',        soluong: 1,  gia: 48000000000 },
-            {IDxe:7,  tenxe: 'Koenigsegg Regera',           brand: 'Koenigsegg',   img: './img/regera.jpg',        soluong: 1,  gia: 32000000000 },
-            {IDxe:8,  tenxe: 'Koenigsegg Gemera',           brand: 'Koenigsegg',   img: './img/gemera.jpg',        soluong: 1,  gia: 37000000000 },
-            {IDxe:9,  tenxe: 'Koenigsegg Jesko',            brand: 'Koenigsegg',   img: './img/jesko.jpg',         soluong: 2,  gia: 27000000000 },
-            {IDxe:10,  tenxe: 'McLaren Senna',              brand: 'McLaren',      img: './img/mcsenna.jpg',       soluong: 2,  gia: 23000000000 },
-            {IDxe:11,  tenxe: 'BMW X7 xDrive40i 2020',      brand: 'BMW',          img: './img/bmwx7.jpg',         soluong: 2,  gia: 6000000000 },
-            {IDxe:12,  tenxe: 'BMW 320i Sportline',         brand: 'BMW',          img: './img/bmw320i.jpg',       soluong: 5,  gia: 1769000000  },
-            {IDxe:13,  tenxe: 'BMW 740 Pure Excellence',    brand: 'BMW',          img: './img/bmw740li.jpg',      soluong: 5,  gia: 9000000000  },
-            {IDxe:14,  tenxe: 'Audi Sport Quattro',         brand: 'AUDI',         img: './img/audisport.jpg',     soluong: 2,  gia: 10000000000  },
-            {IDxe:15,  tenxe: 'Audi A4 DTM Edition',        brand: 'AUDI',         img: './img/audia4.jpg',        soluong: 3,  gia: 17000000000  },
-            {IDxe:16,  tenxe: 'Audi R8 Exclusive ',         brand: 'AUDI',         img: './img/audir8.jpg',        soluong: 5,  gia: 20000000000 },
-            {IDxe:17,  tenxe: 'Lexus LX570 2021',           brand: 'LEXUS',        img: './img/lexuslx57.jpg',     soluong: 2,  gia: 9000000000  },
-            {IDxe:18,  tenxe: 'Lexus LX570 2019',           brand: 'LEXUS',        img: './img/lexus2019.jpg',     soluong: 5,  gia: 5000000000  },
-            {IDxe:19,  tenxe: 'Lexus PLexus LM300h',        brand: 'LEXUS',        img: './img/lexuslm300.jpg',    soluong: 4,  gia: 8000000000  },
-            {IDxe:20,  tenxe: 'Lexus RX350 2020',           brand: 'LEXUS',        img: './img/lexusrx350.jpg',    soluong: 2,  gia: 3000000000 },
-            {IDxe:21, tenxe: 'Mercedes G63 AMG',            brand: 'Mercedes',     img: './img/merg63.jpg',        soluong: 5,  gia: 5000000000  },
-            {IDxe:22, tenxe: 'Mercedes GLS450 2021',        brand: 'Mercedes',     img: './img/merglx450.jpg',     soluong: 1,  gia: 20000000000 },
-            {IDxe:23, tenxe: 'Maybach GLS 600',             brand: 'Mercedes',     img: './img/mermayback.jpg',    soluong: 5,  gia: 14000000000  },
-            {IDxe:24, tenxe: 'Porsche Cayenne Turbo',       brand: 'Porsche',      img: './img/porscheturbo.jpg',  soluong: 2,  gia: 7000000000  },
-            {IDxe:25, tenxe: 'Porsche Cayenne Coupe',       brand: 'Porsche',      img: './img/porschecouple.jpg', soluong: 2,  gia: 2000000000  },
-        ]
-        localStorage.setItem('cars', JSON.stringify(cars));
-        var users =
-            [
-                { IDuser: 000, hoten:'admin',         email: 'admin@gmail.com',       sodth: '0123456789', matkhau: '00000', diachi:'273 An Dương Vương P9 Q5' },
-                { IDuser: 111, hoten:'Nguyễn Văn A',  email: 'nguyenvana@gmail.com',  sodth: '0123456789', matkhau: '00000', diachi:'250 An Dương Vương P9 Q5' },
-                { IDuser: 222, hoten:'Lê văn B',      email: 'levanb@gmail.com',      sodth: '0123456789', matkhau: '00000', diachi:'262 An Dương Vương P9 Q5' },
-            ]
-        localStorage.setItem('users', JSON.stringify(users));
-        var donhangs=
-        [
-            { IDdh:0, IDxe:1, IDuser:'111',  soluong: 1, sotien:  1769000000 ,  tinhtrang:0},
-            { IDdh:1, IDxe:3, IDuser:'111',  soluong: 2, sotien:  20000000000 , tinhtrang:0},
-            { IDdh:2, IDxe:9, IDuser:'222',  soluong: 1, sotien:  3000000000 ,  tinhtrang:0},
-        ]
-        localStorage.setItem('donhangs', JSON.stringify(donhangs));
-        var chitiets=
-        [
-            {IDxe:0,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.2 T',namsanxuat:'2020',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:1,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.9 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:2,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.3 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:3,mausac:'Xanh dương', xuatxu:'PHÁP',trongtai:'1.4 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:4,mausac:'Đỏ', xuatxu:'MỸ',trongtai:'1.5 T',namsanxuat:'2019',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:5,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            // bữa sau sửa
-            {IDxe:6,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:7,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:8,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:9,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:10,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:11,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:12,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:13,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:14,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:15,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:16,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:17,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:18,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:19,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:21,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:22,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:23,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:24,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            {IDxe:25,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
-            
-        ]
-        localStorage.setItem('chitiets', JSON.stringify(chitiets));
-        localStorage.setItem('dk',1);
-        localStorage.setItem('DN',-1)
-        var dhhuys=[];
-        localStorage.setItem('dhhuy',JSON.stringify(dhhuys));
-    }
+    return s;
 }
 function hientrang(n)
 {
@@ -716,6 +794,9 @@ function hientrang2(mang)
     } 
     hiensanpham(kq);
 }
+// -----  KẾT THÚC PHÂN TRANG SẢN PHẨM  --------
+
+//---------- CÁC HÀM LỌC, TÌM KIẾM  -------
 function loc(dk) {
     var cars = JSON.parse(localStorage.getItem('cars'));
     var kq=[];
@@ -725,6 +806,19 @@ function loc(dk) {
         }
     }
     phantrang1(kq);
+}
+function hienbrand() {
+    var cars= JSON.parse(localStorage.getItem('cars'));
+    var locbrand='';
+    const brand = new Set();
+    for(var i=0;i<cars.length; i++) {
+        brand.add(cars[i].brand);   
+    }  
+    for (const x of brand){
+        locbrand +='<option value="'+x+'">'+x+'</option>';
+
+    }    
+    document.getElementById('thuonghieu').innerHTML = locbrand;
 }
 function hiensanpham(mang){
     var s='';
@@ -815,21 +909,9 @@ function sapxep(vl)
         phantrang1(cars);
     }
 }
-function chuyenmangthanhsp(mang)
-{
-    var s='';
-    for(var i=0; i<mang.length;i++)
-    {
-        s += '<div class="product">' +
-        '<img src="' + mang[i].img + '">' +
-        '<p>' + mang[i].tenxe + '</p>' +
-        '<p> Price: ' + formattien(mang[i].gia) +' VNĐ</p>' +
-        '<button onclick="showchitietsp('+mang[i].IDxe+')">CHI TIET</button>' +
-        '</div>';
-    }
-    return s;
-}
-// -----PHAN HIEN CHI TIET SAN PHAM ----------------------
+//------ KẾT THÚC HÀM LỌC, TÌM KIẾM  ---------
+
+// -----  BẮT ĐẦU CHI TIẾT SẢN PHẨM ----------------------
 function plussp(n){
     var SL=document.getElementById("SL")
     // if(SL.value == 0 && n!=-1)
@@ -937,20 +1019,9 @@ function showchitietsp(IDxe){
     document.getElementById('popup').innerHTML = ctsp;
     
 }
-function hienbrand() {
-    var cars= JSON.parse(localStorage.getItem('cars'));
-    var locbrand='';
-    const brand = new Set();
-    for(var i=0;i<cars.length; i++) {
-        brand.add(cars[i].brand);   
-    }  
-    for (const x of brand){
-        locbrand +='<option value="'+x+'">'+x+'</option>';
+// -----  KẾT THÚC CHI TIẾT SẢN PHẨM  ------------
 
-    }    
-    document.getElementById('thuonghieu').innerHTML = locbrand;
-}
-
+// ----  BẮT ĐẦU PHẦN GIỎ HÀNG  -----------
 function hiengiohang()
 {
     if(localStorage.getItem('DN')==-1)
@@ -1050,55 +1121,76 @@ function hienspgiohang(){
          </tr>'
         }
     } 
-    document.getElementById('sptronggio').innerHTML=spgiohang;
+    if(spgiohang=='')
+    {
+        document.getElementById('sptronggio').innerHTML=`<h2 style="margin-left:50%;width:100%" >BẠN CHƯA MUA SẢN PHẨN NÀO</h2>`;
+    }
+    else document.getElementById('sptronggio').innerHTML=spgiohang;
 }
 function xoadonhang(IDdh){
-    var  donhangs =JSON.parse(localStorage.getItem('donhangs'));
-    var cars=JSON.parse(localStorage.getItem('cars'));
-    for(var i=0;i< donhangs.length;i++){
-        if(donhangs[i].IDdh==IDdh)
-            {
-                for(var j=0;j< cars.length;j++){
-                    if(cars[j].IDxe==donhangs[i].IDxe)
-                    {
-                        cars[j].soluong+=donhangs[i].soluong;
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        alert("Xóa đơn hàng thành công");
+        var  donhangs =JSON.parse(localStorage.getItem('donhangs'));
+        var cars=JSON.parse(localStorage.getItem('cars'));
+        for(var i=0;i< donhangs.length;i++){
+            if(donhangs[i].IDdh==IDdh)
+                {
+                    for(var j=0;j< cars.length;j++){
+                        if(cars[j].IDxe==donhangs[i].IDxe)
+                        {
+                            cars[j].soluong+=donhangs[i].soluong;
+                        }
                     }
+                    donhangs.splice(i,1);
+                    break;
                 }
-                donhangs.splice(i,1);
-                break;
-            }
+        }
+        localStorage.setItem('cars',JSON.stringify(cars));
+        localStorage.setItem('donhangs', JSON.stringify(donhangs));
+        location.reload();
+    } 
+    else {
+        alert("Xóa đơn hàng thất bại");
+        location.reload();
     }
-    localStorage.setItem('cars',JSON.stringify(cars));
-    localStorage.setItem('donhangs', JSON.stringify(donhangs));
-    location.reload();
+  
 }
 function huydonhang(IDdh)
 {
-    var  donhangs =JSON.parse(localStorage.getItem('donhangs'));
-    var cars=JSON.parse(localStorage.getItem('cars'));
-    var dhhuys=JSON.parse(localStorage.getItem('dhhuy'));
-    var dhhuy=[];
-    for(var i=0;i< donhangs.length;i++){
-        if(donhangs[i].IDdh==IDdh)
-            {
-                for(var j=0;j< cars.length;j++){
-                    if(cars[j].IDxe==donhangs[i].IDxe)
-                    {
-                        cars[j].soluong+=donhangs[i].soluong;
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        alert("Hủy đơn hàng thành công");
+        var  donhangs =JSON.parse(localStorage.getItem('donhangs'));
+        var cars=JSON.parse(localStorage.getItem('cars'));
+        var dhhuys=JSON.parse(localStorage.getItem('dhhuy'));
+        var dhhuy=[];
+        for(var i=0;i< donhangs.length;i++){
+            if(donhangs[i].IDdh==IDdh)
+                {
+                    for(var j=0;j< cars.length;j++){
+                        if(cars[j].IDxe==donhangs[i].IDxe)
+                        {
+                            cars[j].soluong+=donhangs[i].soluong;
+                        }
                     }
+                    donhangs[i].tinhtrang=3;
+                    var IDdh=donhangs[i].IDdh;
+                    var tg=laytg();
+                    var dhhuy={IDdh,tg};
+                    dhhuys.push(dhhuy);
                 }
-                donhangs[i].tinhtrang=3;
-                var IDdh=donhangs[i].IDdh;
-                var tg=laytg();
-                var dhhuy={IDdh,tg};
-                dhhuys.push(dhhuy);
-            }
+        }
+        localStorage.setItem("dhhuys",JSON.stringify(dhhuys));
+        localStorage.setItem('donhangs', JSON.stringify(donhangs));
+        localStorage.setItem('cars', JSON.stringify(cars));
+        location.reload();
+    } 
+    else {
+        alert("Hủy đơn hàng thất bại");
+        location.reload();
     }
-    localStorage.setItem("dhhuys",JSON.stringify(dhhuys));
-    localStorage.setItem('donhangs', JSON.stringify(donhangs));
-    localStorage.setItem('cars', JSON.stringify(cars));
-    location.reload();
+    
 }
+
 function themgiohang(IDxe)
 {
     if(localStorage.getItem('DN')==-1)
@@ -1223,7 +1315,11 @@ function hienlichsu()
         }
        
     }
-    document.getElementById('splichsu').innerHTML=splichsu;
+    if(splichsu=='')
+    {
+        document.getElementById('splichsu').innerHTML=`<h2 style="margin-left:50%;width:100%" >BẠN CHƯA MUA SẢN PHẨN NÀO</h2>`;
+    }
+    else document.getElementById('splichsu').innerHTML=splichsu;
 }
 function hienthanhtoan(IDdh){
     var donhangs=JSON.parse(localStorage.getItem('donhangs'));
@@ -1266,32 +1362,7 @@ function hienthanhtoan(IDdh){
     </div>`;
     document.getElementById('popup').innerHTML=giohang;
 }
+// ------  KẾT THÚC PHẦN GIỎ HÀNG  ----------
 
-function tranghientai(n)
-{
-    var tranghientai;
-    if (n!=null){
-        tranghientai=n;
-        localStorage.setItem("tranghientai",tranghientai);
-    }
-    else {
-        tranghientai = localStorage.getItem("tranghientai");
-    }
-    if(tranghientai== null) tranghientai = 1;
-    if (tranghientai==1)
-        hientrangchu(),showIndes();
-    if (tranghientai==2)
-    {
-        hientranggioithieu();
-    }
-    if (tranghientai==3)
-    {
-        hientrangsanpham(),hienbrand(),phantrang();
-        localStorage.setItem("tranghientai",3);
-    }
-    if(tranghientai==4)
-    {
-        hientranglienhe();
-    }
-}
+// ---  CÁC HÀM SẼ CHẠY KHI BẮT ĐẦU WED  --------
 window.onload=khoxe(),tranghientai(),kiemtradadn();

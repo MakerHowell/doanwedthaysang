@@ -203,7 +203,7 @@ function hientrangchu()
                 <h3>MAXWHEELS</h3>
                 <p>Những năm gần đây Ô TÔ đã và đang dần trở thành phương tiện đi lại phổ biến tại Việt Nam. Cùng với tốc độ phát triển kinh tế, mức thu nhập của người dân ngày càng tăng và nhu cầu đi lại thiết yếu thì việc sở hữu 1 chiếc xe ô tô đang dần phổ biến trong mỗi gia đình người dân Việt Nam.<br> 
                 Chúng tôi đã và đang không ngừng cải thiện, phát triển chất lượng dịch vụ để đóng góp một phần tích cực giúp cho người dân Việt Nam dễ dàng tiếp cận và sở hữu chiếc ô tô ....</p>
-                <button><h4>XEM THÊM</h4></button>
+                <button onclick="hientranggioithieu()"><h4>XEM THÊM</h4></button>
             </div>
         </div>
     </div>

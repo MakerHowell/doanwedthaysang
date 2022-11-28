@@ -166,7 +166,7 @@ function hientrangthemsanpham(){
             </div>\
             <div class="form-group  col-md-3">\
                 <label class="control-label">Hình ảnh</label>\
-                <input id="img"class="form-control" type="file">\
+                <input id="img" class="form-control" type="file">\
             </div>\
         </div>\
         <div class="chia-hang">\
@@ -210,7 +210,7 @@ function themxe(){
     let namsanxuat= document.getElementById('namsanxuat').value;
     let tinhtrang= document.getElementById('tinhtrang').value;
     let sokmdadi= document.getElementById('sokmdadi').value;
-    let img ="";
+    let img =document.getElementById('img');
     let soluong = document.getElementById('soluong').value;
     let gia = document.getElementById('gia').value;
     var car = {IDxe,tenxe, brand, img, soluong, gia };

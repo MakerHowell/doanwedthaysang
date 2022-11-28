@@ -221,9 +221,9 @@ function themxe(){
     let sokmdadi= document.getElementById('sokmdadi').value;
 
     const fileUploader = document.getElementById('img');
-    const files = fileUploader.files;
-    let img
-    if(files!=null){
+    let img='';
+    if(fileUploader.files!=''){
+        const files = fileUploader.files;
         img ='./img/'+files[0].name;
     }
     let soluong = document.getElementById('soluong').value;
@@ -281,23 +281,35 @@ function chinhsuasp(IDxe){
             break;
         }
     }
-    cars[h].tenxe = document.getElementById('tenxe').value;
-    cars[h].brand = document.getElementById('brand').value;
-    chitiets[k].mausac= document.getElementById('mausac').value;
-    chitiets[k].xuatxu = document.getElementById('xuatxu').value;
-    chitiets[k].trongtai= document.getElementById('trongtai').value;
-    chitiets[k].nhienlieu= document.getElementById('nhienlieu').value;
-    chitiets[k].namsanxuat= document.getElementById('namsanxuat').value;
-    chitiets[k].tinhtrang= document.getElementById('tinhtrang').value;
-    chitiets[k].sokmdadi= document.getElementById('sokmdadi').value;
+    var cars = JSON.parse(localStorage.getItem('cars'));
+    let tenxe = document.getElementById('tenxe').value;
+    let brand = document.getElementById('brand').value;
+    let mausac= document.getElementById('mausac').value;
+    let xuatxu = document.getElementById('xuatxu').value;
+    let trongtai= document.getElementById('trongtai').value;
+    let nhienlieu= document.getElementById('nhienlieu').value;
+    let namsanxuat= document.getElementById('namsanxuat').value;
+    let tinhtrang= document.getElementById('tinhtrang').value;
+    let sokmdadi= document.getElementById('sokmdadi').value;
 
     const fileUploader = document.getElementById('img');
-    const files = fileUploader.files;
-    if(files!=null){
-        cars[h].img ='./img/'+files[0].name;
+    let img='';
+    if(fileUploader.files!=''){
+        const files = fileUploader.files;
+        img ='./img/'+files[0].name;
     }
-    
-
+    let soluong = document.getElementById('soluong').value;
+    let gia = document.getElementById('gia').value;
+    cars[h].tenxe = tenxe;
+    cars[h].brand = brand;
+    chitiets[k].mausac= mausac;
+    chitiets[k].xuatxu = xuatxu;
+    chitiets[k].trongtai= trongtai;
+    chitiets[k].nhienlieu= nhienlieu;
+    chitiets[k].namsanxuat= namsanxuat; 
+    chitiets[k].tinhtrang= tinhtrang;
+    chitiets[k].sokmdadi= sokmdadi;
+    cars[h].img =img;
     cars[h].soluong = document.getElementById('soluong').value;
     cars[h].gia = document.getElementById('gia').value;
     if(tenxe=='' ||brand=='' || mausac=='' || xuatxu=='' ||trongtai==''||img=='' || nhienlieu==''|| namsanxuat=='' || tinhtrang==''||sokmdadi=='' ||soluong==''||gia=='')
@@ -364,7 +376,7 @@ function trangchinhsua(IDxe)
             <div class="form-group  col-md-3">\
                 <label class="control-label">Hình ảnh</label>\
                 <input id="img"class="form-control" ="'+cars[h].img+' " type="file" accept="image/png, image/jpeg" >\
-                <button onclick="xoahinhanh()">Xóa hình ảnh</button>\
+                <button onclick="xoahinhanh('+cars[h].IDxe+')">Xóa hình ảnh</button>\
             </div>\
         </div>\
         <div class="chia-hang">\
@@ -422,6 +434,20 @@ function timkiemxe()
     }
     document.getElementById('sanpham').innerHTML = sp;
     
+}
+function xoahinhanh(IDxe){
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        var cars=JSON.parse(localStorage.getItem('cars'));
+        for(var i=0;i<cars.length;i++){
+            if(cars[i].IDxe==IDxe){
+                cars[i].img='';
+            }
+        }
+        localStorage.setItem('cars',JSON.stringify(cars));
+    } 
+    else {
+        return 0;
+    }
 }
 // ---- KẾT THÚC THAO TÁC VỚI TRANG QUẢN LÝ SẢN PHẨM --------
 
@@ -676,6 +702,7 @@ function hientrangchinhsua(IDdh){
      }
     
 }
+
 // ----- KẾT THÚC THAO TÁC QUẢN LÝ ĐƠN HÀNG ------
 
 // ---------   THAO TÁC VỚI TRANG THỐNG KÊ -----------

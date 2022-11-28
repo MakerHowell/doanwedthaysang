@@ -24,11 +24,11 @@ p{
 }
 .nav-tai-khoan>.dangnhap>p{
     float: left;
-    margin: 20px;
+    /* margin: 20px; */
 }
 .nav-tai-khoan>.dangnhap>div{
     float: left;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -57,7 +57,7 @@ p{
 
 .btn{
     display: block;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     padding:.8rem 3rem;
     background:#fcec64;
     cursor: pointer;
@@ -80,6 +80,10 @@ p{
     height: fit-content;
     z-index: 10;
     padding: 10px;
+    background-image: linear-gradient(to right,#dccdc6,#e4d75a);
+    padding-bottom: 20px;
+    border-radius: 10px;
+    
 }
 .topnav1>.nt{
     margin-left: 90%;
@@ -87,13 +91,14 @@ p{
 .topnav1>a{
     font-size: 2rem;
     float: none;
+    color: #140c44;
 }
 .khungusernho{
     position: absolute;
     right: 0; top: 0;
-    background-color: #ddd;
-    width: 30%;
-    height: 30%;
+    background-image: linear-gradient(to right,#dccdc6,#e4d75a);
+    width: fit-content;
+    height: fit-content;
     float: right;
     z-index: 0;
 }
@@ -559,12 +564,12 @@ a {
     cursor: pointer;
 }
 .dangnhap{
-    margin: 5px;
+    /* margin: 5px; */
     float: right;
 }
 .dangnhap>button {
     border-radius: 10px;
-    padding: 5px;
+    /* padding: 5px; */
 }
 .dangnhap>button>a {
     color: red;
@@ -572,7 +577,7 @@ a {
 }
 .dangnhap>button:hover {
     background-color: #4CAF50;
-    padding: 5px;
+    /* padding: 5px; */
     cursor: pointer;
 }
 .nav-menu{
@@ -1150,4 +1155,6 @@ label {
     }
    
 }
+
+
 

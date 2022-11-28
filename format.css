@@ -100,7 +100,11 @@ p{
     width: fit-content;
     height: fit-content;
     float: right;
-    z-index: 0;
+    z-index: 20;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+
 }
 @media screen and (max-width: 800px) {
     #menu-btn{
@@ -1156,5 +1160,11 @@ label {
    
 }
 
+p.nt {
+    margin: 0 !important;
+} 
 
+@media only screen and (max-width: 1170px){
+
+}
 

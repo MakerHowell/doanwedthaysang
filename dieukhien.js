@@ -528,13 +528,19 @@ function dangkytk() {
     var rematkhau=document.getElementById('forrepass').value;
     if (rematkhau!=matkhau) {
         alert('Nhập lại mật khẩu không đúng');
-        return 0;
     }
-    var IDuser= users[users.length-1].IDuser+5;
-    var user = { IDuser, hoten, email, sodth, matkhau };
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
-    alert('Đăng kí tài khoản thành công');
+    if(hoten=='' || email==''|| sodth=='' ||matkhau=='')
+    {
+        alert('Bạn chưa nhập đủ thông tin');
+    }
+    else{
+        var IDuser= users[users.length-1].IDuser+5;
+        var user = { IDuser, hoten, email, sodth, matkhau };
+        users.push(user);
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Đăng kí tài khoản thành công');
+    }
+    
 }
 function hienquenmatkhau(){
     var QMK = '<div class="okechua" onclick="checkligh(\'\',0,1)">\
@@ -583,8 +589,8 @@ function quenmatkhau(){
 }
 function hiendoimatkhau()
 {
-    var DMK = '<div class="okechua">\
-    <div class="waperlog" onclick="checkligh(\'\',0,2)">\
+    var DMK ='<div class="okechua" onclick="checkligh(\'noname\',0,1,0)">\
+    <div class="waperlog" onclick="checkligh(\'noname\',0,1,0)">\
     <button class="btntat" onclick="tat()">X</button>\
         <span class="baner"><h2>ĐỔI MẬT KHẨU</h2></span>\
         <div class="imglogwaper">\
@@ -592,13 +598,13 @@ function hiendoimatkhau()
             <div id="checkbox"></div>\
         </div>\
         <div class="frmlog">\
-            <form class="login" onsubmit="return checkligh(\'\',1,2)" method="">\
+            <form class="login" onsubmit="return checkligh(\'noname\',1,1,0)" method="">\
                 \
                 <div class="main">\
-                    <input type="password"  name="password"   class="input"     id="matkhaumoi"  onclick="checkligh(\'foremail\',0,2)"  onkeydown="checkligh(\'foremail\',0,2)" placeholder="Nhập mật khẩu mới: " >\
+                    <input type="password"  name="password"   class="input"  id="forpass"   id="matkhaumoi"  onclick="checkligh(\'111\',0,1,0)"  onkeydown="checkligh(\'111\',0,1,0)" placeholder="Nhập mật khẩu mới: " >\
                 </div>\
                 <div  class="BTDN">\
-                    <button onclick="doimatkhau()">\
+                    <button onclick="Doimatkhau()">\
                         Xác nhận\
                     </button>\
                 </div>\
@@ -627,12 +633,12 @@ function doimatkhau()
 // -----  KẾT THÚC CÁC KHUNG ĐĂNG NHẬP ĐĂNG KÍ ------------
 
 // -------  CÁC HÀM CHECK DỮ LIỆU NHẬP VÀO  ------
-function checkligh(name,flag,flag2){
-    var checkbox = document.getElementById("checkbox")
+function checkligh(name,flag,flag2,flag3=1){
     var foremail = document.getElementById("foremail")
     var forSDT = document.getElementById("forSDT")
     var forpass = document.getElementById("forpass")
     var forrepass = document.getElementById("forrepass")
+            if(flag3==1) 
             if(name != foremail.name)
                 if(!checkemail(flag))
                     return false

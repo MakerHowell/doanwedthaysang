@@ -598,7 +598,7 @@ function hiendoimatkhau()
                     <input type="password"  name="password"   class="input"     id="matkhaumoi"  onclick="checkligh(\'foremail\',0,2)"  onkeydown="checkligh(\'foremail\',0,2)" placeholder="Nhập mật khẩu mới: " >\
                 </div>\
                 <div  class="BTDN">\
-                    <button onclick="Doimatkhau()">\
+                    <button onclick="doimatkhau()">\
                         Xác nhận\
                     </button>\
                 </div>\

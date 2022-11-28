@@ -84,6 +84,15 @@ function luutrang(n){
     }
     localStorage.setItem("thientai",thientai);
 }
+function xacnhan()
+{
+    if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
+        hientrangsanpham();hiensp();
+    } 
+    else {
+        return 0;
+    }
+}
 window.onload=luutrang(),time();
 
 // #####  KẾT THÚC CÁC HÀM PHỤ ĐƯỢC SỬ DỤNG TRONG CHƯƠNG TRÌNH #######
@@ -166,7 +175,7 @@ function hientrangthemsanpham(){
             </div>\
             <div class="form-group  col-md-3">\
                 <label class="control-label">Hình ảnh</label>\
-                <input id="img" class="form-control" type="file">\
+                <input id="img" class="form-control" type="file" accept="image/png, image/jpeg" >\
             </div>\
         </div>\
         <div class="chia-hang">\
@@ -193,7 +202,7 @@ function hientrangthemsanpham(){
         </div>\
         <div class="button-chinh-sua">\
             <button class="btn btn-save" onclick="themxe()" type="button">Lưu lại</button>\
-            <a class="btn btn-cancel" onclick="hientrangsanpham(),hiensp()" href="#">Hủy bỏ</a>\
+            <a class="btn btn-cancel" onclick="xacnhan()" href="#">Hủy bỏ</a>\
         </div>\
     </div>';
     document.getElementById('themsp').innerHTML=trangthemsp;
@@ -210,18 +219,29 @@ function themxe(){
     let namsanxuat= document.getElementById('namsanxuat').value;
     let tinhtrang= document.getElementById('tinhtrang').value;
     let sokmdadi= document.getElementById('sokmdadi').value;
-    let img =document.getElementById('img');
+
+    const fileUploader = document.getElementById('img');
+    const files = fileUploader.files;
+    let img
+    if(files!=null){
+        img ='./img/'+files[0].name;
+    }
     let soluong = document.getElementById('soluong').value;
     let gia = document.getElementById('gia').value;
-    var car = {IDxe,tenxe, brand, img, soluong, gia };
-    cars.push(car);
-    var chitiets = JSON.parse(localStorage.getItem('chitiets'));
-    var chitiet={IDxe,mausac,xuatxu,trongtai,namsanxuat,tinhtrang,nhienlieu,sokmdadi}; 
-    chitiets.push(chitiet);
-    localStorage.setItem('cars', JSON.stringify(cars));
-    localStorage.setItem('chitiets', JSON.stringify(chitiets));
-    location.reload();
-
+    if(tenxe=='' ||brand=='' || mausac=='' || xuatxu=='' ||trongtai==''||img=='' || nhienlieu==''|| namsanxuat=='' || tinhtrang==''||sokmdadi=='' ||soluong==''||gia=='')
+    {
+        alert("Bạn chưa nhập đầy đủ thông tin");
+    }
+    else{
+        var car = {IDxe,tenxe, brand, img, soluong, gia };
+        cars.push(car);
+        var chitiets = JSON.parse(localStorage.getItem('chitiets'));
+        var chitiet={IDxe,mausac,xuatxu,trongtai,namsanxuat,tinhtrang,nhienlieu,sokmdadi}; 
+        chitiets.push(chitiet);
+        localStorage.setItem('cars', JSON.stringify(cars));
+        localStorage.setItem('chitiets', JSON.stringify(chitiets));
+        location.reload();
+    }
 }
 function xoasanpham(IDxe)
 {
@@ -270,12 +290,26 @@ function chinhsuasp(IDxe){
     chitiets[k].namsanxuat= document.getElementById('namsanxuat').value;
     chitiets[k].tinhtrang= document.getElementById('tinhtrang').value;
     chitiets[k].sokmdadi= document.getElementById('sokmdadi').value;
-    // cars[i].img ="";
+
+    const fileUploader = document.getElementById('img');
+    const files = fileUploader.files;
+    if(files!=null){
+        cars[h].img ='./img/'+files[0].name;
+    }
+    
+
     cars[h].soluong = document.getElementById('soluong').value;
     cars[h].gia = document.getElementById('gia').value;
-    localStorage.setItem('cars',JSON.stringify(cars));
-    localStorage.setItem('chitiets', JSON.stringify(chitiets));
-    location.reload();
+    if(tenxe=='' ||brand=='' || mausac=='' || xuatxu=='' ||trongtai==''||img=='' || nhienlieu==''|| namsanxuat=='' || tinhtrang==''||sokmdadi=='' ||soluong==''||gia=='')
+    {
+        alert("Bạn chưa nhập đầy đủ thông tin");
+    }
+    else{
+        localStorage.setItem('cars',JSON.stringify(cars));
+        localStorage.setItem('chitiets', JSON.stringify(chitiets));
+        location.reload();
+    }
+    
 
 }
 function trangchinhsua(IDxe)
@@ -309,7 +343,7 @@ function trangchinhsua(IDxe)
             </div>\
             <div class="form-group col-md-3">\
                 <label class="control-label">Nhãn hiệu </label>\
-                <input id="brand" value="'+cars[h].brand+' "class="form-control" type="text" placeholder="">\
+                <input id="brand"  class="form-control" value="'+cars[h].brand+'"type="text" placeholder="">\
             </div>\
             <div class="form-group  col-md-3">\
                 <label class="control-label">Màu sắc</label>\
@@ -329,7 +363,8 @@ function trangchinhsua(IDxe)
             </div>\
             <div class="form-group  col-md-3">\
                 <label class="control-label">Hình ảnh</label>\
-                <input id="img"class="form-control" type="file">\
+                <input id="img"class="form-control" ="'+cars[h].img+' " type="file" accept="image/png, image/jpeg" >\
+                <button onclick="xoahinhanh()">Xóa hình ảnh</button>\
             </div>\
         </div>\
         <div class="chia-hang">\
@@ -356,7 +391,7 @@ function trangchinhsua(IDxe)
         </div>\
         <div class="button-chinh-sua">\
             <button class="btn btn-save" onclick="chinhsuasp('+IDxe+')" type="button">Lưu lại</button>\
-            <a class="btn btn-cancel" onclick="hientrangsanpham(),hiensp()" href="#">Hủy bỏ</a>\
+            <a class="btn btn-cancel" onclick="xacnhan()" href="#">Hủy bỏ</a>\
         </div>\
     </div>';
     document.getElementById('themsp').innerHTML=trangchinhsua;

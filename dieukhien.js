@@ -54,7 +54,7 @@ function kiemtradadn()
         {
             document.getElementById('cacbutton').innerHTML='<p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
             <input type="button" id="btgiohang" class="btn" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
-            <div><a href="admin.html">Trang quản trị</a></div>\
+            <div> <a href="admin.html"><button style="background: #fcec64; border:none; color: black !important; padding: 7px;">Trang quản trị</button></a> </div>\
             <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" />';
         }        
         else{
@@ -416,8 +416,8 @@ function hienkhunguser(){
         {
             document.getElementById('popup').innerHTML='<div class="khungusernho"><p class="nt" onclick="tat()">X</p><p>'+users[i].hoten+' </p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
             <input type="button" id="btgiohang" class="btn" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
-            <div><a href="admin.html">Trang quản trị</a></div>\
-            <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" /><p>X</p></div>';
+            <div><a href="admin.html"><button style="background: #fcec64; border:none; color: black !important; margin: 5px 0; padding: 5px;">Trang quản trị</button></a></div>\
+            <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" </div>';
         }        
         else{
             document.getElementById('popup').innerHTML='<div class="khungusernho"><p class="nt" onclick="tat()">X</p><p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\

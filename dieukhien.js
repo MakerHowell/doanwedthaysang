@@ -105,7 +105,7 @@ function khoxe() {
         localStorage.setItem('users', JSON.stringify(users));
         var donhangs=
         [
-            { IDdh:0, IDxe:0, IDuser:'',  soluong: 1, sotien: 0,  tinhtrang:0 , thoigian:''},
+            { IDdh:'', IDxe:'', IDuser:'',  soluong: '', sotien: '',  tinhtrang:'' , thoigian:''},
            
         ]
         localStorage.setItem('donhangs', JSON.stringify(donhangs));
@@ -455,7 +455,7 @@ function dangnhap() {
                         </button>\
                     </div>\
                     <div class="forget">\
-                        <a href ="#" onclick="hienquenmatkhau()"><b>Bạn quên mật khẩu?</b></a>\
+                        <a href ="#" onsubmit="hienquenmatkhau()"><b>Bạn quên mật khẩu?</b></a>\
                         \
                     </div>\
                 </form>\
@@ -505,7 +505,7 @@ function dangky()
                     <input type="password"  name="forrepass"   class="input" id="forrepass" onclick="checkligh(\'forrepass\',0,3)" onkeydown="checkligh(\'forrepass\',0,3)"     placeholder="Nhập lại mật khẩu" >\
                 </div>\
                 <div  class="BTDN">\
-                    <button class="btn" onclick="dangkytk()">\
+                    <button class="btn" onsubmit="dangkytk()">\
                         ĐĂNG KÝ\
                     </button>\
                 </div>\
@@ -561,7 +561,7 @@ function hienquenmatkhau(){
                     </button>\
                 </div>\
                 <div class="forget">\
-                    <a href ="#" onclick="dangnhap()"><b>về trang đăng nhập</b></a>\
+                    <a href ="#" onsubmit="dangnhap()"><b>về trang đăng nhập</b></a>\
                 </div>\
             </form>\
         </div>\
@@ -1028,6 +1028,7 @@ function showchitietsp(IDxe){
 // ----  BẮT ĐẦU PHẦN GIỎ HÀNG  -----------
 function hiengiohang()
 {
+    checkdonhangtrung();
     if(localStorage.getItem('DN')==-1)
     {
         alert('Bạn cần phải đăng nhâp');
@@ -1087,6 +1088,22 @@ function hiengiohang()
     }
     
 }
+function checkdonhangtrung()
+{
+    var donhangs=JSON.parse(localStorage.getItem('donhangs'));
+    for(var i=1;i<donhangs.length;i++)
+    {
+        for(var j=i+1;j<donhangs.length;j++)
+        {
+            if(donhangs[i].IDxe==donhangs[j].IDxe && donhangs[i].IDuser==localStorage.getItem('DN') && donhangs[j].IDuser==localStorage.getItem('DN') && donhangs[i].tinhtrang==0 && donhangs[j].tinhtrang==0)
+            {
+                donhangs[i].soluong=donhangs[j].soluong*1+1;
+                donhangs.splice(j,1);
+            }
+        }
+    }
+    localStorage.setItem('donhangs', JSON.stringify(donhangs));
+}
 function hienspgiohang(){
     if(localStorage.getItem('DN')==-1 || localStorage.getItem('DN')==null)
     {
@@ -1120,9 +1137,13 @@ function hienspgiohang(){
                 <i class="fa fa-trash" aria-hidden="true"></i> Xóa </a>\
             <button onclick="hienthanhtoan('+donhangs[i].IDdh+')" class="btn btn-save" type="button">Thanh toán</button>\
         </td>\
-         </tr>'
+        </tr>'
         }
     } 
+    if(spgiohang!='')
+    {
+        spgiohang+=`<button onclick="thanhtoantatca()" class="btn btn-save" type="button">Thanh toán tất cả</button>`;
+    }
     if(spgiohang=='')
     {
         document.getElementById('sptronggio').innerHTML=`<h2 style="margin-left:50%;width:100%" >BẠN CHƯA MUA SẢN PHẨN NÀO</h2>`;
@@ -1234,6 +1255,19 @@ function thanhtoan(IDdh){
     var donhangs =JSON.parse(localStorage.getItem('donhangs'));
     for(var i = 0; i < donhangs.length;i++){
         if(donhangs[i].IDdh == IDdh)
+        {
+            donhangs[i].tinhtrang=1;
+            donhangs[i].thoigian=laytg();
+        }
+    }
+    localStorage.setItem('donhangs', JSON.stringify(donhangs));
+    location.reload(); 
+}
+function thanhtoantatca()
+{
+    var donhangs =JSON.parse(localStorage.getItem('donhangs'));
+    for(var i = 0; i < donhangs.length;i++){
+        if(donhangs[i].tinhtrang==0 && donhangs[i].IDuser==localStorage.getItem('DN'));
         {
             donhangs[i].tinhtrang=1;
             donhangs[i].thoigian=laytg();

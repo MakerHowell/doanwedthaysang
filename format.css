@@ -630,7 +630,7 @@ a {
     height: auto;
     clear: both;
     justify-content: center;
-    background-color: rgba(230, 190, 150, 0.795);
+    background-color: rgba(226, 215, 62, 0.795);
     padding-top: 20px;
 }
 
@@ -695,7 +695,7 @@ a {
 .TTSP{
     margin: auto;
     width: 80%;
-    background-color: rgba(201, 209, 130, 0.795);
+    background-color: rgba(226, 215, 62, 0.795);
     padding: 0% 1% 10px 1%;
     height: auto;
 
@@ -706,7 +706,7 @@ a {
 .TTSP>div>div{
     display: flex;
     width: 50%;
-    background-color: rgba(133, 115, 115, 0.377);
+    background-color: rgba(10, 236, 66, 0.377);
     position: relative;
 }
 .TTSP>div{

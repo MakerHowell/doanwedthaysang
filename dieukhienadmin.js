@@ -77,6 +77,7 @@ function luutrang(n){
         hientongdonhang();
         hiensanphamdahet();
         hiendonhangdahuy();
+        hienthongketungsp();
     }
     if(thientai==4){
         trangquanlyuser();
@@ -1023,11 +1024,25 @@ function hientrangthongke()
             </div>\
         </div>\
         <div class="row">\
-            <div class="col-md-12">\
+            <div class="col-md-7">\
                 <div class="tile">\
+                <div>\
+                    <h3 class="tile-title">THỐNG KÊ THEO TỪNG SẢN PHẨM</h3>\
                 </div>\
-            </div>\
-        </div>';
+                <div class="tile-body">\
+                    <table class="table table-hover table-bordered" id="sampleTable">\
+                        <thead>\
+                            <tr>\
+                                <th>Tên sản phẩm</th>\
+                                <th>Số lượng đã bán</th>\
+                            </tr>\
+                        </thead>\
+                        <tbody id="thongketungsp">\
+                        </tbody>\
+                    </table>\
+                </div>\
+        </div>\
+    </div>';
 document.getElementById('thaydoi').innerHTML= trangthongke;
 }
 function hienspbanchay()
@@ -1151,6 +1166,30 @@ function hiendonhangdahuy()
         } 
     }    
     document.getElementById('donhangdahuy').innerHTML=donhanghuy;
+}
+function hienthongketungsp()
+{
+    var cars= JSON.parse(localStorage.getItem('cars'));
+   var thongketungsp='<tr>\
+        <td><select class="select-css" name="thongkesp" onchange="hiensoluongdaban(value)" id="thongkesp"></select></td>\
+        <td><div id="soluongdaban"></div></td>\
+    </tr>';
+    var tungsp='';
+    for(var i=0;i<cars.length; i++) {
+        tungsp +='<option value="'+cars[i].IDxe+'">'+cars[i].tenxe+'</option>';   
+    }   
+    document.getElementById('thongketungsp').innerHTML = thongketungsp;
+    document.getElementById('thongkesp').innerHTML=tungsp;
+}
+function hiensoluongdaban(IDxe){
+    var donhangs= JSON.parse(localStorage.getItem('donhangs'));
+    var count=0;
+    for(var i=0; i<donhangs.length; i++){
+        if(donhangs[i].IDxe==IDxe && donhangs[i].tinhtrang==2){
+            count++;
+        }
+    }
+    document.getElementById('soluongdaban').innerHTML='<p>'+count+'</p>';
 }
 //  ---- KẾT THÚC THAO TÁC VỚI TRANG THỐNG KÊ -----
 

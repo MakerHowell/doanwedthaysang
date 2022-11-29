@@ -188,7 +188,7 @@ function hientrangchu()
         <div class="slide fade"><img src="./img/ss5.jpg"></div>
         <div class="slide fade"><img src="./img/ss6.jpg"></div>
         <div class="slide fade"><img src="./img/ss7.jpg"></div>
-        <span class="prev" onclick="plusSlides(-1)">❮</span>
+        <span class="prev" onclick="plusSlides(-2)">❮</span>
         <span class="next" onclick="plusSlides(1)">❯</span>
     </div>
 </div>
@@ -347,8 +347,7 @@ function hientrangsanpham()
     <div class="danhmuc2">
         <h2>Thương hiệu</h2>
     </div>
-    <select class="select-css" name="cars" onchange="loc(value)" id="thuonghieu">
-    </select>
+    <select class="select-css" name="cars" onchange="loc(value)" id="thuonghieu"></select>
     <hr width="90%" align="center" />
 </div>
 <div class="content" id="content">

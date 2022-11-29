@@ -599,12 +599,16 @@ a {
     width: 100%;
 }
 .left-menu {
-    background-color: rgb(31, 148, 156);
+    background-color: rgb(234, 235, 173);
     padding: 10px 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     border-radius: 20px;
     width: 20%;
   
+}
+
+.left-menu h2{
+    background-color: rgb(243, 231, 60);
 }
 /*-------------CHI TIET SAN PHAN ----------------- */
 .clt{
@@ -626,7 +630,7 @@ a {
     height: auto;
     clear: both;
     justify-content: center;
-    background-color: rgba(230, 190, 150, 0.795);
+    background-color: rgba(226, 215, 62, 0.795);
     padding-top: 20px;
 }
 
@@ -691,7 +695,7 @@ a {
 .TTSP{
     margin: auto;
     width: 80%;
-    background-color: rgba(201, 209, 130, 0.795);
+    background-color: rgba(226, 215, 62, 0.795);
     padding: 0% 1% 10px 1%;
     height: auto;
 
@@ -702,7 +706,7 @@ a {
 .TTSP>div>div{
     display: flex;
     width: 50%;
-    background-color: rgba(133, 115, 115, 0.377);
+    background-color: rgba(10, 236, 66, 0.377);
     position: relative;
 }
 .TTSP>div{
@@ -797,21 +801,21 @@ a {
 }
 .danhmuc {
     border-style: groove;
-    border-color: blue;
-    background-color: rgb(163, 186, 34);
+    background-color: rgb(243, 231, 60);
     color: rgb(153, 34, 34);
     text-align: center;
+    border-radius: 10px;
 }
 .danhmuc2 {
     background-color: rgb(174, 202, 48);
 }
 .Sanpham {
     width: 100%;
-    background-color: burlywood;
+    background-color: rgb(245, 233, 65);
     padding: 1px 0px 1px 0px;
     margin-left:-5px ;
     margin-top: 15px;
-    border-inline: 16px solid green ;
+    /* border-inline: 16px solid rgb(129, 141, 129) ; */
     text-align: center;
 }
 label {
@@ -832,7 +836,7 @@ label {
     display: block;
     padding-left: 10px;
     width: 80%;
-    background-color: aquamarine;
+    background-color: rgb(240, 230, 146);
     height: auto;
     padding-bottom: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -855,7 +859,7 @@ label {
     margin: 20px;
     float: left;
     border-color: blueviolet;
-    background-color: #f64f59;
+    background-color: rgb(238, 234, 182);
     text-align: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
@@ -876,7 +880,7 @@ label {
     padding: 0;
 }
 .wrapper {
-    border-top: greenyellow groove 20px;
+    
     display: block;
     width: 100%;
     background-color: rgba(153, 205, 50, 0);
@@ -1033,16 +1037,7 @@ label {
 }
 
 @media only screen and (max-width: 2000px){
-    /* .body{
-        display: block;
-    }
-    .content{
-        width: 100%;
-        margin: 0;
-    }
-    .left-menu{
-        width: 100%;
-    } */
+    
     .product {
         height:auto;
     }

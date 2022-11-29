@@ -857,6 +857,9 @@ function locgia1()
 {
     var min=document.getElementById('nutmin').value;
     var max=document.getElementById('nutmax').value;
+    if(min>max) {
+        document.getElementById('nutmin').value=max;
+    }
     document.getElementById('thumbMin').innerHTML='<p>'+formattien(min)+' VNĐ <-></p>';
     document.getElementById('thumbMax').innerHTML='<p>'+formattien(max)+' VNĐ</p>';
     cars=JSON.parse(localStorage.getItem('cars'));

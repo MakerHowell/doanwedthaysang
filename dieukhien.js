@@ -105,9 +105,9 @@ function khoxe() {
         localStorage.setItem('users', JSON.stringify(users));
         var donhangs=
         [
-            { IDdh:0, IDxe:1, IDuser:'111',  soluong: 1, sotien:  1769000000 ,  tinhtrang:0},
-            { IDdh:1, IDxe:3, IDuser:'111',  soluong: 2, sotien:  20000000000 , tinhtrang:0},
-            { IDdh:2, IDxe:9, IDuser:'222',  soluong: 1, sotien:  3000000000 ,  tinhtrang:0},
+            { IDdh:0, IDxe:1, IDuser:'111',  soluong: 1, sotien:  1769000000 ,  tinhtrang:0 , thoigian:''},
+            { IDdh:1, IDxe:3, IDuser:'111',  soluong: 2, sotien:  20000000000 , tinhtrang:0, thoigian:''},
+            { IDdh:2, IDxe:9, IDuser:'222',  soluong: 1, sotien:  3000000000 ,  tinhtrang:0 , thoigian:''},
         ]
         localStorage.setItem('donhangs', JSON.stringify(donhangs));
         var chitiets=
@@ -1118,10 +1118,8 @@ function hienspgiohang(){
         <td class="text-right">'+ formattien(cars[k].gia)+' VNĐ</td>\
         <td class="text-right">'+ formattien(donhangs[i].sotien)+' VNĐ</td>\
         <td>\
-            <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->\
             <a id="delete_1" data-sp-ma="2" onclick="xoadonhang('+donhangs[i].IDdh+')" class="btn btn-danger btn-delete-sanpham">\
-                <i class="fa fa-trash" aria-hidden="true"></i> Xóa\
-            </a>\
+                <i class="fa fa-trash" aria-hidden="true"></i> Xóa </a>\
             <button onclick="hienthanhtoan('+donhangs[i].IDdh+')" class="btn btn-save" type="button">Thanh toán</button>\
         </td>\
          </tr>'
@@ -1135,7 +1133,7 @@ function hienspgiohang(){
 }
 function xoadonhang(IDdh){
     if (confirm("XÁC NHẬN LỰA CHỌN") == true) {
-        alert("Xóa đơn hàng thành công");
+        alert("Xóa sản phẩm giỏ hàng thành công");
         var  donhangs =JSON.parse(localStorage.getItem('donhangs'));
         var cars=JSON.parse(localStorage.getItem('cars'));
         for(var i=0;i< donhangs.length;i++){
@@ -1144,7 +1142,8 @@ function xoadonhang(IDdh){
                     for(var j=0;j< cars.length;j++){
                         if(cars[j].IDxe==donhangs[i].IDxe)
                         {
-                            cars[j].soluong+=donhangs[i].soluong;
+                            cars[j].soluong+=donhangs[i].soluong*1;
+                            break;
                         }
                     }
                     donhangs.splice(i,1);
@@ -1156,7 +1155,7 @@ function xoadonhang(IDdh){
         location.reload();
     } 
     else {
-        alert("Xóa đơn hàng thất bại");
+        alert("Xóa sản phẩm giỏ hàng hàng thất bại");
         location.reload();
     }
   
@@ -1175,7 +1174,8 @@ function huydonhang(IDdh)
                     for(var j=0;j< cars.length;j++){
                         if(cars[j].IDxe==donhangs[i].IDxe)
                         {
-                            cars[j].soluong+=donhangs[i].soluong;
+                            cars[j].soluong+=donhangs[i].soluong*1;
+                            break;
                         }
                     }
                     donhangs[i].tinhtrang=3;
@@ -1220,7 +1220,7 @@ function themgiohang(IDxe)
         cars[i].soluong-=soluong*1;
         if(cars[i].soluong<0)
         {
-            alert('Da vuot qua gioi han xe trong kho');
+            alert('Cửa hàng không đủ sản phẩm');
             return 0;
         }
         var sotien=cars[i].gia*soluong;
@@ -1238,6 +1238,7 @@ function thanhtoan(IDdh){
         if(donhangs[i].IDdh == IDdh)
         {
             donhangs[i].tinhtrang=1;
+            donhangs[i].thoigian=laytg();
         }
     }
     localStorage.setItem('donhangs', JSON.stringify(donhangs));
@@ -1280,19 +1281,19 @@ function hienlichsu()
                 </tr>'
                 continue;
             }
-                splichsu +='<tr>\
-                <td>'+donhangs[i].IDdh+'</td>\
-                <td>\
-                    <img src="'+cars[k].img+'" class="hinhdaidien">\
-                </td>\
-                <td>'+cars[k].tenxe+'</td>\
-                <td class="text-right">'+donhangs[i].soluong+'</td>\
-                <td class="text-right">'+formattien(cars[k].gia)+' VNĐ</td>\
-                <td class="text-right">'+formattien(donhangs[i].sotien)+' VNĐ</td>\
-                <td>\
-                    <b>Chờ xác nhận</b>\
-                </td>\
-            </tr>'
+            //     splichsu +='<tr>\
+            //     <td>'+donhangs[i].IDdh+'</td>\
+            //     <td>\
+            //         <img src="'+cars[k].img+'" class="hinhdaidien">\
+            //     </td>\
+            //     <td>'+cars[k].tenxe+'</td>\
+            //     <td class="text-right">'+donhangs[i].soluong+'</td>\
+            //     <td class="text-right">'+formattien(cars[k].gia)+' VNĐ</td>\
+            //     <td class="text-right">'+formattien(donhangs[i].sotien)+' VNĐ</td>\
+            //     <td>\
+            //         <b>Chờ xác nhận</b>\
+            //     </td>\
+            // </tr>'
         }
     }
     for(var i=0;i< donhangs.length;i++){
@@ -1308,7 +1309,7 @@ function hienlichsu()
             splichsu +='<tr>\
             <td>'+donhangs[i].IDdh+'</td>\
             <td>\
-                <img src="../assets/img/product/ipad4.png" class="hinhdaidien">\
+                <img src="'+cars[k].img+'" class="hinhdaidien">\
             </td>\
             <td>'+cars[k].tenxe+'</td>\
             <td class="text-right">'+donhangs[i].soluong+'</td>\

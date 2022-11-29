@@ -93,7 +93,90 @@ function xacnhan()
         return 0;
     }
 }
-window.onload=luutrang(),time();
+function khoxe() {
+    if(localStorage.getItem('dk')==null)
+    {
+        var cars = [
+            {IDxe:0,  tenxe: 'LaFerrari',                   brand: 'Ferrari',      img: './img/laferrari.jpg',     soluong: 2,  gia: 30000000000 },
+            {IDxe:1,  tenxe: 'Ferrari SF90 Stradale',       brand: 'Ferrari',      img: './img/ferrarisf90.jpg',   soluong: 2,  gia: 15000000000 },
+            {IDxe:2,  tenxe: 'Ferrari 812 GTS',             brand: 'Ferrari',      img: './img/ferrari812.jpg',    soluong: 2,  gia: 12000000000 },
+            {IDxe:3,  tenxe: 'Aston Martin Valkyrie 2022',  brand: 'Aston Martin', img: './img/valkyrie.jpg',      soluong: 3,  gia: 27000000000},
+            {IDxe:4,  tenxe: 'Aston Martin DBS SL',         brand: 'Aston Martin', img: './img/dbs.jpg',           soluong: 2,  gia: 23000000000 },
+            {IDxe:5,  tenxe: 'Bugatti Centodieci',          brand: 'Bugatti',      img: './img/bgt.jpg',           soluong: 1,  gia: 35000000000 },
+            {IDxe:6,  tenxe: 'Bugatti Chiron Divo',         brand: 'Bugatti',      img: './img/chiron.jpg',        soluong: 1,  gia: 48000000000 },
+            {IDxe:7,  tenxe: 'Koenigsegg Regera',           brand: 'Koenigsegg',   img: './img/regera.jpg',        soluong: 1,  gia: 32000000000 },
+            {IDxe:8,  tenxe: 'Koenigsegg Gemera',           brand: 'Koenigsegg',   img: './img/gemera.jpg',        soluong: 1,  gia: 37000000000 },
+            {IDxe:9,  tenxe: 'Koenigsegg Jesko',            brand: 'Koenigsegg',   img: './img/jesko.jpg',         soluong: 2,  gia: 27000000000 },
+            {IDxe:10,  tenxe: 'McLaren Senna',              brand: 'McLaren',      img: './img/mcsenna.jpg',       soluong: 2,  gia: 23000000000 },
+            {IDxe:11,  tenxe: 'BMW X7 xDrive40i 2020',      brand: 'BMW',          img: './img/bmwx7.jpg',         soluong: 2,  gia: 6000000000 },
+            {IDxe:12,  tenxe: 'BMW 320i Sportline',         brand: 'BMW',          img: './img/bmw320i.jpg',       soluong: 5,  gia: 1769000000  },
+            {IDxe:13,  tenxe: 'BMW 740 Pure Excellence',    brand: 'BMW',          img: './img/bmw740li.jpg',      soluong: 5,  gia: 9000000000  },
+            {IDxe:14,  tenxe: 'Audi Sport Quattro',         brand: 'AUDI',         img: './img/audisport.jpg',     soluong: 2,  gia: 10000000000  },
+            {IDxe:15,  tenxe: 'Audi A4 DTM Edition',        brand: 'AUDI',         img: './img/audia4.jpg',        soluong: 3,  gia: 17000000000  },
+            {IDxe:16,  tenxe: 'Audi R8 Exclusive ',         brand: 'AUDI',         img: './img/audir8.jpg',        soluong: 5,  gia: 20000000000 },
+            {IDxe:17,  tenxe: 'Lexus LX570 2021',           brand: 'LEXUS',        img: './img/lexuslx57.jpg',     soluong: 2,  gia: 9000000000  },
+            {IDxe:18,  tenxe: 'Lexus LX570 2019',           brand: 'LEXUS',        img: './img/lexus2019.jpg',     soluong: 5,  gia: 5000000000  },
+            {IDxe:19,  tenxe: 'Lexus PLexus LM300h',        brand: 'LEXUS',        img: './img/lexuslm300.jpg',    soluong: 4,  gia: 8000000000  },
+            {IDxe:20,  tenxe: 'Lexus RX350 2020',           brand: 'LEXUS',        img: './img/lexusrx350.jpg',    soluong: 2,  gia: 3000000000 },
+            {IDxe:21, tenxe: 'Mercedes G63 AMG',            brand: 'Mercedes',     img: './img/merg63.jpg',        soluong: 5,  gia: 5000000000  },
+            {IDxe:22, tenxe: 'Mercedes GLS450 2021',        brand: 'Mercedes',     img: './img/merglx450.jpg',     soluong: 1,  gia: 20000000000 },
+            {IDxe:23, tenxe: 'Maybach GLS 600',             brand: 'Mercedes',     img: './img/mermayback.jpg',    soluong: 5,  gia: 14000000000  },
+            {IDxe:24, tenxe: 'Porsche Cayenne Turbo',       brand: 'Porsche',      img: './img/porscheturbo.jpg',  soluong: 2,  gia: 7000000000  },
+            {IDxe:25, tenxe: 'Porsche Cayenne Coupe',       brand: 'Porsche',      img: './img/porschecouple.jpg', soluong: 2,  gia: 2000000000  },
+        ]
+        localStorage.setItem('cars', JSON.stringify(cars));
+        var users =
+            [
+                { IDuser: 000, hoten:'admin',         email: 'admin@gmail.com',       sodth: '0123456789', matkhau: '00000', diachi:'273 An Dương Vương P9 Q5' },
+                { IDuser: 111, hoten:'Nguyễn Văn A',  email: 'nguyenvana@gmail.com',  sodth: '0123456789', matkhau: '00000', diachi:'250 An Dương Vương P9 Q5' },
+                { IDuser: 222, hoten:'Lê văn B',      email: 'levanb@gmail.com',      sodth: '0123456789', matkhau: '00000', diachi:'262 An Dương Vương P9 Q5' },
+            ]
+        localStorage.setItem('users', JSON.stringify(users));
+        var donhangs=
+        [
+            { IDdh:0, IDxe:1, IDuser:'111',  soluong: 1, sotien:  1769000000 ,  tinhtrang:0 , thoigian:''},
+            { IDdh:1, IDxe:3, IDuser:'111',  soluong: 2, sotien:  20000000000 , tinhtrang:0, thoigian:''},
+            { IDdh:2, IDxe:9, IDuser:'222',  soluong: 1, sotien:  3000000000 ,  tinhtrang:0 , thoigian:''},
+        ]
+        localStorage.setItem('donhangs', JSON.stringify(donhangs));
+        var chitiets=
+        [
+            {IDxe:0,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.2 T',namsanxuat:'2020',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:1,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.9 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:2,mausac:'Đỏ', xuatxu:'ANH QUỐC',trongtai:'1.3 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:3,mausac:'Xanh dương', xuatxu:'PHÁP',trongtai:'1.4 T',namsanxuat:'2018',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:4,mausac:'Đỏ', xuatxu:'MỸ',trongtai:'1.5 T',namsanxuat:'2019',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:5,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            // bữa sau sửa
+            {IDxe:6,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:7,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:8,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:9,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:10,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:11,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:12,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:13,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:14,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:15,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:16,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:17,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:18,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:19,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:21,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:22,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:23,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:24,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            {IDxe:25,mausac:'Trắng', xuatxu:'ANH QUỐC',trongtai:'1.6 T',namsanxuat:'2021',tinhtrang:'MỚI',nhienlieu:'Xăng',sokmdadi:'0 km'},
+            
+        ]
+        localStorage.setItem('chitiets', JSON.stringify(chitiets));
+        localStorage.setItem('dk',1);
+        localStorage.setItem('DN',-1)
+        var dhhuys=[];
+        localStorage.setItem('dhhuy',JSON.stringify(dhhuys));
+    }
+}
+window.onload=khoxe(),luutrang(),time();
 
 // #####  KẾT THÚC CÁC HÀM PHỤ ĐƯỢC SỬ DỤNG TRONG CHƯƠNG TRÌNH #######
 
@@ -222,7 +305,7 @@ function themxe(){
 
     const fileUploader = document.getElementById('img');
     let img='';
-    if(fileUploader.files!=''){
+    if(fileUploader.files.length!=0){
         const files = fileUploader.files;
         img ='./img/'+files[0].name;
     }
@@ -294,7 +377,7 @@ function chinhsuasp(IDxe){
 
     const fileUploader = document.getElementById('img');
     let img='';
-    if(fileUploader.files!=''){
+    if(fileUploader.files.length!=0){
         const files = fileUploader.files;
         img ='./img/'+files[0].name;
     }
@@ -374,8 +457,12 @@ function trangchinhsua(IDxe)
                 <input value="'+chitiets[k].nhienlieu+'" id="nhienlieu"class="form-control" type="text">\
             </div>\
             <div class="form-group  col-md-3">\
-                <label class="control-label">Hình ảnh</label>\
-                <input id="img"class="form-control" ="'+cars[h].img+' " type="file" accept="image/png, image/jpeg" >\
+                <label class="control-label">Hình ảnh mới</label>\
+                <input id="img"class="form-control" " type="file" accept="image/png, image/jpeg" >\
+            </div>\
+            <div class="form-group  col-md-3">\
+            <label class="control-label">Hình ảnh cũ</label>\
+                <input value="'+cars[h].img+'" id="img" class="form-control" type="text">\
                 <button onclick="xoahinhanh('+cars[h].IDxe+')">Xóa hình ảnh</button>\
             </div>\
         </div>\
@@ -443,6 +530,8 @@ function xoahinhanh(IDxe){
                 cars[i].img='';
             }
         }
+        alert('Đã xóa');
+        document.getElementById('img').innerHTML='';
         localStorage.setItem('cars',JSON.stringify(cars));
     } 
     else {
@@ -524,6 +613,7 @@ function hientrangdonhang(){
                 <th>Khách hàng</th>\
                 <th>Đơn hàng</th>\
                 <th>Số lượng</th>\
+                <th>Thời gian đặt hàng</th>\
                 <th>Tổng tiền</th>\
                 <th>Tình trạng</th>\
                 <th>Tính năng</th>\
@@ -566,16 +656,50 @@ function hiendonhang()
             <td>'+users[k].hoten+'</td>\
             <td>'+cars[j].tenxe+'</td>\
             <td>'+donhangs[i].soluong+'</td>\
+            <td>'+donhangs[i].thoigian+'</td>\
             <td>'+formattien(donhangs[i].sotien)+' VNĐ</td>\
-            <td><span class="badge bg-success">Chờ xác nhận</span></td>\
+            <td><span class="badge bg-warning">Chờ xác nhận</span></td>\
             <td><button class="btn btn-primary btn-sm trash" onclick="huydonhang('+donhangs[i].IDdh+')" type="button" title="Hủy đơn"><i\
                         class="fas fa-trash-alt"></i> </button>\
                 <button class="btn btn-primary btn-sm edit" type="button" onclick="hientrangchinhsua('+donhangs[i].IDdh+')" title="Chỉnh sửa"><i\
                         class="fa fa-edit"></i></button>\
                         <button onclick="xacnhandonhang('+donhangs[i].IDdh+')"type="button" class="btn btn-success">Xác nhận</button>\
             </td>\
-        </tr>';
+            </tr>';
         }
+
+    }
+    for(i=0;i<donhangs.length;i++)
+    {
+        var j;
+        if(donhangs[i].tinhtrang==2)
+        {
+            var k;
+            for(k=0;k<users.length;k++)
+            {
+                if(donhangs[i].IDuser==users[k].IDuser)
+                {
+                    break;
+                }
+            }
+            for(j=0;j<cars.length;j++)
+            {
+                if(cars[j].IDxe==donhangs[i].IDxe)
+                {
+                    break;
+                }
+            }
+            hiendh+=' <tr>\
+            <td>'+donhangs[i].IDdh+'</td>\
+            <td>'+users[k].hoten+'</td>\
+            <td>'+cars[j].tenxe+'</td>\
+            <td>'+donhangs[i].soluong+'</td>\
+            <td>'+donhangs[i].thoigian+'</td>\
+            <td>'+formattien(donhangs[i].sotien)+' VNĐ</td>\
+            <td><span class="badge bg-success">Đã xác nhận</span></td>\
+            </tr>';
+        }
+        
     }
     document.getElementById('spdonhang').innerHTML=hiendh;
 }
@@ -726,7 +850,7 @@ function hientrangthongke()
     var tongdonhang=0;
     for(var i=0;i<donhangs.length;i++)
     {
-        if(donhangs[i].soluong>5)
+        if(donhangs[i].soluong>=3 && donhangs[i].tinhtrang==2)
         {
             banchay++;
         }
@@ -903,25 +1027,7 @@ function hientrangthongke()
                 <div class="tile">\
                 </div>\
             </div>\
-        </div>\
-        <div class="row">\
-            <div class="col-md-6">\
-                <div class="tile">\
-                    <h3 class="tile-title">DỮ LIỆU HÀNG THÁNG</h3>\
-                    <div class="embed-responsive embed-responsive-16by9">\
-                        <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>\
-                    </div>\
-                </div>\
-            </div>\
-            <div class="col-md-6">\
-                <div class="tile">\
-                    <h3 class="tile-title">THỐNG KÊ DOANH SỐ</h3>\
-                    <div class="embed-responsive embed-responsive-16by9">\
-                        <canvas class="embed-responsive-item" id="barChartDemo"></canvas>\
-                    </div>\
-                </div>\
-            </div>\
-        </div>'
+        </div>';
 document.getElementById('thaydoi').innerHTML= trangthongke;
 }
 function hienspbanchay()
@@ -932,7 +1038,7 @@ function hienspbanchay()
     for(var i=0;i<donhangs.length;i++)
     {
         var j;
-        if(donhangs[i].soluong>5)
+        if(donhangs[i].soluong>=3 && donhangs[i].tinhtrang==2)
         {
             for(j=0;j<cars.length;j++)
             {
@@ -1005,7 +1111,7 @@ function hiensanphamdahet(){
             <td>'+cars[i].tenxe+'</td>\
             <td>0</td>\
             <td><span class="badge bg-danger">Hết hàng</span></td>\
-            <td>'+cars[i].gia+' VNĐ</td>\
+            <td>'+formattien(cars[i].gia)+' VNĐ</td>\
         </tr>';
         }
     }

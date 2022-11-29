@@ -105,9 +105,8 @@ function khoxe() {
         localStorage.setItem('users', JSON.stringify(users));
         var donhangs=
         [
-            { IDdh:0, IDxe:1, IDuser:'111',  soluong: 1, sotien:  1769000000 ,  tinhtrang:0 , thoigian:''},
-            { IDdh:1, IDxe:3, IDuser:'111',  soluong: 2, sotien:  20000000000 , tinhtrang:0, thoigian:''},
-            { IDdh:2, IDxe:9, IDuser:'222',  soluong: 1, sotien:  3000000000 ,  tinhtrang:0 , thoigian:''},
+            { IDdh:0, IDxe:0, IDuser:'',  soluong: 1, sotien: 0,  tinhtrang:0 , thoigian:''},
+           
         ]
         localStorage.setItem('donhangs', JSON.stringify(donhangs));
         var chitiets=

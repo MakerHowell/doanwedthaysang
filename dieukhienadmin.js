@@ -927,7 +927,7 @@ function hientrangthongke()
         </div>\
     </div>\
 </div>\
-<div class="row">\
+    <div class="row">\
             <div class="col-md-12">\
                 <div class="tile">\
                     <div>\
@@ -1024,7 +1024,7 @@ function hientrangthongke()
             </div>\
         </div>\
         <div class="row">\
-            <div class="col-md-7">\
+            <div class="col-md-5">\
                 <div class="tile">\
                 <div>\
                     <h3 class="tile-title">THỐNG KÊ THEO TỪNG SẢN PHẨM</h3>\
@@ -1034,6 +1034,7 @@ function hientrangthongke()
                         <thead>\
                             <tr>\
                                 <th>Tên sản phẩm</th>\
+                                <th>Khoảng thời gian</th>\
                                 <th>Số lượng đã bán</th>\
                             </tr>\
                         </thead>\
@@ -1041,8 +1042,7 @@ function hientrangthongke()
                         </tbody>\
                     </table>\
                 </div>\
-        </div>\
-    </div>';
+        </div>';
 document.getElementById('thaydoi').innerHTML= trangthongke;
 }
 function hienspbanchay()
@@ -1172,18 +1172,26 @@ function hienthongketungsp()
     var cars= JSON.parse(localStorage.getItem('cars'));
    var thongketungsp='<tr>\
         <td><select class="select-css" name="thongkesp" onchange="hiensoluongdaban(value)" id="thongkesp"></select></td>\
+        <td><select class="select-css" name="thongketg" onchange="hiensoluongdaban(value)" id="thongkesptg"></select></td>\
         <td><div id="soluongdaban"></div></td>\
     </tr>';
     var tungsp='';
     for(var i=0;i<cars.length; i++) {
         tungsp +='<option value="'+cars[i].IDxe+'">'+cars[i].tenxe+'</option>';   
-    }   
+    } 
+    var khoangtg='';
+    for(var i=1;i<=12;i++){
+        khoangtg +='<option value="'+i+'">Tháng '+i+' năm 2022 </option>';
+    }  
     document.getElementById('thongketungsp').innerHTML = thongketungsp;
+    document.getElementById('thongkesptg').innerHTML=khoangtg;
     document.getElementById('thongkesp').innerHTML=tungsp;
 }
 function hiensoluongdaban(IDxe){
     var donhangs= JSON.parse(localStorage.getItem('donhangs'));
     var count=0;
+    var a=document.getElementById("thongkesptg").value;
+    s
     for(var i=0; i<donhangs.length; i++){
         if(donhangs[i].IDxe==IDxe && donhangs[i].tinhtrang==2){
             count++;

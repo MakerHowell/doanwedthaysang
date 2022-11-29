@@ -146,8 +146,7 @@ function khoxe() {
         localStorage.setItem('dhhuy',JSON.stringify(dhhuys));
     }
 }
-function tranghientai(n)
-{
+function tranghientai(n){
     var tranghientai;
     if (n!=null){
         tranghientai=n;
@@ -334,15 +333,19 @@ function hientrangsanpham()
     <div class="danhmuc2">
         <h2>Giá</h2>
     </div>
-    <input type="radio" id="gia" name="gia" checked="checked" onclick="hientrang(1),phantrang()">
-    <label> Tất cả</label><br>
-    <input type="radio" id="gia" name="gia" onclick="locgia(2000000000,5000000000)">
-    <label> 2tỷ VNĐ - 5tỷ VNĐ </label><br>
-    <input type="radio" id="gia" name="gia" onclick="locgia(5000000000,10000000000)">
-    <label> 5tỷ VNĐ - 10tỷ VNĐ</label><br>
-    <input type="radio" id="gia" name="gia" onclick="locgia(10000000000,1000000000000)">
-    <label> Trên 10tỷ VNĐ</label>
-    <hr width="90%" align="center" />
+    <div>
+        <div>
+        <input type="range" id="nutmin" onchange="locgia1()" name="nutmin"
+            min="0" max="100000000000" value="1000000000" step="1000000000"> 
+        </div>
+
+        <div>
+        <input type="range" id="nutmax" name="nutmax" 
+            min="0" max="100000000000" onchange="locgia1()" value="30000000000" step="1000000000">
+        </div>
+        <span class="thumb" id="thumbMin" style="left: 0%;"><p>`+formattien(1000000000)+` VNĐ <-></p></span>
+        <span class="thumb" id="thumbMax" style="left: 100%;"><p>`+formattien(30000000000)+` VNĐ</p> </span>
+    </div>
     <div class="danhmuc2">
         <h2>Thương hiệu</h2>
     </div>
@@ -849,6 +852,24 @@ function locgia(min,max)
         }
     }
     phantrang1(temp);
+}
+function locgia1()
+{
+    var min=document.getElementById('nutmin').value;
+    var max=document.getElementById('nutmax').value;
+    document.getElementById('thumbMin').innerHTML='<p>'+formattien(min)+' VNĐ <-></p>';
+    document.getElementById('thumbMax').innerHTML='<p>'+formattien(max)+' VNĐ</p>';
+    cars=JSON.parse(localStorage.getItem('cars'));
+    var temp=[];
+    for(var i=0;i<cars.length;i++)
+    {
+        if(cars[i].gia>min && cars[i].gia<max)
+        {
+            temp.push(cars[i]);
+        }
+    }
+    phantrang1(temp);
+
 }
 function timkiemxe()
 {

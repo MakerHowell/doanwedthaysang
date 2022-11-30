@@ -337,12 +337,12 @@ function hientrangsanpham()
     <div>
         <div>
         <input type="range" id="nutmin" onchange="locgia1()" name="nutmin"
-            min="0" max="100000000000" value="1000000000" step="1000000000"> 
+            min="0" max="60000000000" value="1000000000" step="2000000000"> 
         </div>
 
         <div>
         <input type="range" id="nutmax" name="nutmax" 
-            min="0" max="100000000000" onchange="locgia1()" value="30000000000" step="1000000000">
+            min="0" max="60000000000" onchange="locgia1()" value="30000000000" step="2000000000">
         </div>
         <span class="thumb" id="thumbMin" style="left: 0%;"><p>`+formattien(1000000000)+` VNĐ <-></p></span>
         <span class="thumb" id="thumbMax" style="left: 100%;"><p>`+formattien(30000000000)+` VNĐ</p> </span>
@@ -871,11 +871,12 @@ function locgia(min,max)
 }
 function locgia1()
 {
+   
+    if((Number(document.getElementById('nutmin').value)>Number(document.getElementById('nutmax').value))) {
+        document.getElementById('nutmin').value=document.getElementById('nutmax').value;
+    }
     var min=document.getElementById('nutmin').value;
     var max=document.getElementById('nutmax').value;
-    if(min>max) {
-        document.getElementById('nutmin').value=max;
-    }
     document.getElementById('thumbMin').innerHTML='<p>'+formattien(min)+' VNĐ <-></p>';
     document.getElementById('thumbMax').innerHTML='<p>'+formattien(max)+' VNĐ</p>';
     cars=JSON.parse(localStorage.getItem('cars'));

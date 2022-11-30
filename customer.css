@@ -113,15 +113,13 @@
     font-weight: 700;
 }
 .row {
-    display: grid;
-    grid-template-columns:  auto auto auto auto;
-    /* display: flex; */
-    /* justify-content: space-between; */
+    display: flex;
+    justify-content: space-between;
     margin-top: 10px;
 }
 
 .info h4 {
-    width: 200px;
+    width: fit-content;
 }
 
 .widget-small {
@@ -132,7 +130,7 @@
 
 .widget-small .icon {
     display: flex;
-    min-width: 185px;
+    min-width: 150px;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.2);

@@ -605,7 +605,10 @@ function xoauser(IDuser){
 
 // ---- THAO TÁC VỚI TRANG QUẢN LÝ ĐƠN HÀNG ----------
 function hientrangdonhang(){
-    var trangdonhang ='<div id="trangchinhsuadh"></div>\
+    var trangdonhang ='<div id="trangchinhsuadh">LỌC ĐƠN HÀNG  <input type="date" id="locdhtgbd" onchange="locdh()" name="trip-start" value="2018-07-22" min="2018-01-01" max="laytg()">\
+    <input type="date" id="locdhtgkt" name="trip-start" value="2018-07-22" onchange="locdh()" min="2018-01-01" max="laytg()">\
+    <select class="select-css" name="thongkesp" onchange="locdh()" id="locdhtinhtrang"></select> <button onclick="hiendonhang()" >RESET</button>\
+    </div>\
     <table class="table table-hover table-bordered table-don-hang" id="sampleTable">\
         <thead>\
             <tr>\
@@ -623,6 +626,104 @@ function hientrangdonhang(){
         </tbody>\
     </table>'
     document.getElementById('thaydoi').innerHTML= trangdonhang;
+    hiendklocdh();
+}
+function hiendklocdh(){
+    var cactinhtrang='';
+    cactinhtrang +='<option value="0">Tình trạng đơn hàng</option>';
+    cactinhtrang +='<option value="1">Chưa xác nhận</option>';
+    cactinhtrang +='<option value="2">Đã xác nhận</option>';
+    document.getElementById('locdhtinhtrang').innerHTML=cactinhtrang;
+}
+function locdh()
+{
+    var tgbd = document.getElementById('locdhtgbd').value;
+    var tgkt=document.getElementById('locdhtgkt').value;
+    if(tgbd > tgkt){
+        document.getElementById('locdhtgbd').value =tgkt;
+    }
+    var loctinhtrang=document.getElementById('locdhtinhtrang');
+    var donhangs=JSON.parse(localStorage.getItem('donhangs'));
+    var cars=JSON.parse(localStorage.getItem('cars'));
+    var users=JSON.parse(localStorage.getItem('users'));
+    var hiendh='';
+    var i;
+    for(i=0;i<donhangs.length;i++)
+    {
+        var j;
+        if(donhangs[i].tinhtrang==1 && loctinhtrang==1 && donhangs[i].thoigian>tgbd && donhangs[i].thoigian<tgkt ) 
+        {
+            var k;
+            for(k=0;k<users.length;k++)
+            {
+                if(donhangs[i].IDuser==users[k].IDuser)
+                {
+                    break;
+                }
+            }
+            for(j=0;j<cars.length;j++)
+            {
+                if(cars[j].IDxe==donhangs[i].IDxe)
+                {
+                    break;
+                }
+            }
+            hiendh+=' <tr>\
+            <td>'+donhangs[i].IDdh+'</td>\
+            <td>'+users[k].hoten+'</td>\
+            <td>'+cars[j].tenxe+'</td>\
+            <td>'+donhangs[i].soluong+'</td>\
+            <td>'+donhangs[i].thoigian+'</td>\
+            <td>'+formattien(donhangs[i].sotien)+' VNĐ</td>\
+            <td><span class="badge bg-warning">Chờ xác nhận</span></td>\
+            <td><button class="btn btn-primary btn-sm trash" onclick="huydonhang('+donhangs[i].IDdh+')" type="button" title="Hủy đơn"><i\
+                        class="fas fa-trash-alt"></i> </button>\
+                <button class="btn btn-primary btn-sm edit" type="button" onclick="hientrangchinhsua('+donhangs[i].IDdh+')" title="Chỉnh sửa"><i\
+                        class="fa fa-edit"></i></button>\
+                        <button onclick="xacnhandonhang('+donhangs[i].IDdh+')"type="button" class="btn btn-success">Xác nhận</button>\
+            </td>\
+            </tr>';
+        }
+
+    }
+    for(i=0;i<donhangs.length;i++)
+    {
+        var j;
+        if(donhangs[i].tinhtrang==2 && loctinhtrang==2 && donhangs[i].thoigian>tgbd && donhangs[i].thoigian<tgkt )
+        {
+            var k;
+            for(k=0;k<users.length;k++)
+            {
+                if(donhangs[i].IDuser==users[k].IDuser)
+                {
+                    break;
+                }
+            }
+            for(j=0;j<cars.length;j++)
+            {
+                if(cars[j].IDxe==donhangs[i].IDxe)
+                {
+                    break;
+                }
+            }
+            hiendh+='<tr>\
+            <td>'+donhangs[i].IDdh+'</td>\
+            <td>'+users[k].hoten+'</td>\
+            <td>'+cars[j].tenxe+'</td>\
+            <td>'+donhangs[i].soluong+'</td>\
+            <td>'+donhangs[i].thoigian+'</td>\
+            <td>'+formattien(donhangs[i].sotien)+' VNĐ</td>\
+            <td><span class="badge bg-success">Đã xác nhận</span></td>\
+            </tr>';
+        }
+        
+    }
+    if (hiendh=' ')
+    {
+        hiendh+=' <tr> KHÔNG CÓ ĐƠN HÀNG PHÙ HỢP </tr>';
+    }
+    document.getElementById('spdonhang').innerHTML=hiendh;
+    
 }
 function hiendonhang()
 {
@@ -700,6 +801,10 @@ function hiendonhang()
             </tr>';
         }
         
+    }
+    if (hiendh=' ')
+    {
+        hiendh+=' <tr> BẠN CHƯA CÓ ĐƠN HÀNG NÀO </tr>';
     }
     document.getElementById('spdonhang').innerHTML=hiendh;
 }
@@ -1025,6 +1130,25 @@ function hientrangthongke()
         <div class="row">\
             <div class="col-md-12">\
                 <div class="tile">\
+<<<<<<< Updated upstream
+=======
+                <div>\
+                    <h3 class="tile-title">THỐNG KÊ THEO TỪNG SẢN PHẨM</h3>\
+                </div>\
+                <div class="tile-body">\
+                    <table class="table table-hover table-bordered" id="sampleTable">\
+                        <thead>\
+                            <tr>\
+                                <th>Tên sản phẩm</th>                                \
+                                <th>Khoảng thời gian</th>\
+                                <th>Số lượng đã bán</th>\
+                                <th>Khoảng thời gian</th>\
+                            </tr>\
+                        </thead>\
+                        <tbody id="thongketungsp">\
+                        </tbody>\
+                    </table>\
+>>>>>>> Stashed changes
                 </div>\
             </div>\
         </div>';
@@ -1152,5 +1276,39 @@ function hiendonhangdahuy()
     }    
     document.getElementById('donhangdahuy').innerHTML=donhanghuy;
 }
+<<<<<<< Updated upstream
+=======
+function hienthongketungsp()
+{
+    var cars= JSON.parse(localStorage.getItem('cars'));
+    var thongketungsp='<tr>\
+        <td><select class="select-css" name="thongkesp" onchange="hiensoluongdaban(value)" id="thongkesp"></select></td>\
+        <td><select class="select-css" name="thongketg" onchange="hiensoluongdaban(value)" id="thongkesptg"></select></td>\
+        <td><div id="soluongdaban"></div></td>\
+    </tr>';
+    var tungsp='';
+    for(var i=0;i<cars.length; i++) {
+        tungsp +='<option value="'+cars[i].IDxe+'">'+cars[i].tenxe+'</option>';   
+    } 
+    var khoangtg='';
+    for(var i=1;i<=12;i++){
+        khoangtg +='<option value="'+i+'">Tháng '+i+' năm 2022 </option>';
+    }  
+    document.getElementById('thongketungsp').innerHTML = thongketungsp;
+    document.getElementById('thongkesptg').innerHTML=khoangtg;
+    document.getElementById('thongkesp').innerHTML=tungsp;
+}
+function hiensoluongdaban(IDxe){
+    var donhangs= JSON.parse(localStorage.getItem('donhangs'));
+    var count=0;
+    var a=document.getElementById("thongkesptg").value;
+    for(var i=0; i<donhangs.length; i++){
+        if(donhangs[i].IDxe==IDxe && donhangs[i].tinhtrang==2){
+            count++;
+        }
+    }
+    document.getElementById('soluongdaban').innerHTML='<p>'+count+'</p>';
+}
+>>>>>>> Stashed changes
 //  ---- KẾT THÚC THAO TÁC VỚI TRANG THỐNG KÊ -----
 

@@ -105,9 +105,8 @@ function khoxe() {
         localStorage.setItem('users', JSON.stringify(users));
         var donhangs=
         [
-            { IDdh:0, IDxe:1, IDuser:'111',  soluong: 1, sotien:  1769000000 ,  tinhtrang:0 , thoigian:''},
-            { IDdh:1, IDxe:3, IDuser:'111',  soluong: 2, sotien:  20000000000 , tinhtrang:0, thoigian:''},
-            { IDdh:2, IDxe:9, IDuser:'222',  soluong: 1, sotien:  3000000000 ,  tinhtrang:0 , thoigian:''},
+            { IDdh:'', IDxe:'', IDuser:'',  soluong: '', sotien: '',  tinhtrang:'' , thoigian:''},
+           
         ]
         localStorage.setItem('donhangs', JSON.stringify(donhangs));
         var chitiets=
@@ -145,6 +144,7 @@ function khoxe() {
         localStorage.setItem('DN',-1)
         var dhhuys=[];
         localStorage.setItem('dhhuy',JSON.stringify(dhhuys));
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
         var temp=[];
@@ -152,10 +152,12 @@ function khoxe() {
         copy();
 
 >>>>>>> Stashed changes
+=======
+        copy();
+>>>>>>> main
     }
 }
-function tranghientai(n)
-{
+function tranghientai(n){
     var tranghientai;
     if (n!=null){
         tranghientai=n;
@@ -195,7 +197,7 @@ function hientrangchu()
         <div class="slide fade"><img src="./img/ss5.jpg"></div>
         <div class="slide fade"><img src="./img/ss6.jpg"></div>
         <div class="slide fade"><img src="./img/ss7.jpg"></div>
-        <span class="prev" onclick="plusSlides(-1)">❮</span>
+        <span class="prev" onclick="plusSlides(-2)">❮</span>
         <span class="next" onclick="plusSlides(1)">❯</span>
     </div>
 </div>
@@ -335,13 +337,14 @@ function hientrangsanpham()
         <h2>LỌC SẢN PHẨM</h2>
     </div>
     <hr  width="90%" align="center" />
-    <h3>TÌM KIẾM</h3>
+    <h3>TÌM KIẾM <button onclick="copy()">HỦY LỌC</button></h3> 
     <input type="text" onkeyup="timkiemxe()" placeholder="Nhập tên xe" id="timkiem">
     <button onclick="timkiemxe()">LỌC</button>
     <hr  width="90%" align="center" />
     <div class="danhmuc2">
         <h2>Giá</h2>
     </div>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     <input type="radio" id="gia" name="gia" checked="checked" onclick="hientrang(1),phantrang()">
     <label> Tất cả</label><br>
@@ -376,6 +379,25 @@ function hientrangsanpham()
     </div>
     <select class="select-css" name="cars" onchange="loctonghop()" id="thuonghieu"></select>
 >>>>>>> Stashed changes
+=======
+    <div>
+        <div>
+        <input type="range" id="nutmin" onchange="locgia1()" name="nutmin"
+            min="0" max="60000000000" value="1000000000" step="2000000000"> 
+        </div>
+
+        <div>
+        <input type="range" id="nutmax" name="nutmax" 
+            min="0" max="60000000000" onchange="locgia1()" value="30000000000" step="2000000000">
+        </div>
+        <span class="thumb" id="thumbMin" style="left: 0%;"><p>`+formattien(1000000000)+` VNĐ <-></p></span>
+        <span class="thumb" id="thumbMax" style="left: 100%;"><p>`+formattien(30000000000)+` VNĐ</p> </span>
+    </div>
+    <div class="danhmuc2">
+        <h2>Thương hiệu</h2>
+    </div>
+    <select class="select-css" name="cars" onchange="loc(value)" id="thuonghieu"></select>
+>>>>>>> main
     <hr width="90%" align="center" />
 </div>
 <div class="content" id="content">
@@ -445,7 +467,8 @@ function hienkhunguser(){
             <input type="button" id="btgiohang" class="btn" value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
             <div><a href="admin.html"><button style="background: #fcec64; border:none; color: black !important; margin: 5px 0; padding: 5px;">Trang quản trị</button></a></div>\
             <input type="button" id="btgiohang" class="btn" value="Đổi mật khẩu" onclick="hiendoimatkhau()" </div>';
-        }        
+        }  
+        // Need to fix      
         else{
             document.getElementById('popup').innerHTML='<div class="khungusernho"><p class="nt" onclick="tat()">X</p><p>'+users[i].hoten+'</p> <input type="button" id="btdangxuat" class="btn" value="Đăng xuất" onclick="dangxuat()"/>\
             <input type="button" id="btgiohang"class="btn"  value="Giỏ Hàng" onclick="hiengiohang(),hienspgiohang(),hienlichsu()" />\
@@ -484,7 +507,7 @@ function dangnhap() {
                         </button>\
                     </div>\
                     <div class="forget">\
-                        <a href ="#" onclick="hienquenmatkhau()"><b>Bạn quên mật khẩu?</b></a>\
+                        <a href ="#" onsubmit="hienquenmatkhau()"><b>Bạn quên mật khẩu?</b></a>\
                         \
                     </div>\
                 </form>\
@@ -553,6 +576,11 @@ function dangkytk() {
     var sodth = document.getElementById('forSDT').value;
     var matkhau = document.getElementById('forpass').value;
     var rematkhau=document.getElementById('forrepass').value;
+    if (!checkligh("",0,3)){
+        alert('Nhap sai thong tin')
+        return 
+    }
+    
     if (rematkhau!=matkhau) {
         alert('Nhập lại mật khẩu không đúng');
     }
@@ -590,7 +618,7 @@ function hienquenmatkhau(){
                     </button>\
                 </div>\
                 <div class="forget">\
-                    <a href ="#" onclick="dangnhap()"><b>về trang đăng nhập</b></a>\
+                    <a href ="#" onsubmit="dangnhap()"><b>về trang đăng nhập</b></a>\
                 </div>\
             </form>\
         </div>\
@@ -783,11 +811,18 @@ function luu(mang)
 }
 function lay()
 {
-    return JSON.parse(localStorage.getItem('temp'));
+    return JSON.parse(localStorage.getItem('tam'));
 }
-function phantrang1(mang)
+function copy()
 {
-    luu(mang);
+    var cars = JSON.parse(localStorage.getItem('cars'));
+    localStorage.setItem('tam', JSON.stringify(cars));
+    location.reload();
+}
+function phantrang1()
+{
+    // luu(mang);
+    var mang=JSON.parse(localStorage.getItem('tam'));
     var sotrang=Math.ceil(mang.length/16);
 =======
 function copy()
@@ -840,22 +875,31 @@ function hientrang(n)
 //---------- CÁC HÀM LỌC, TÌM KIẾM  -------
 <<<<<<< Updated upstream
 function loc(dk) {
+<<<<<<< HEAD
     var cars = JSON.parse(localStorage.getItem('cars'));
 =======
 function locbrand(dk) {
     var cars = JSON.parse(localStorage.getItem('temp'));
 >>>>>>> Stashed changes
+=======
+    var cars = JSON.parse(localStorage.getItem('tam'));
+>>>>>>> main
     var kq=[];
     for (var i = 0; i < cars.length; i++) {
         if (dk == cars[i].brand) {
            kq.push(cars[i]);
         }
     }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     phantrang1(kq);
 =======
     localStorage.setItem('temp',JSON.stringify(kq));
 >>>>>>> Stashed changes
+=======
+    localStorage.setItem('tam',JSON.stringify(kq));
+    phantrang1();
+>>>>>>> main
 }
 function hienbrand() {
     var cars= JSON.parse(localStorage.getItem('cars'));
@@ -870,12 +914,17 @@ function hienbrand() {
     }    
     document.getElementById('thuonghieu').innerHTML = locbrand;
 }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 function hiensanpham(mang){
 =======
 function hiensanpham(kq){
     var mang=kq;
 >>>>>>> Stashed changes
+=======
+function hiensanpham(){
+    var mang=JSON.parse(localStorage.getItem('tam'));
+>>>>>>> main
     var s='';
     for(var i=0; i<mang.length;i++)
     {
@@ -912,6 +961,28 @@ function locgia()
     localStorage.setItem('temp', JSON.stringify(temp));
 >>>>>>> Stashed changes
 }
+function locgia1()
+{
+   
+    if((Number(document.getElementById('nutmin').value)>Number(document.getElementById('nutmax').value))) {
+        document.getElementById('nutmin').value=document.getElementById('nutmax').value;
+    }
+    var min=document.getElementById('nutmin').value;
+    var max=document.getElementById('nutmax').value;
+    document.getElementById('thumbMin').innerHTML='<p>'+formattien(min)+' VNĐ <-></p>';
+    document.getElementById('thumbMax').innerHTML='<p>'+formattien(max)+' VNĐ</p>';
+    cars=JSON.parse(localStorage.getItem('cars'));
+    var temp=[];
+    for(var i=0;i<cars.length;i++)
+    {
+        if(cars[i].gia>min && cars[i].gia<max)
+        {
+            temp.push(cars[i]);
+        }
+    }
+    localStorage.setItem('tam', JSON.stringify(temp));
+    phantrang1();
+}
 function timkiemxe()
 {
     var cars=JSON.parse(localStorage.getItem('cars'));
@@ -929,6 +1000,7 @@ function timkiemxe()
            temp.push(cars[i]);
         }
     }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
     phantrang1(temp);
@@ -936,6 +1008,10 @@ function timkiemxe()
     localStorage.setItem('temp',JSON.stringify(temp));
     phantrang();
 >>>>>>> Stashed changes
+=======
+    localStorage.setItem('tam',JSON.stringify(temp));
+    phantrang1();
+>>>>>>> main
     
 }
 function sapxep(vl)
@@ -979,6 +1055,7 @@ function sapxep(vl)
         localStorage.setItem("temp",JSON.stringify(cars));
     }
 }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 function loctonghop(){
@@ -991,6 +1068,12 @@ function loctonghop(){
     phantrang();
 }
 >>>>>>> Stashed changes
+=======
+function loctonghop(){
+    
+}
+
+>>>>>>> main
 //------ KẾT THÚC HÀM LỌC, TÌM KIẾM  ---------
 
 // -----  BẮT ĐẦU CHI TIẾT SẢN PHẨM ----------------------
@@ -1106,6 +1189,7 @@ function showchitietsp(IDxe){
 // ----  BẮT ĐẦU PHẦN GIỎ HÀNG  -----------
 function hiengiohang()
 {
+    checkdonhangtrung();
     if(localStorage.getItem('DN')==-1)
     {
         alert('Bạn cần phải đăng nhâp');
@@ -1165,6 +1249,22 @@ function hiengiohang()
     }
     
 }
+function checkdonhangtrung()
+{
+    var donhangs=JSON.parse(localStorage.getItem('donhangs'));
+    for(var i=1;i<donhangs.length;i++)
+    {
+        for(var j=i+1;j<donhangs.length;j++)
+        {
+            if(donhangs[i].IDxe==donhangs[j].IDxe && donhangs[i].IDuser==localStorage.getItem('DN') && donhangs[j].IDuser==localStorage.getItem('DN') && donhangs[i].tinhtrang==0 && donhangs[j].tinhtrang==0)
+            {
+                donhangs[i].soluong=donhangs[j].soluong*1+1;
+                donhangs.splice(j,1);
+            }
+        }
+    }
+    localStorage.setItem('donhangs', JSON.stringify(donhangs));
+}
 function hienspgiohang(){
     if(localStorage.getItem('DN')==-1 || localStorage.getItem('DN')==null)
     {
@@ -1198,9 +1298,13 @@ function hienspgiohang(){
                 <i class="fa fa-trash" aria-hidden="true"></i> Xóa </a>\
             <button onclick="hienthanhtoan('+donhangs[i].IDdh+')" class="btn btn-save" type="button">Thanh toán</button>\
         </td>\
-         </tr>'
+        </tr>'
         }
     } 
+    if(spgiohang!='')
+    {
+        spgiohang+=`<button onclick="thanhtoantatca()" class="btn btn-save" type="button">Thanh toán tất cả</button>`;
+    }
     if(spgiohang=='')
     {
         document.getElementById('sptronggio').innerHTML=`<h2 style="margin-left:50%;width:100%" >BẠN CHƯA MUA SẢN PHẨN NÀO</h2>`;
@@ -1312,6 +1416,19 @@ function thanhtoan(IDdh){
     var donhangs =JSON.parse(localStorage.getItem('donhangs'));
     for(var i = 0; i < donhangs.length;i++){
         if(donhangs[i].IDdh == IDdh)
+        {
+            donhangs[i].tinhtrang=1;
+            donhangs[i].thoigian=laytg();
+        }
+    }
+    localStorage.setItem('donhangs', JSON.stringify(donhangs));
+    location.reload(); 
+}
+function thanhtoantatca()
+{
+    var donhangs =JSON.parse(localStorage.getItem('donhangs'));
+    for(var i = 0; i < donhangs.length;i++){
+        if(donhangs[i].tinhtrang==0 && donhangs[i].IDuser==localStorage.getItem('DN'));
         {
             donhangs[i].tinhtrang=1;
             donhangs[i].thoigian=laytg();

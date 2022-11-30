@@ -115,10 +115,22 @@
 .row {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
+
+.info h4 {
+    width: fit-content;
+}
+
+.widget-small {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+
 .widget-small .icon {
     display: flex;
-    min-width: 85px;
+    min-width: 150px;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.2);

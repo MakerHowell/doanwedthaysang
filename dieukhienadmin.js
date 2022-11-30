@@ -77,6 +77,7 @@ function luutrang(n){
         hientongdonhang();
         hiensanphamdahet();
         hiendonhangdahuy();
+        hienthongketungsp();
     }
     if(thientai==4){
         trangquanlyuser();
@@ -1031,7 +1032,7 @@ function hientrangthongke()
         </div>\
     </div>\
 </div>\
-<div class="row">\
+    <div class="row">\
             <div class="col-md-12">\
                 <div class="tile">\
                     <div>\
@@ -1128,10 +1129,13 @@ function hientrangthongke()
             </div>\
         </div>\
         <div class="row">\
-            <div class="col-md-12">\
+            <div class="col-md-5">\
                 <div class="tile">\
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> main
                 <div>\
                     <h3 class="tile-title">THỐNG KÊ THEO TỪNG SẢN PHẨM</h3>\
                 </div>\
@@ -1139,18 +1143,26 @@ function hientrangthongke()
                     <table class="table table-hover table-bordered" id="sampleTable">\
                         <thead>\
                             <tr>\
+<<<<<<< HEAD
                                 <th>Tên sản phẩm</th>                                \
                                 <th>Khoảng thời gian</th>\
                                 <th>Số lượng đã bán</th>\
                                 <th>Khoảng thời gian</th>\
+=======
+                                <th>Tên sản phẩm</th>\
+                                <th>Khoảng thời gian</th>\
+                                <th>Số lượng đã bán</th>\
+>>>>>>> main
                             </tr>\
                         </thead>\
                         <tbody id="thongketungsp">\
                         </tbody>\
                     </table>\
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
                 </div>\
-            </div>\
         </div>';
 document.getElementById('thaydoi').innerHTML= trangthongke;
 }
@@ -1276,12 +1288,19 @@ function hiendonhangdahuy()
     }    
     document.getElementById('donhangdahuy').innerHTML=donhanghuy;
 }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 function hienthongketungsp()
 {
     var cars= JSON.parse(localStorage.getItem('cars'));
     var thongketungsp='<tr>\
+=======
+function hienthongketungsp()
+{
+    var cars= JSON.parse(localStorage.getItem('cars'));
+   var thongketungsp='<tr>\
+>>>>>>> main
         <td><select class="select-css" name="thongkesp" onchange="hiensoluongdaban(value)" id="thongkesp"></select></td>\
         <td><select class="select-css" name="thongketg" onchange="hiensoluongdaban(value)" id="thongkesptg"></select></td>\
         <td><div id="soluongdaban"></div></td>\
@@ -1302,6 +1321,10 @@ function hiensoluongdaban(IDxe){
     var donhangs= JSON.parse(localStorage.getItem('donhangs'));
     var count=0;
     var a=document.getElementById("thongkesptg").value;
+<<<<<<< HEAD
+=======
+    s
+>>>>>>> main
     for(var i=0; i<donhangs.length; i++){
         if(donhangs[i].IDxe==IDxe && donhangs[i].tinhtrang==2){
             count++;
@@ -1309,6 +1332,9 @@ function hiensoluongdaban(IDxe){
     }
     document.getElementById('soluongdaban').innerHTML='<p>'+count+'</p>';
 }
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
 //  ---- KẾT THÚC THAO TÁC VỚI TRANG THỐNG KÊ -----
 

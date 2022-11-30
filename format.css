@@ -157,7 +157,7 @@ p{
 .gioithieu{
     border: 5px groove rgb(255, 255, 0);
     border-radius: 10px;
-    background:rgb(216, 216, 216);
+    background:rgb(219, 223, 122);
     width: 100%;
     margin: auto;
     font-size: 15px;
@@ -178,6 +178,7 @@ p{
 }
 .gioithieu h5{
     text-align: center;
+    font-size: medium;
 }
 .gioithieu p{
     margin-left: 10px;

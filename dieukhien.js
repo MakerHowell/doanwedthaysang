@@ -144,7 +144,17 @@ function khoxe() {
         localStorage.setItem('DN',-1)
         var dhhuys=[];
         localStorage.setItem('dhhuy',JSON.stringify(dhhuys));
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+        var temp=[];
+        localStorage.setItem('temp',JSON.stringify(temp));
         copy();
+
+>>>>>>> Stashed changes
+=======
+        copy();
+>>>>>>> main
     }
 }
 function tranghientai(n){
@@ -334,6 +344,42 @@ function hientrangsanpham()
     <div class="danhmuc2">
         <h2>Giá</h2>
     </div>
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+    <input type="radio" id="gia" name="gia" checked="checked" onclick="hientrang(1),phantrang()">
+    <label> Tất cả</label><br>
+    <input type="radio" id="gia" name="gia" onclick="locgia(2000000000,5000000000)">
+    <label> 2tỷ VNĐ - 5tỷ VNĐ </label><br>
+    <input type="radio" id="gia" name="gia" onclick="locgia(5000000000,10000000000)">
+    <label> 5tỷ VNĐ - 10tỷ VNĐ</label><br>
+    <input type="radio" id="gia" name="gia" onclick="locgia(10000000000,1000000000000)">
+    <label> Trên 10tỷ VNĐ</label>
+    <hr width="90%" align="center" />
+    <div class="danhmuc2">
+        <h2>Thương hiệu</h2>
+    </div>
+    <select class="select-css" name="cars" onchange="loc(value)" id="thuonghieu">
+    </select>
+=======
+    <div>
+        <div>
+        <input type="range" id="nutmin" onchange="loctonghop()" name="nutmin"
+            min="0" max="100000000000" value="1000000000" step="1000000000"> 
+        </div>
+
+        <div>
+        <input type="range" id="nutmax" name="nutmax" 
+            min="0" max="100000000000" onchange="loctonghop()" value="30000000000" step="1000000000">
+        </div>
+        <span class="thumb" id="thumbMin" style="left: 0%;"><p>`+formattien(1000000000)+` VNĐ <-></p></span>
+        <span class="thumb" id="thumbMax" style="left: 100%;"><p>`+formattien(30000000000)+` VNĐ</p> </span>
+    </div>
+    <div class="danhmuc2">
+        <h2>Thương hiệu</h2>
+    </div>
+    <select class="select-css" name="cars" onchange="loctonghop()" id="thuonghieu"></select>
+>>>>>>> Stashed changes
+=======
     <div>
         <div>
         <input type="range" id="nutmin" onchange="locgia1()" name="nutmin"
@@ -351,6 +397,7 @@ function hientrangsanpham()
         <h2>Thương hiệu</h2>
     </div>
     <select class="select-css" name="cars" onchange="loc(value)" id="thuonghieu"></select>
+>>>>>>> main
     <hr width="90%" align="center" />
 </div>
 <div class="content" id="content">
@@ -359,7 +406,7 @@ function hientrangsanpham()
     </div>
     <hr width="90%" align="center" />
     <label for="cars">Sắp xếp theo:</label>
-    <select class="sapxep" name="xapxep" id="sapxep" onchange="sapxep(value)">
+    <select class="sapxep" name="xapxep" id="sapxep" onchange="loctonghop()">
         <option value="0">Mặc định</option>
         <option value="1">Giá (Thấp->Cao)</option>
         <option value="2">Giá (Cao->Thấp)</option>
@@ -737,6 +784,7 @@ function chuyenmangthanhsp(mang)
     }
     return s;
 }
+<<<<<<< Updated upstream
 function hientrang(n)
 {
     var cars = JSON.parse(localStorage.getItem('cars'));
@@ -776,19 +824,29 @@ function phantrang1()
     // luu(mang);
     var mang=JSON.parse(localStorage.getItem('tam'));
     var sotrang=Math.ceil(mang.length/16);
+=======
+function copy()
+{
+    var cars = JSON.parse(localStorage.getItem('cars'));
+    localStorage.setItem('temp', JSON.stringify(cars));
+    location.reload();
+}
+function phantrang()
+{
+    var cars = JSON.parse(localStorage.getItem('temp'));
+    var sotrang=Math.ceil(cars.length/16);
+>>>>>>> Stashed changes
     var taosotrang='';
     // taosotrang+='<a href="#">&laquo;</a>';
     for(var i=1; i<=sotrang; i++) {
         taosotrang+='<a onclick="hientrang1('+i+')" href="#">'+i+'</a>';
     }
-    // taosotrang+='<a href="#">&raquo;</a>';
-    hientrang1(1);
-    // hientrang2(mang);
+    hientrang(1);
     document.getElementById('pagination').innerHTML=taosotrang;
 }
-function hientrang1(n)
+function hientrang(n)
 {
-    var mang = lay();
+    var mang=JSON.parse(localStorage.getItem('temp'));
     var dung=16*n;
     var batdau=16*n-16;
     if(dung>mang.length)
@@ -799,35 +857,49 @@ function hientrang1(n)
     for (var i = batdau; i < dung; i++) {
         kq.push(mang[i]);
     } 
-    hiensanpham(kq);
-}
-function hientrang2(mang)
-{
-    var dung=16*2;
-    var batdau=16*2-16;
-    if(dung>mang.length)
+    var s='';
+    for(var i=0; i<kq.length;i++)
     {
-        dung=mang.length;
+        s += '<div class="product">' +
+        '<img src="' + kq[i].img + '">' +
+        '<p>' + kq[i].tenxe + '</p>' +
+        '<p> Price: ' + formattien(kq[i].gia) +' VNĐ</p>' +
+        '<button class="btn" onclick="showchitietsp('+kq[i].IDxe+')">CHI TIET</button>' +
+        '</div>';
     }
-    let kq=[];
-    for (var i = batdau; i < dung; i++) {
-        kq.push(mang[i]);
-    } 
-    hiensanpham(kq);
+    document.getElementById('product-wrapper').innerHTML=s;
 }
+
 // -----  KẾT THÚC PHÂN TRANG SẢN PHẨM  --------
 
 //---------- CÁC HÀM LỌC, TÌM KIẾM  -------
+<<<<<<< Updated upstream
 function loc(dk) {
+<<<<<<< HEAD
+    var cars = JSON.parse(localStorage.getItem('cars'));
+=======
+function locbrand(dk) {
+    var cars = JSON.parse(localStorage.getItem('temp'));
+>>>>>>> Stashed changes
+=======
     var cars = JSON.parse(localStorage.getItem('tam'));
+>>>>>>> main
     var kq=[];
     for (var i = 0; i < cars.length; i++) {
         if (dk == cars[i].brand) {
            kq.push(cars[i]);
         }
     }
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+    phantrang1(kq);
+=======
+    localStorage.setItem('temp',JSON.stringify(kq));
+>>>>>>> Stashed changes
+=======
     localStorage.setItem('tam',JSON.stringify(kq));
     phantrang1();
+>>>>>>> main
 }
 function hienbrand() {
     var cars= JSON.parse(localStorage.getItem('cars'));
@@ -842,8 +914,17 @@ function hienbrand() {
     }    
     document.getElementById('thuonghieu').innerHTML = locbrand;
 }
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+function hiensanpham(mang){
+=======
+function hiensanpham(kq){
+    var mang=kq;
+>>>>>>> Stashed changes
+=======
 function hiensanpham(){
     var mang=JSON.parse(localStorage.getItem('tam'));
+>>>>>>> main
     var s='';
     for(var i=0; i<mang.length;i++)
     {
@@ -856,9 +937,19 @@ function hiensanpham(){
     }
     document.getElementById('product-wrapper').innerHTML=s;
 }
-function locgia(min,max)
+function locgia()
 {
-    cars=JSON.parse(localStorage.getItem('cars'));
+    if(Number(document.getElementById('nutmin').value)>Number(document.getElementById('nutmax').value)) {
+        document.getElementById('nutmin').value=document.getElementById('nutmax').value;
+    }
+<<<<<<< Updated upstream
+    phantrang1(temp);
+=======
+    var min=document.getElementById('nutmin').value;
+    var max=document.getElementById('nutmax').value;
+    document.getElementById('thumbMin').innerHTML='<p>'+formattien(min)+' VNĐ <-></p>';
+    document.getElementById('thumbMax').innerHTML='<p>'+formattien(max)+' VNĐ</p>';
+    var cars=JSON.parse(localStorage.getItem('temp'));
     var temp=[];
     for(var i=0;i<cars.length;i++)
     {
@@ -867,7 +958,8 @@ function locgia(min,max)
             temp.push(cars[i]);
         }
     }
-    phantrang1(temp);
+    localStorage.setItem('temp', JSON.stringify(temp));
+>>>>>>> Stashed changes
 }
 function locgia1()
 {
@@ -897,7 +989,8 @@ function timkiemxe()
     var tenxe = document.getElementById('timkiem').value;
     if(tenxe ==null)
     {
-        phantrang1(cars);
+        copy();
+        phantrang();
     }
     var temp=[];
     for(var i=0; i<cars.length; i++)
@@ -907,23 +1000,32 @@ function timkiemxe()
            temp.push(cars[i]);
         }
     }
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+
+    phantrang1(temp);
+=======
+    localStorage.setItem('temp',JSON.stringify(temp));
+    phantrang();
+>>>>>>> Stashed changes
+=======
     localStorage.setItem('tam',JSON.stringify(temp));
     phantrang1();
+>>>>>>> main
     
 }
 function sapxep(vl)
 {
-    var cars=JSON.parse(localStorage.getItem('cars'));
-    var car1=JSON.parse(localStorage.getItem('cars'));
+    var cars=JSON.parse(localStorage.getItem('temp'));
+    var temp;
     if(vl==0)
     {
-        phantrang(),hientrang(1);
+        localStorage.setItem("temp",JSON.stringify(cars));
     }
     if(vl==1)
     {
         for(var i=0;i<cars.length;i++)
         {
-            var temp;
             for(var j=0;j<cars.length;j++)
             {
                 if(cars[i].gia<cars[j].gia)
@@ -932,15 +1034,14 @@ function sapxep(vl)
                     cars[i]=cars[j];
                     cars[j]=temp;
                 }
-            }
+            } 
         }
-        phantrang1(cars);
+        localStorage.setItem("temp",JSON.stringify(cars));
     }
     if(vl==2)
     {
         for(var i=0;i<cars.length;i++)
         {
-            var temp;
             for(var j=0;j<cars.length;j++)
             {
                 if(cars[i].gia>cars[j].gia)
@@ -951,13 +1052,28 @@ function sapxep(vl)
                 }
             }
         }
-        phantrang1(cars);
+        localStorage.setItem("temp",JSON.stringify(cars));
     }
 }
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+function loctonghop(){
+    copy();
+    var vl=document.getElementById('sapxep').value;
+    var brand=document.getElementById('thuonghieu').value;
+    // sapxep(vl); 
+    locgia();
+    locbrand(brand);
+    phantrang();
+}
+>>>>>>> Stashed changes
+=======
 function loctonghop(){
     
 }
 
+>>>>>>> main
 //------ KẾT THÚC HÀM LỌC, TÌM KIẾM  ---------
 
 // -----  BẮT ĐẦU CHI TIẾT SẢN PHẨM ----------------------

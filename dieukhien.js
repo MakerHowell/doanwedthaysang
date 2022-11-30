@@ -510,7 +510,7 @@ function dangky()
                     <input type="password"  name="forrepass"   class="input" id="forrepass" onclick="checkligh(\'forrepass\',0,3)" onkeydown="checkligh(\'forrepass\',0,3)"     placeholder="Nhập lại mật khẩu" >\
                 </div>\
                 <div  class="BTDN">\
-                    <button class="btn" onsubmit="dangkytk()">\
+                    <button class="btn" onclick="dangkytk()">\
                         ĐĂNG KÝ\
                     </button>\
                 </div>\
@@ -529,6 +529,11 @@ function dangkytk() {
     var sodth = document.getElementById('forSDT').value;
     var matkhau = document.getElementById('forpass').value;
     var rematkhau=document.getElementById('forrepass').value;
+    if (!checkligh("",0,3)){
+        alert('Nhap sai thong tin')
+        return 
+    }
+    
     if (rematkhau!=matkhau) {
         alert('Nhập lại mật khẩu không đúng');
     }

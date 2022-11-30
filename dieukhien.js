@@ -144,6 +144,7 @@ function khoxe() {
         localStorage.setItem('DN',-1)
         var dhhuys=[];
         localStorage.setItem('dhhuy',JSON.stringify(dhhuys));
+        copy();
     }
 }
 function tranghientai(n){
@@ -326,7 +327,7 @@ function hientrangsanpham()
         <h2>LỌC SẢN PHẨM</h2>
     </div>
     <hr  width="90%" align="center" />
-    <h3>TÌM KIẾM</h3>
+    <h3>TÌM KIẾM <button onclick="copy()">HỦY LỌC</button></h3> 
     <input type="text" onkeyup="timkiemxe()" placeholder="Nhập tên xe" id="timkiem">
     <button onclick="timkiemxe()">LỌC</button>
     <hr  width="90%" align="center" />
@@ -756,11 +757,18 @@ function luu(mang)
 }
 function lay()
 {
-    return JSON.parse(localStorage.getItem('temp'));
+    return JSON.parse(localStorage.getItem('tam'));
 }
-function phantrang1(mang)
+function copy()
 {
-    luu(mang);
+    var cars = JSON.parse(localStorage.getItem('cars'));
+    localStorage.setItem('tam', JSON.stringify(cars));
+    location.reload();
+}
+function phantrang1()
+{
+    // luu(mang);
+    var mang=JSON.parse(localStorage.getItem('tam'));
     var sotrang=Math.ceil(mang.length/16);
     var taosotrang='';
     // taosotrang+='<a href="#">&laquo;</a>';
@@ -805,14 +813,15 @@ function hientrang2(mang)
 
 //---------- CÁC HÀM LỌC, TÌM KIẾM  -------
 function loc(dk) {
-    var cars = JSON.parse(localStorage.getItem('cars'));
+    var cars = JSON.parse(localStorage.getItem('tam'));
     var kq=[];
     for (var i = 0; i < cars.length; i++) {
         if (dk == cars[i].brand) {
            kq.push(cars[i]);
         }
     }
-    phantrang1(kq);
+    localStorage.setItem('tam',JSON.stringify(kq));
+    phantrang1();
 }
 function hienbrand() {
     var cars= JSON.parse(localStorage.getItem('cars'));
@@ -827,7 +836,8 @@ function hienbrand() {
     }    
     document.getElementById('thuonghieu').innerHTML = locbrand;
 }
-function hiensanpham(mang){
+function hiensanpham(){
+    var mang=JSON.parse(localStorage.getItem('tam'));
     var s='';
     for(var i=0; i<mang.length;i++)
     {
@@ -871,8 +881,8 @@ function locgia1()
             temp.push(cars[i]);
         }
     }
-    phantrang1(temp);
-
+    localStorage.setItem('tam', JSON.stringify(temp));
+    phantrang1();
 }
 function timkiemxe()
 {
@@ -890,8 +900,8 @@ function timkiemxe()
            temp.push(cars[i]);
         }
     }
-
-    phantrang1(temp);
+    localStorage.setItem('tam',JSON.stringify(temp));
+    phantrang1();
     
 }
 function sapxep(vl)
@@ -937,6 +947,10 @@ function sapxep(vl)
         phantrang1(cars);
     }
 }
+function loctonghop(){
+    
+}
+
 //------ KẾT THÚC HÀM LỌC, TÌM KIẾM  ---------
 
 // -----  BẮT ĐẦU CHI TIẾT SẢN PHẨM ----------------------
